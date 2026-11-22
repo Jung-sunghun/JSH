@@ -1906,7 +1906,7 @@ a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
     <button data-book="rev">계</button>
   </div>
   <select id="book66" class="bookselect" title="66권 확장 보기"><option value="" disabled>신약3. 일반서신·계시록 — 9권 수록</option><option value="heb">히브리서 (수록)</option><option value="jas">야고보서 (수록)</option><option value="1pe">베드로전서 (수록)</option><option value="2pe">베드로후서 (수록)</option><option value="1jn">요한1서 (수록)</option><option value="2jn">요한2서 (수록)</option><option value="3jn">요한3서 (수록)</option><option value="jud">유다서 (수록)</option><option value="rev">요한계시록 (수록)</option><option value="" disabled>──────────</option><option value="" disabled>구약1~5 · 신약1 사복음서 · 신약2 바울서신</option><option value="" disabled>※ 9권 분류로 차례로 확장</option></select>
-  <p class="taghint">책을 고르면 그 책의 <b>인명·지명·사건</b>만 나옵니다. 태그를 누르면 해당 단락만 목차에 남습니다. (한 번 더 누르면 해제)</p>
+  <p class="taghint">책을 고르면 그 책의 <b>인명·지명·사건</b>만 나옵니다. 항목을 누르면 <b>상세 창</b>이 열리고, 그 창 아래 <b>이 항목이 나오는 단락만 목차에 남기기</b>를 누르면 목차가 걸러집니다. (한 번 더 누르면 해제)</p>
   <div id="tagBox"></div>
   <div class="section-label chips-label">목차</div>
   <ul class="toc" id="toc"></ul>
@@ -2298,7 +2298,7 @@ function hl(text, q){
 /* ---------- 성구 파서 ---------- */
 function parseRef(q){
   let s = (q||'').replace(/\s+/g,'').replace(/장/g,':').replace(/절/g,'').replace(/[：:;；]/g,':').replace(/:+/g,':');
-  const m = s.match(/^(베드로전서|베드로후서|요한계시록|요한2서|요한1서|요한3서|히브리서|야고보서|유다서|요일|요이|벧후|벧전|요삼|계|약|유|히)(\d*)(?::(\d*))?(?:[-~〜–](\d+))?$/);
+  const m = s.match(/^(요한계시록|베드로전서|베드로후서|요한2서|요한1서|요한3서|야고보서|히브리서|유다서|벧후|벧전|요일|요이|요삼|히|유|약|계)(\d*)(?::(\d*))?(?:[-~〜–](\d+))?$/);
   if(!m) return null;
   const _b = m[1]; const book = ({ '히브리서':'heb', '히':'heb', '야고보서':'jas', '약':'jas', '베드로전서':'1pe', '벧전':'1pe', '베드로후서':'2pe', '벧후':'2pe', '요한1서':'1jn', '요일':'1jn', '요한2서':'2jn', '요이':'2jn', '요한3서':'3jn', '요삼':'3jn', '유다서':'jud', '유':'jud', '요한계시록':'rev', '계':'rev' })[_b] || 'heb';
   const ch = m[2] ? parseInt(m[2],10) : null;
