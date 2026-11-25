@@ -426,6 +426,36 @@
   /* ══════════════════════════════════════════════════════════════════
      시작
      ══════════════════════════════════════════════════════════════════ */
+  /* 오른쪽 위 단추가 페이지 자쳬 단추를 가리면(개인서고의 🔒 같은) 아래로 비켜 놓는다 */
+  function coversControl(btn) {
+    var r = btn.getBoundingClientRect();
+    var els = document.querySelectorAll('button,a,[role="button"],input,select');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (btn.contains(el) || (el.closest && el.closest('.mhb-veil'))) continue;
+      var b = el.getBoundingClientRect();
+      if (b.width < 6 || b.height < 6) continue;
+      if (b.right < 0 || b.top < 0 || b.left > window.innerWidth) continue;
+      var cx = b.x + b.width / 2, cy = b.y + b.height / 2;
+      if (cx > r.x - 2 && cx < r.right + 2 && cy > r.y - 2 && cy < r.bottom + 2) return true;
+    }
+    return false;
+  }
+  var nudgeBusy = false;
+  function avoidOverlap() {
+    var btn = document.getElementById('mhbBtn');
+    if (!btn || nudgeBusy) return;
+    nudgeBusy = true;
+    var tops = [8, 66, 124, 182];
+    var i = 0;
+    for (; i < tops.length; i++) {
+      btn.style.top = (window.innerWidth <= 430 ? Math.max(6, tops[i] - 2) : tops[i]) + 'px';
+      if (!coversControl(btn)) break;
+    }
+    if (i >= tops.length) btn.style.top = (window.innerWidth <= 430 ? 6 : 8) + 'px';
+    nudgeBusy = false;
+  }
+
   function boot() {
     injectCSS();
 
@@ -436,6 +466,9 @@
     btn.innerHTML = '<span class="mhb-b1">✍️ 글쓰기</span><span class="mhb-b2">운영자만 확인합니다</span>';
     btn.addEventListener('click', function (e) { e.stopPropagation(); openWrite(); });
     document.body.appendChild(btn);
+    setTimeout(avoidOverlap, 700);
+    setTimeout(avoidOverlap, 2200);
+    window.addEventListener('resize', function () { setTimeout(avoidOverlap, 300); });
 
     /* 교리설교 화면이면 🎰 배지 */
     if (document.getElementById('docGrid')) {
