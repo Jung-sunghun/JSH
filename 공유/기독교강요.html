@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>칼빈 기독교강요서고(書庫) — 1536 초판·1559 최종판 전문</title>
+<meta name="description" content="장 칼빈 《기독교 강요》 1536년 초판 6장과 1559년 라틴어 최종판 4권 80장 — 배경·전문·교리·성경구절·비교·설교와 5부서 교리설교를 한자리에서.">
+<style>
+:root{
+  --navy:#162d47; --navy2:#1d3a5c; --navy3:#24466c; --navy4:#0f2238;
+  --ink:#0f172a; --muted:#46586d; --bg:#f6f8fb; --paper:#fff;
+  --line:#d5dfe9; --line2:#e6ecf3; --accent:#8c2434; --accent2:#6f1a28;
+  --gold:#9a7426; --home:#c2410c; --home-d:#9a330a;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  font-size:17px;line-height:1.85;word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,h4,p,ul,li,dl,dt,dd,figure,table{margin:0;padding:0}
+a{color:var(--navy3);text-decoration:none}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+/* 상단 */
+header.top{background:linear-gradient(160deg,#162d47 0%,#1d3a5c 60%,#24466c 100%);
+  color:#fff;padding:26px 0 26px;border-bottom:4px solid var(--accent)}
+.topin{display:flex;align-items:flex-start;gap:16px}
+.homebtn{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+  width:58px;height:58px;border-radius:50%;background:var(--home);color:#fff;
+  font-weight:900;font-size:.82em;letter-spacing:.06em;
+  box-shadow:0 8px 20px rgba(194,65,12,.4),inset 0 -3px 0 rgba(0,0,0,.18);
+  border:2px solid rgba(255,255,255,.55)}
+.homebtn:hover{background:var(--home-d)}
+.homebtn:focus-visible{outline:3px solid #f2dfb2;outline-offset:3px}
+.brand h1{font-size:1.75em;line-height:1.3;letter-spacing:-.03em;font-weight:800}
+.brand .sub{display:block;margin-top:6px;color:#c9d9ea;font-size:.9em;font-style:italic}
+.mapbtn{display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.5);color:#fff;
+  border-radius:999px;padding:10px 18px;font-weight:800;font-size:.9em}
+.mapbtn:hover{background:rgba(255,255,255,.24)}
+
+/* 판 이동 줄 */
+.edbar{position:sticky;top:0;z-index:30;background:var(--navy4);
+  border-bottom:1px solid rgba(255,255,255,.16);display:flex;gap:2px;overflow-x:auto}
+.edbar a{flex:0 0 auto;padding:12px 16px;color:#dfeaf6;font-size:.88em;font-weight:800;
+  border-bottom:3px solid transparent;white-space:nowrap}
+.edbar a:hover{background:rgba(255,255,255,.1);color:#fff}
+.edbar a.on{color:#fff;border-bottom-color:var(--gold);background:rgba(255,255,255,.12)}
+
+main{padding:28px 0 8px}
+.lead{margin:0 0 22px;padding:16px 18px;background:#fff;border:1px solid var(--line);
+  border-left:4px solid var(--accent);border-radius:12px;font-size:.92em;color:var(--muted)}
+.lead b{color:var(--navy)}
+
+/* 판(edition) */
+.ed{background:var(--paper);border:1px solid var(--line);border-radius:16px;
+  padding:26px 26px 24px;box-shadow:0 1px 2px rgba(15,23,42,.05),0 10px 26px rgba(15,23,42,.06);
+  scroll-margin-top:64px}
+.ed+.ed{margin-top:20px}
+.edhead{position:relative;padding-left:52px}
+.ednum{position:absolute;left:0;top:2px;display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:12px;background:var(--navy);color:#fff;
+  font-weight:900;font-size:1.02em}
+.edhead h2{font-size:1.42em;line-height:1.35;letter-spacing:-.02em;color:var(--navy);font-weight:800}
+.eden{margin-top:4px;color:var(--gold);font-size:.86em;font-style:italic}
+.edline{margin-top:6px;color:var(--muted);font-size:.84em}
+.intro{margin-top:16px;font-size:.96em;color:#22303f}
+h3.sh{margin:26px 0 10px;padding-bottom:6px;font-size:.9em;letter-spacing:.08em;
+  color:var(--accent);border-bottom:1px solid var(--line2);font-weight:800}
+
+dl.bg{display:grid;grid-template-columns:9.5em 1fr;gap:6px 14px;font-size:.9em}
+dl.bg dt{color:var(--navy2);font-weight:800}
+dl.bg dd{color:#33465c}
+
+.chapters{margin-top:6px}
+.book+.book{margin-top:18px}
+.book h3{font-size:1em;color:var(--navy);font-weight:800;margin:14px 0 8px}
+.book h3 em{font-style:normal;font-weight:700;font-size:.8em;color:var(--accent);margin-left:6px}
+.ch{padding:11px 0;border-bottom:1px dotted #e3eaf2}
+.ch:last-child{border-bottom:0}
+.ch h3{font-size:.98em;color:var(--navy2);font-weight:800}
+.ch h4{display:flex;gap:8px;align-items:baseline;font-size:.96em;color:var(--navy);font-weight:800;
+  line-height:1.5}
+.ch .cn{flex:0 0 auto;font-size:.78em;font-weight:800;color:#fff;background:var(--navy3);
+  border-radius:6px;padding:1px 7px}
+.ch p{margin-top:4px;font-size:.9em;color:#33465c;line-height:1.8}
+.ch p.note{color:var(--muted);font-size:.86em}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.pair{display:grid;grid-template-columns:9em 1fr;gap:4px 12px;padding:6px 0;
+  border-bottom:1px dotted #e3eaf2;font-size:.88em}
+.pair dt{color:var(--navy2);font-weight:800}
+.pair dd{color:#33465c}
+ul.verses{list-style:none;font-size:.88em}
+ul.verses li{padding:5px 0;border-bottom:1px dotted #e3eaf2;color:#33465c}
+ul.verses b{color:var(--accent);font-weight:800;margin-right:4px}
+.para{font-size:.93em;color:#33465c}
+
+/* 5부서 교리설교 */
+.sermons-wrap{margin-top:20px;background:var(--paper);border:1px solid var(--line);
+  border-radius:16px;padding:24px;box-shadow:0 1px 2px rgba(15,23,42,.05),0 10px 26px rgba(15,23,42,.06)}
+.sermons-wrap h2{font-size:1.24em;color:var(--navy);font-weight:800}
+.sermons-wrap .sub{margin-top:6px;color:var(--muted);font-size:.88em}
+table.sermons{width:100%;border-collapse:collapse;margin-top:14px;font-size:.86em}
+table.sermons th,table.sermons td{border:1px solid var(--line2);padding:6px 8px;text-align:center}
+table.sermons thead th{background:#eff3f8;color:var(--navy2);font-weight:800;font-size:.92em}
+table.sermons tbody th{text-align:left;color:var(--navy);font-weight:800;background:#fbfcfe}
+table.sermons .dn{display:inline-block;min-width:1.8em;color:var(--accent);font-size:.85em;margin-right:4px}
+table.sermons td a{display:block;color:var(--navy3);font-weight:700;padding:2px 0}
+table.sermons td a:hover{color:var(--accent);text-decoration:underline}
+.tblscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* MY 인포 꼬리말 */
+.jh-foot{margin:34px 0 0;padding:26px 0 46px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:.86em;line-height:1.9}
+.jh-foot b{color:var(--navy3)}
+.jh-foot .jh-row span{white-space:nowrap;margin-right:14px}
+.jh-foot .jh-acct{color:var(--navy3);font-weight:700;margin-top:6px}
+
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 15px}
+  header.top{padding:20px 0 22px}
+  .topin{flex-direction:column;gap:12px}
+  .homebtn{width:52px;height:52px}
+  .brand h1{font-size:1.42em}
+  .ed{padding:20px 17px 18px;border-radius:14px}
+  .edhead{padding-left:46px}
+  .edhead h2{font-size:1.22em}
+  dl.bg{grid-template-columns:1fr;gap:2px}
+  dl.bg dt{margin-top:8px}
+  .cols{grid-template-columns:1fr;gap:4px}
+  .pair{grid-template-columns:7.6em 1fr}
+  table.sermons{font-size:.8em}
+  table.sermons th,table.sermons td{padding:5px 4px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap topin">
+    <a class="homebtn" id="homeBtn" href="https://jung-sunghun.github.io/JSH/공유/" title="목회서고(書庫) 대문으로" aria-label="목회서고(書庫) 대문으로">HOME</a>
+    <script>/* HOME 단추: 웹서버에서 열면 이 파일이 놓인 자리(공유/) 기준 상대 경로로,
+       PC에서 파일로 열면(file://) 웹서버 대문으로 간다. */
+     try{ if(/^https?:$/.test(location.protocol)){ document.getElementById('homeBtn').setAttribute('href','./'); } }catch(e){}</script>
+    <div class="brand">
+      <h1>칼빈 기독교강요서고(書庫)</h1>
+      <span class="sub">Institutio Christianae Religionis · 1536 초판 · 1559 최종판</span>
+      <a class="mapbtn" href="./기독교강요그래프.html">🗺️ 강요 색인 연결지도 바로가기</a>
+    </div>
+  </div>
+</header>
+
+<nav class="edbar" aria-label="강요 판 이동">
+  <a href="#ed-1536">1536 초판 (6장)</a>
+  <a href="#ed-1559">1559 최종판 (4권 80장)</a>
+  <a href="#ed-sermons">교리설교 5부서</a>
+</nav>
+
+<main>
+  <div class="wrap">
+    <p class="lead"><b>장 칼빈(John Calvin) 《기독교 강요》</b>는 1536년 바젤의 작은 책에서 시작해 1559년 제네바의 4권 80장으로 자랐습니다.
+      이 방에는 두 판의 배경·전문·교리·성경구절·비교·설교를 한자리에 담았고, 1559년 최종판 80장은 권별로 묶어 장마다 요지를 붙였습니다.
+      장별 요지와 절별 요약, 주제 27갈래는 <a href="./기독교강요그래프.html">강요 색인 연결지도</a>에서 그래프로 이어 볼 수 있습니다.</p>
+
+    
+<section class="ed" id="ed-1536">
+  <div class="edhead">
+    <span class="ednum">07</span>
+    <h2>칼빈 《기독교 강요》 초판 (1536)</h2>
+    <p class="eden">Christianae Religionis Institutio (Basel, 1536)</p>
+    <p class="edline">1536년 (바젤) · 개혁파 신학 · 개인 단독 저서 · 6장</p>
+  </div>
+  <p class="intro">1536년 초판은 6장으로 이루어진 작은 책이다. 칼빈은 이 책에서 "참된 지혜는 하나님을 아는 지식과 우리 자신을 아는 지식"이라는 출발점 위에, 율법과 믿음과 기도와 성례와 교회와 국가의 순서를 세웠다. 각 장의 구조와 핵심 대목을 발췌해 실었다.</p>
+  
+  <h3 class="sh">배경</h3>
+  <dl class="bg"><dt>작성 연도</dt><dd>1536년 3월, 바젤에서 라틴어로 출간. 1535년 가을에 탈고하였다.</dd><dt>장소</dt><dd>스위스 바젤 — 프랑스에서 쫓겨난 칼빈이 피신해 있던 도시.</dd><dt>기초자·공의회</dt><dd>장 칼뱅(Jean Calvin, 1509~1564) 단독 저작. 공의회 문서가 아니라 한 사람이 쓴 교리 교육서이며, 권두에 프랑수아 1세에게 보내는 헌정서가 붙어 있다.</dd><dt>맞서 싸운 이단·오류</dt><dd>당시 프랑스에서 개신교도를 "재세례파의 난동꾼"으로 몰던 오해, 그리고 행위로 구원을 얻는다는 로마 가톨릭의 공로 신학. 뒤이어 재세례파의 극단(성령 직접 계시, 성례 무시)도 이 책의 4장에서 다루어진다.</dd><dt>채택 경위</dt><dd>공의회가 채택한 문서는 아니다. 그러나 이 책은 곧 개혁파 교회의 교리 교육 교재로 쓰이면서 사실상의 신학 표준이 되었다. 1539년 증보, 1543년 재증보를 거쳐 1559년 최종판(4권 80장)으로 완성된다. 초판은 6장의 작은 책이었고, 최종판은 초판의 약 다섯 배가 되었다.</dd><dt>개혁주의·장로교에서의 자리</dt><dd>개인이 단독으로 쓴 최초의 조직신학 저서로서, 개혁파 신학이 공의회의 결정이 아니라 성경 주석과 교리 교육에서 자라난 것임을 보여 준다. 뒤에 나온 벨직·하이델베르크·프랑스·스코틀랜드 신앙고백과 웨스트민스터 표준문서는 모두 이 책의 신학적 뼈대 위에 서 있다.</dd></dl>
+  <h3 class="sh">전문 · 헌정서와 여섯 장</h3>
+  <div class="chapters"><article class="ch"><h3>헌정서</h3><p>프랑수아 1세에게 — 나는 이 책이 신앙 고백의 요약이며, 우리가 가르치는 것이 무엇인지를 보여 주는 작은 안내서임을 밝힙니다. 우리의 교리를 알지 못하는 사람들이 우리를 "재세례파의 난동"과 함께 묶어 비방하는 것을 막고자, 나는 우리 신앙의 오직 하나의 길을 여기에 제시합니다.</p><p class="note">초판의 헌정서는 변증이면서 호소다. 칼빈은 자신의 신학을 정치적 반란과 구별하려 했다.</p></article><article class="ch"><h3>제1장 · 율법</h3><p>율법은 우리를 가르쳐 우리 자신의 무능을 알게 하고, 하나님의 의를 갈망하게 한다. 율법에는 도덕법·의식법·재판법이 있는데, 도덕법은 사람의 본분 전체를 담고 있으며, 하나님을 사랑하고 이웃을 사랑하라는 두 계명으로 요약된다. 율법의 첫째 용도는 죄인을 정죄하여 그리스도께 나아가게 하는 것이다.</p><p class="note">초판은 "율법 → 믿음 → 기도 → 성례"의 순서로 서 있다. 이것이 종교개혁의 교수법이다 — 첫 자리에 율법을 놓아 사람이 자신의 무능을 먼저 알게 한다.</p></article><article class="ch"><h3>제2장 · 믿음</h3><p>사도신경의 순서를 따라 믿음을 설명한다. 믿음은 하나님을 아는 확실한 지식이며, 그 지식은 복음의 약속에 근거한다. 우리가 믿는 것은 성부·성자·성령이시며, 성자는 참 하나님 참 사람으로서 우리를 위하여 죽으시고 부활하셨다. 믿음은 단순한 동의가 아니라 신뢰이며, 성령이 우리 마음에 그 진리를 확증하신다.</p><p class="note">사도신경이 개혁파 교리 교육의 뼈대로 쓰인 자리다. 칼빈은 신경을 "성경의 요약"으로 읽었다.</p></article><article class="ch"><h3>제3장 · 기도</h3><p>기도는 믿음을 실천하는 첫 열매다. 주기도문을 하나씩 풀어, 하나님의 이름이 거룩히 여김을 받고, 그의 나라가 오고, 그의 뜻이 이루어지고, 우리의 양식과 용서와 보호가 주어지기를 구한다. 기도에 앞서 우리의 필요를 아시는 하나님께 나아가는 특권과, 그 문을 여는 것이 오직 그리스도의 중보임을 강조한다.</p><p class="note">초판은 기도에 큰 지면을 두었다. 칼빈은 기도 없는 신학이 신학이 아님을 교육의 순서로 보여 준다.</p></article><article class="ch"><h3>제4장 · 성례</h3><p>성례는 하나님의 약속을 봉인하는 표다. 세례는 우리의 그리스도와의 연합과 죄의 씻음을 증거하고, 성찬은 그리스도의 몸과 피를 받아 우리의 영적 양식이 됨을 증거한다. 성례의 효력은 예식 자체가 아니라 성령의 역사에 있다. 초판에는 이 장에서 세례와 성찬만을 다루고, 뒤의 두 장에서 거짓 성례를 다룬다.</p><p class="note">개혁파 성례론의 첫 문장이 여기 있다 — 표는 실재를 증거하되, 효력은 성령께 있다.</p></article><article class="ch"><h3>제5장 · 거짓 성례</h3><p>견진·고해·병자·신품·혼배 다섯을 성례로 부르는 것은 성경의 근거가 없다. 이 가운데 어떤 것은 유익한 관례일 수 있으나, 죄를 사하고 은혜를 자동으로 주는 표는 세례와 성찬 둘뿐이다. 그 밖의 예식은 성례의 이름을 쓰면서 그리스도의 은혜를 흐리게 한다.</p><p class="note">성례의 수를 둘로 줄인 것은 단순한 정리가 아니었다 — 무엇이 복음이고 무엇이 우리의 예식인가를 가르는 경계였다.</p></article><article class="ch"><h3>제6장 · 그리스도인의 자유, 교회 권력, 국가 권력</h3><p>그리스도인은 그리스도 안에서 양심의 자유를 누린다 — 그러나 그 자유는 자기 의의 기념물이 아니라 사랑의 종으로 쓰는 넓음이다. 교회의 권력은 법을 만드는 권성이 아니라 하나님의 말씀을 선포하고 그 말씀으로 죄를 깨닫게 하는 권리다. 국가의 권력은 하나님께서 세우신 좋은 질서이며, 성도는 그 권력에 복종한다. 그러나 하나님께는 그 무엇보다 복종한다.</p><p class="note">초판은 교회와 국가의 두 질서를 함께 세워, 신앙의 자유와 시민적 의무가 충돌하지 않게 했다.</p></article></div>
+  <div class="cols">
+    <div><h3 class="sh">교리</h3><div class="pairs"><div class="pair"><dt>하나님 지식과 자기 지식</dt><dd>개혁파 신학의 출발점은 두 지식의 상호 관련이다. 하나님을 모르면 나를 알 수 없고, 나를 모르면 하나님을 아는 지식이 교만해진다.</dd></div><div class="pair"><dt>율법의 세 용도</dt><dd>정죄하는 용도, 억제하는 용도, 그리고 성도의 삶을 이끄는 용도. 초판은 첫째 용도에서 시작한다.</dd></div><div class="pair"><dt>오직 성경</dt><dd>가르침의 권위는 교회의 결단이 아니라 성경에서 온다.</dd></div><div class="pair"><dt>믿음의 신뢰성</dt><dd>믿음은 동의가 아니라 신뢰다. 그래서 신앙은 성격이 아니라 그리스도와의 관계다.</dd></div><div class="pair"><dt>성례의 효력</dt><dd>표와 실재를 구별하고, 그 둘을 성령으로 이으며, 예식의 마술화를 막는다.</dd></div></div></div>
+    <div><h3 class="sh">주요 성경구절</h3><ul class="verses"><li><b>롬 10:4</b> 그리스도는 모든 믿는 자에게 의를 이루기 위하여 율법의 마침이 되시니라</li><li><b>갈 3:24</b> 그러므로 율법은 우리를 그리스도께로 인도하여 우리가 믿음으로 의롭다 하심을 얻게 하려 함이라</li><li><b>엡 2:8</b> 너희는 그 은혜에 의하여 믿음으로 말미암아 구원을 받았으니</li><li><b>마 6:9</b> 그러므로 너희는 이렇게 기도하라 하늘에 계신 우리 아버지여 이름이 거룩히 여김을 받으시오며</li><li><b>롬 6:4</b> 우리가 그의 죽으심과 합하여 세례를 받음으로 그와 함께 장사되었나니</li><li><b>엡 5:26</b> 그리스도께서 교회를 사랑하시고 위하여 자신을 주심은 그를 물로 씻어 말씀으로 깨끗하게 하사 거룩하게 하심이니</li><li><b>롬 13:1</b> 각 사람은 위에 있는 권세들에게 복종하라</li></ul></div>
+  </div>
+  <h3 class="sh">두 판의 관계</h3>
+  <p class="para">1536년 초판은 1559년 최종판과 같은 신학을 훨씬 짧게 담고 있다. 최종판이 4권 80장으로 공의회의 결정과 교부의 인용을 촘촘히 엮어 스스로를 정당화하는 데 비하여, 초판은 "율법·믿음·기도·성례"라는 교리 교육의 순서만을 따라간다. 개혁파 신조 가운데 제네바 요리문답(1545)은 이 초판의 순서를 문답의 형태로 옮긴 것이고, 벨직·하이델베르크 신앙고백은 그것을 교회의 공적 고백으로 다시 세운 것이다.</p>
+  <h3 class="sh">설교자에게</h3>
+  <p class="para">초판 《기독교 강요》는 설교자의 교과서다. 칼빈이 이 책을 쓴 이유는 신학생을 만들기 위해서가 아니라, 박해 아래 흩어진 사람들이 "우리가 무엇을 믿는지" 한 권으로 알게 하기 위해서였다. 그 순서는 오늘의 설교에도 그대로 쓸 수 있다 — 율법으로 자신의 무능을 깨닫게 하고, 믿음으로 그리스도를 붙들게 하고, 기도로 그 신뢰를 말하게 하고, 성례로 그 약속을 봉인하게 한다. 이 네 걸음이 한 편의 설교를 이루고 한 사람의 신앙 교육을 이룬다.</p>
+</section>
+
+    
+<section class="ed" id="ed-1559">
+  <div class="edhead">
+    <span class="ednum">10</span>
+    <h2>칼빈 《기독교 강요》 최종판 (1559)</h2>
+    <p class="eden">Institutio Christianae Religionis (1559)</p>
+    <p class="edline">1559년 (제네바, 라틴어 최종판) · 개혁파 신학 · 4권 80장 · 장별 요지와 핵심 대목</p>
+  </div>
+  <p class="intro">1559년 최종판은 4권 80장이다. 장마다 제목과 요지를 붙이고, 중요한 장에는 핵심 대목을 발췌해 실었다. 권의 제목은 순서대로 "창조주 하나님", "그리스도 안에 나타난 구속자 하나님", "그리스도의 은혜를 받는 방식", "하나님이 우리를 그리스도와 연합시키시는 외적 방편"이다.</p>
+  
+  <h3 class="sh">배경</h3>
+  <dl class="bg"><dt>작성 연도</dt><dd>1559년 라틴어 최종판. 1536년 초판 → 1539년 증보 → 1543년 재증보 → 1550년 → 1559년.</dd><dt>장소</dt><dd>제네바 — 칼빈이 마지막까지 목회한 도시.</dd><dt>기초자·공의회</dt><dd>장 칼뱅 단독 저작. 초판의 6장이 4권 80장으로 확장되었다.</dd><dt>맞서 싸운 이단·오류</dt><dd>로마 가톨릭의 미사·공로·교황권(4권 5~19장), 재세례파와 열광주의, 세르베투스의 그리스도론, 그리고 자유의지론자들의 주장(2권 2~5장).</dd><dt>채택 경위</dt><dd>공의회 문서가 아니라 개인 저작이다. 그러나 개혁파 교회들의 신학교 교재와 목회자의 신학 교과서로 받아들여져, 이후 모든 개혁파 신조(특히 웨스트민스터)의 신학적 토대가 되었다.</dd><dt>개혁주의·장로교에서의 자리</dt><dd>개혁파 신학의 체계를 세운 책이다. 1권(창조주 하나님), 2권(구속자 하나님), 3권(성령의 적용), 4권(외적 방편·교회)의 네 부분은 오늘날까지 개혁파 조직신학의 구조로 쓰인다. 웨스트민스터 신앙고백의 장 순서와 대요리문답의 주제 배열이 이 책의 구조를 많이 이어받았다.</dd></dl>
+  <h3 class="sh">전문 · 4권 80장</h3>
+  <div class="chapters"><section class="book"><h3>제1권 · 창조주 하나님<em>18장</em></h3><article class="ch"><h4><span class="cn">1장</span>하나님을 아는 지식과 우리 자신을 아는 지식</h4><p>모든 지혜의 거의 전체는 두 부분으로 이루어진다 — 하나님을 아는 지식과 우리 자신을 아는 지식. 이 둘은 서로 연결되어 있다. 우리가 우리 자신을 보면 하나님을 찾게 되고, 하나님을 보면 우리 자신을 알게 된다.</p></article><article class="ch"><h4><span class="cn">2장</span>하나님을 아는 지식이란 무엇이며, 그것이 종교의 기초다</h4><p>하나님을 아는 지식은 단순한 이해가 아니라 경외이다. 하나님이 어떤 분이신지 아는 것과 그에게 합당한 예배를 드리는 것은 하나다.</p></article><article class="ch"><h4><span class="cn">3장</span>하나님을 아는 지식이 사람의 마음에 본래부터 심어져 있다</h4><p>사람의 마음에는 하나님에 대한 씨앗이 있고, 양심은 그 증인이다. 우상숭배가 존재하는 것 자체가 하나님을 아는 씨앗이 있음을 보여 준다.</p></article><article class="ch"><h4><span class="cn">4장</span>하나님을 아는 지식이 무지나 악으로 말미암아 억누르고 부패하게 된다</h4><p>사람은 하나님을 알 만한 것을 알면서도 그 진리를 불의로 억누른다. 그래서 그 지식이 부패하고 하나님 대신 우상이 세워진다.</p></article><article class="ch"><h4><span class="cn">5장</span>하나님의 지식이 창조와 세상의 통치에서 두드러진다</h4><p>하늘과 땅과 그 가운데 모든 것, 그리고 사람의 몸과 영혼은 하나님의 지혜와 선하심의 무대다. 사람은 이 극장에서 하나님을 보도록 지어졌다.</p></article><article class="ch"><h4><span class="cn">6장</span>하나님께로 나아가기 위하여 성경이 유일한 안내가 되고 스승이 되어야 한다</h4><p>자연 계시는 필요하지만 충분하지 않다. 하나님은 사람의 무지와 게으름을 가엾게 여기사 그의 말씀을 기록으로 주셨다.</p></article><article class="ch"><h4><span class="cn">7장</span>성경에 권위를 주는 것은 성령의 증거이며, 교회의 일반적 동의가 아니다</h4><p>성경의 권위는 성령의 내적 증거로 확립된다. 교회가 성경을 승인해서 성경이 권위를 갖는 것이 아니라, 성경이 스스로 하나님의 말씀임을 증언한다.</p></article><article class="ch"><h4><span class="cn">8장</span>성경의 신뢰성을 증거할 만큼 확실한 이유가 있다</h4><p>성경의 신적 기원은 교회의 세례와 순교와 예언의 성취와 기적 등으로도 확증되지만, 궁극적 확신은 성령께 있다.</p></article><article class="ch"><h4><span class="cn">9장</span>성령을 떠나 환상에 미혹하는 모든 열광주의자는 성경의 모든 근본을 흔든다</h4><p>성령과 성경을 대립시키는 자들은 진리를 스스로 조작한다. 성령은 성경과 분리되지 않는다.</p></article><article class="ch"><h4><span class="cn">10장</span>성경에서 참 하나님이 이방의 모든 신과 대조되신다</h4><p>성경은 참 하나님을 이방 신들과 대조시킨다. 하나님은 한 분이시며, 그의 절대적 주권과 통치는 피조물에게 넘겨질 수 없다.</p></article><article class="ch"><h4><span class="cn">11장</span>하나님께 가시적 모습을 돌리는 것은 불경건이며, 우상을 세우는 모든 것은 하나님을 견디지 못한다</h4><p>하나님은 영이시므로 가시적 형상으로 표현될 수 없다. 어떤 목적에서든 하나님의 형상을 만드는 것은 참 예배를 파괴한다.</p></article><article class="ch"><h4><span class="cn">12장</span>하나님을 우상과 구별하여 그를 유일한 예배의 대상으로 삼아야 한다</h4><p>참 하나님은 우상과 구별되어야 한다. 하나님의 이름만 부르고 다른 것을 함께 두는 것은 그를 모독하는 것이다.</p></article><article class="ch"><h4><span class="cn">13장</span>성경은 신적 본질의 단일성을 세 위격 안에서 가르친다</h4><p>하나님은 단일한 본질이시며 세 위격으로 계신다. "위격"은 본질의 구분이 아니라 고유한 자존의 구분이며, 세 위격은 동등하시다.</p></article><article class="ch"><h4><span class="cn">14장</span>세상의 창조와 만물에서 성경은 참 하나님을 유형적으로 구별한다</h4><p>창조는 하나님께서 홀로 하신 일이다. 천사의 창조와 타락, 그리고 하나님이 타락한 천사까지 자신의 영광과 성도의 구원을 위해 쓰시는 방식이 설명된다.</p></article><article class="ch"><h4><span class="cn">15장</span>사람이 창조된 상태와 영혼의 기능, 하나님의 형상, 자유의지와 원래의 탁월성</h4><p>사람은 하나님의 형상대로 창조되었다. 형상의 자리는 영혼, 곧 지성과 의지이며, 원래의 의와 거룩함이 거기에 있었다. 의지는 원래 선을 택할 자유가 있었다.</p></article><article class="ch"><h4><span class="cn">16장</span>하나님이 창조하신 세상을 여전히 보호하고 기르신다</h4><p>하나님은 창조로 그의 일을 마치지 않으시고, 그의 섭리로 만물을 보존하고 기르신다.</p></article><article class="ch"><h4><span class="cn">17장</span>섭리의 교리는 어떤 유익을 위하여 사용되어야 한다</h4><p>섭리는 운명론이 아니다. 하나님의 아버지로서의 통치를 신뢰하게 하고, 인내와 감사를 가르치며, 염려를 벗어 놓아 준다.</p></article><article class="ch"><h4><span class="cn">18장</span>하나님은 악인까지 도구로 쓰시지만 그 죄의 책임을 하나님께 돌릴 수 없다</h4><p>하나님은 악인의 행위를 쓰시되 그 죄에 사람을 부추기거나 책임을 나누지 않으신다. 그래서 하나님은 악에 대하여 저자가 아니시다.</p></article></section><section class="book"><h3>제2권 · 구속자 하나님<em>17장</em></h3><article class="ch"><h4><span class="cn">1장</span>아담의 타락과 배교로 말미암아 온 인류가 저주 아래 사로잡혔으며, 유전하는 죄에서 비롯되었다</h4><p>아담의 배교로 인류 전체가 타락하였다. 원죄는 유전하는 부패이며, 모든 사람이 그 안에서 죄인으로 태어난다.</p></article><article class="ch"><h4><span class="cn">2장</span>사람은 이제 의지의 자유를 빼앗기고 비참하게 죄의 종이 되었다</h4><p>타락 전에는 의지의 자유가 있었으나, 타락 후에는 죄의 노예가 되었다. 의지 자체는 사라지지 않았으나 자유를 잃었다.</p></article><article class="ch"><h4><span class="cn">3장</span>타락한 본성에서 나오는 모든 것은 저주받을 만하다</h4><p>타락한 본성은 처음부터 죄에 기울어져 있다. 그래서 사람의 모든 것은 근본에서 상처 입었다.</p></article><article class="ch"><h4><span class="cn">4장</span>하나님이 사람의 마음 안에서 어떻게 역사하시는가</h4><p>은혜는 사람의 의지와 별개로 움직이지 않고, 의지를 새롭게 하여 참으로 의지하게 한다.</p></article><article class="ch"><h4><span class="cn">5장</span>자유의지를 지지하려는 통상의 논거에 대한 반박</h4><p>아우구스티누스와 교부들의 언어를 인용해 자유의지론을 반박한다. "우리가 의지하기 때문에 의지가 있다"지만, 선을 의지하는 것은 은혜의 선물이다.</p></article><article class="ch"><h4><span class="cn">6장</span>잃어버린 사람을 위한 구속은 그리스도 안에서 찾아야 한다</h4><p>구원은 사람의 협력이 아니라 그리스도 안에서 주어졌다. 2권의 주제가 여기서 시작된다.</p></article><article class="ch"><h4><span class="cn">7장</span>율법은 한 백성을 율법 자체 안에 붙들어 두려고 주신 것이 아니라, 그리스도 안에서 구원의 소망을 살리려고 주셨다</h4><p>율법의 목적은 율법으로 구원하는 것이 아니라 그리스도 안에 생명의 약속을 살리는 것이다.</p></article><article class="ch"><h4><span class="cn">8장</span>도덕법의 해설</h4><p>십계명 — 십계명을 계명마다 풀어 설명한다. 계명의 의무와 금지 사이의 폭, 그리고 계명이 우리 의지와 하나님을 향하여 요구하는 것까지 다룬다.</p></article><article class="ch"><h4><span class="cn">9장</span>그리스도가 유대인들에게 율법 아래에서 알려졌으나, 구약에서도 참된 약속과 은혜 안에서 알려졌다</h4><p>구약 성도도 그리스도를 알았다. 은혜 언약은 한 번만 주어졌고, 구약과 신약 안에 같은 그리스도가 있다.</p></article><article class="ch"><h4><span class="cn">10장</span>구약과 신약의 유사성</h4><p>구약과 신약은 같은 은혜 언약, 같은 중보자, 같은 유업을 담고 있다.</p></article><article class="ch"><h4><span class="cn">11장</span>두 언약의 차이</h4><p>차이는 방식에 있다 — 이스라엘에게는 율법과 그림자와 두려움으로, 우리에게는 말씀과 성례와 자유와 사랑으로 주어졌다.</p></article><article class="ch"><h4><span class="cn">12장</span>그리스도가 중보자의 직무를 이루시기 위하여 사람이 되어야 했다</h4><p>중보자는 참 하나님과 참 사람이셔야 한다. 참 사람이 아니면 우리의 죄를 대속할 수 없고, 참 하나님이 아니면 하나님을 만족시킬 수 없다.</p></article><article class="ch"><h4><span class="cn">13장</span>그리스도가 참 사람의 본질을 입으셨다</h4><p>그리스도는 참된 사람의 몸과 영혼을 입으셨다. 다만 죄는 없으시다.</p></article><article class="ch"><h4><span class="cn">14장</span>두 성품이 중보자의 인격을 어떻게 이루는가</h4><p>한 위격 안에서 신성과 인성은 혼합됨이 없이, 변화됨이 없이, 분리됨이 없이 연합되어 있다.</p></article><article class="ch"><h4><span class="cn">15장</span>그리스도 안에서 세 가지, 곧 선지자·왕·제사장 직무를 살펴야 한다</h4><p>그리스도의 예언자 직무, 왕의 직무, 제사장 직무가 설명된다. 지식과 다스림과 대속이 그리스도 안에서 하나다.</p></article><article class="ch"><h4><span class="cn">16장</span>그리스도께서 우리의 구원을 얻기 위하여 어떻게 구속자의 직무를 이루셨는가</h4><p>그리스도는 순종과 죽음으로 우리를 구원하셨다. 그의 죽음과 부활과 승천이 우리의 구원을 이룬다.</p></article><article class="ch"><h4><span class="cn">17장</span>그리스도가 우리를 위하여 은혜와 구원을 얻으셨다고 옳게 말할 수 있다</h4><p>공로라는 말을 삼가면서도, 그리스도의 순종이 우리를 위한 것임을 분명히 한다. 다만 그것은 그분 자체의 가치에서 온 것이지 피조물의 공로가 아니다.</p></article></section><section class="book"><h3>제3권 · 성령의 은혜를 받는 방식<em>25장</em></h3><article class="ch"><h4><span class="cn">1장</span>그리스도의 유익이 성령의 비밀한 사역으로 우리에게 적용된다</h4><p>성령은 그리스도의 구속을 우리에게 적용하신다. 성령이 없으면 그리스도는 우리에게 외적인 분이 되신다.</p></article><article class="ch"><h4><span class="cn">2장</span>믿음의 정의와 그 고유한 속성</h4><p>믿음은 하나님께서 우리를 향하신 자비에 대한 확실한 지식이며, 복음의 약속에 근거하고 성령으로 확증된다.</p></article><article class="ch"><h4><span class="cn">3장</span>믿음으로 인한 중생</h4><p>회개 — 회개는 중생의 열매이고, 하나님께 돌이키는 삶 전체의 과정이다. 회개는 칭의의 조건이 아니다.</p></article><article class="ch"><h4><span class="cn">4장</span>고해 신학의 용어에 대한 논박</h4><p>"고해"라는 낱말을 바꾸어 이야기하는 스콜라적 언어를 벗겨 내고, 성경의 회개를 다시 세운다.</p></article><article class="ch"><h4><span class="cn">5장</span>만족을 보충하는 방식들</h4><p>면죄부와 연옥 — 면죄부와 연옥에 대한 논박이 여기 있다. 그리스도의 제사가 완전하므로 다른 보충이 필요 없다.</p></article><article class="ch"><h4><span class="cn">6장</span>그리스도인의 삶</h4><p>성경의 논증 — 그리스도인의 삶은 은혜의 열매이며, 우리가 우리 것이 아니고 주의 것임을 아는 데서 시작한다.</p></article><article class="ch"><h4><span class="cn">7장</span>그리스도인의 삶의 요약</h4><p>자기 부인 — 자기 부인은 그리스도인의 삶의 요약이다. 우리는 하나님의 것이며, 이웃의 것이다.</p></article><article class="ch"><h4><span class="cn">8장</span>자기 부인의 한 갈래</h4><p>십자가를 지는 것 — 십자가를 지는 것은 자기 부인의 연장이다. 하나님은 고난을 통하여 우리를 빚으신다.</p></article><article class="ch"><h4><span class="cn">9장</span>장래 생명에 대한 묵상</h4><p>이 세상은 여행의 길이며, 우리는 장래 생명을 내다보며 살고, 그래서 현재의 것을 가볍게 여긴다.</p></article><article class="ch"><h4><span class="cn">10장</span>현재 삶과 그 위안을 어떻게 사용해야 하는가</h4><p>현재 삶의 위안을 금하지도, 그것에 얽매이지도 않는다. 하나님의 선물을 감사로 받되 그것에 기대지 않는다.</p></article><article class="ch"><h4><span class="cn">11장</span>믿음의 의롭다 하심의 이름과 실제</h4><p>칭의는 하나님께서 죄인을 의롭다 하시는 것이며, 법정적 의미를 지닌다. "칭의"와 "성화"는 구별된다.</p></article><article class="ch"><h4><span class="cn">12장</span>하나님의 심판대를 바라보아야 한다</h4><p>양심이 하나님의 심판대 앞에 설 때 인정과 평화가 주어진다. 칭의의 확신은 환경이 아니라 판결에 근거한다.</p></article><article class="ch"><h4><span class="cn">13장</span>값없이 주시는 칭의에서 살펴야 할 두 가지</h4><p>하나님은 그리스도의 의로 죄인을 의롭다 하시며, 그 의는 믿음으로 받는다. 칭의의 근거는 우리가 아니라 그리스도다.</p></article><article class="ch"><h4><span class="cn">14장</span>칭의의 시작과 무엇이 그것에 이르는가</h4><p>칭의의 시작은 은혜이며, 믿음은 그것을 받는 손이다. 회개와 사랑은 그 열매다.</p></article><article class="ch"><h4><span class="cn">15장</span>행위의 공로에 대한 자랑은 경건을 거의 전적으로 뒤집는다</h4><p>인간의 공로를 주장하는 것은 두 가지 기초를 무너뜨린다 — 하나님의 영광과 우리의 확신.</p></article><article class="ch"><h4><span class="cn">16장</span>이 교리에 대한 비방에 대한 답변</h4><p>"그렇게 가르치면 선행을 하지 않는다"는 비방에 답한다. 오직 은혜로 구원받은 자가 오히려 진짜 선행을 한다.</p></article><article class="ch"><h4><span class="cn">17장</span>율법과 복음의 약속의 조화</h4><p>율법의 약속과 복음의 약속이 어떻게 다르고, 어떻게 하나가 되는가를 설명한다.</p></article><article class="ch"><h4><span class="cn">18장</span>행위의 의가 무엇을 의미하는가</h4><p>성경이 행위의 의를 말할 때의 의미를 설명한다. 하나님은 우리의 순종을 받으시되 그것으로 칭의의 근거를 삼지 않으신다.</p></article><article class="ch"><h4><span class="cn">19장</span>그리스도인의 자유</h4><p>그리스도인의 자유는 율법에 대한 자발적 순종, 사랑의 종됨, 그리고 무관한 것들에 대한 유연함으로 구성된다.</p></article><article class="ch"><h4><span class="cn">20장</span>기도</h4><p>믿음의 영구한 훈련 — 기도는 믿음의 훈련이며, 하나님과의 대화다. 주기도문의 각 청원이 자세히 해설된다.</p></article><article class="ch"><h4><span class="cn">21장</span>영원한 선택</h4><p>하나님께서 어떤 사람을 구원하시기로 정하신 교리 — 예정 교리를 다루되, 그것이 공허한 사변이 아니라 그리스도 안에서 확신과 위로가 되게 한다.</p></article><article class="ch"><h4><span class="cn">22장</span>성경의 증거로 확증된 선택</h4><p>선택이 하나님의 자유로운 은혜임을 성경으로 확증한다.</p></article><article class="ch"><h4><span class="cn">23장</span>예정 교리에 대한 비방에 대한 답변</h4><p>예정 교리를 "사람을 나태와 절망으로 이끈다"는 비방에 답한다. 예정은 거꾸로 성도의 겸손과 감사를 낳는다.</p></article><article class="ch"><h4><span class="cn">24장</span>선택은 하나님의 부르심으로 확증된다</h4><p>선택은 우리가 믿는 것으로 확증되며, 무조건적이다. 그리고 부르심을 받은 자에게 끝까지 견인하신다.</p></article><article class="ch"><h4><span class="cn">25장</span>최후의 부활</h4><p>부활의 확실성과 성격을 다룬다. 이것이 기독교 신앙의 마지막 위로다.</p></article></section><section class="book"><h3>제4권 · 교회와 외적 방편<em>20장</em></h3><article class="ch"><h4><span class="cn">1장</span>참 교회와 우리가 교회의 연합을 유지해야 한다</h4><p>교회를 어머니라 부르는 것은 과장이 아니라 사실이다. 그래서 우리는 유형 교회와 공적 예배의 연합을 지킨다.</p></article><article class="ch"><h4><span class="cn">2장</span>거짓 교회와 참 교회의 비교</h4><p>참 교회는 말씀이 순전히 선포되고 성례가 순결하게 베풀어지는 곳이다. 교회의 표지가 여기 있다.</p></article><article class="ch"><h4><span class="cn">3장</span>교회의 교사와 목사들</h4><p>목사의 직분은 하나님이 세우신 질서이며, 부르심과 안수와 권위가 있다.</p></article><article class="ch"><h4><span class="cn">4장</span>원시 교회의 상태와 그 후의 형태</h4><p>초대교회의 장로회 구조와 오늘 교회와의 연속성과 차이를 다룬다.</p></article><article class="ch"><h4><span class="cn">5장</span>고대의 교회 정치 형태가 완전히 무너졌다</h4><p>로마 교회의 감독 체제가 어떻게 그 원형에서 멀어졌는가.</p></article><article class="ch"><h4><span class="cn">6장</span>로마 교회의 수위권</h4><p>베드로의 수위권 주장과 그 근거의 허구를 다룬다.</p></article><article class="ch"><h4><span class="cn">7장</span>로마 교황권의 시작과 성장</h4><p>교황권의 역사적 성장을 추적한다.</p></article><article class="ch"><h4><span class="cn">8장</span>교회가 신앙의 조항에 대하여 가지는 권력</h4><p>교회는 신앙의 조항을 만들 권력이 없고, 성경을 지키고 가르치는 사역만이 있다.</p></article><article class="ch"><h4><span class="cn">9장</span>공의회와 그 권위</h4><p>공의회는 성경 아래에 있다. 공의회의 결정은 성경으로 검사되어야 한다.</p></article><article class="ch"><h4><span class="cn">10장</span>법을 만들 권력과 그것을 관찰하게 하는 폭력</h4><p>교회는 양심을 매는 법을 만들 권력이 없다. 로마 교회의 법규가 이 장에서 논박된다.</p></article><article class="ch"><h4><span class="cn">11장</span>교회의 관할권과 사법권</h4><p>교회의 관할권은 하나님의 말씀 아래 있으며, 권징은 교회의 질서를 위한 것이다.</p></article><article class="ch"><h4><span class="cn">12장</span>교회의 권징과 그 주요 목적</h4><p>권징은 범죄한 자를 고치고, 무죄한 자를 보호하고, 하나님의 진노를 막기 위하여 세워졌다.</p></article><article class="ch"><h4><span class="cn">13장</span>서원과 그 엉킴</h4><p>서원의 성경적 의미와 수도원 서원의 문제를 다룬다.</p></article><article class="ch"><h4><span class="cn">14장</span>성례</h4><p>성례는 말씀에 더해진 표와 인이다. 성례의 정의와 수와 효력이 설명된다.</p></article><article class="ch"><h4><span class="cn">15장</span>세례</h4><p>세례의 의미와 문답과 효력과 유아세례의 근거가 설명된다.</p></article><article class="ch"><h4><span class="cn">16장</span>유아세례와 신앙의 세례와의 일치</h4><p>유아세례의 근거를 언약의 가족적 성격에서 끌어낸다.</p></article><article class="ch"><h4><span class="cn">17장</span>주의 만찬과 그것이 주는 유익</h4><p>성찬에서 그리스도는 영적으로 우리를 먹이신다. 떡과 잔은 그의 몸과 피를 표하고 봉인한다.</p></article><article class="ch"><h4><span class="cn">18장</span>로마의 미사</h4><p>그것이 그리스도의 죽으심을 모독하는 이유 — 미사는 그리스도의 유일한 제사를 반복하고 전가함으로 그것을 모독한다.</p></article><article class="ch"><h4><span class="cn">19장</span>오성례</h4><p>그 잘못된 주장과 근거 — 다섯 개의 거짓 성례(견진·고해·병자·신품·혼배)를 성경으로 검사한다.</p></article><article class="ch"><h4><span class="cn">20장</span>시민 통치</h4><p>국가는 하나님의 질서이며, 관원의 직무와 시민의 의무와 하나님께 대한 복종의 우선순위를 다룬다.</p></article></section></div>
+  <div class="cols">
+    <div><h3 class="sh">교리</h3><div class="pairs"><div class="pair"><dt>네 권의 구조</dt><dd>창조주 하나님 → 구속자 하나님 → 성령의 적용 → 외적 방편. 개혁파 조직신학의 뼈대.</dd></div><div class="pair"><dt>두 지식</dt><dd>하나님을 아는 지식과 우리 자신을 아는 지식의 상호 관련.</dd></div><div class="pair"><dt>오직 은혜·오직 믿음</dt><dd>칭의의 근거는 그리스도의 순응과 죽으심이며, 믿음은 그를 받는 손이다.</dd></div><div class="pair"><dt>예정의 위로</dt><dd>예정 교리는 탐구의 대상이 아니라 확신의 근거다.</dd></div><div class="pair"><dt>교회의 표지</dt><dd>말씀의 순전한 선포와 성례의 순결한 베풂.</dd></div><div class="pair"><dt>두 왕국</dt><dd>교회와 국가는 각각 하나님의 질서 아래 자기 영역을 가진다.</dd></div></div></div>
+    <div><h3 class="sh">주요 성경구절</h3><ul class="verses"><li><b>요 17:3</b> 유일하신 참 하나님과 그가 보내신 자 예수 그리스도를 아는 것이니이다</li><li><b>딤후 3:16</b> 모든 성경은 하나님의 감동으로 된 것으로</li><li><b>엡 2:8-9</b> 너희는 그 은혜에 의하여 믿음으로 말미암아 구원을 받았으니</li><li><b>롬 8:30</b> 미리 정하신 그들을 또한 부르시고 부르신 그들을 또한 의롭다 하시고</li><li><b>마 26:26-28</b> 이것을 먹으라 이는 내 몸이니라 ... 이것은 죄 사함을 얻게 하려고 많은 사람을 위하여 흘리는 바 나의 피 곧 언약의 피니라</li><li><b>행 2:42</b> 그들이 사도의 가르침을 받아 서로 교제하고 떡을 떼며 오로지 기도하기를 힘쓰니라</li></ul></div>
+  </div>
+  <h3 class="sh">두 판의 관계</h3>
+  <p class="para">1559년 최종판은 초판과 같은 신학을 정밀하게 확장한 것이라기보다, 반대자들의 논거를 하나씩 해체하며 스스로를 정당화하는 방식으로 자랐다. 그래서 4권에는 교회론·직분론·성례론이 초판보다 훨씬 두껍다. 웨스트민스터 신앙고백은 이 책의 1권을 1~6장으로, 2권을 7~8장과 19장으로, 3권을 9~18장으로, 4권을 20~33장으로 압축해 옮겼다고 해도 지나치지 않다. 즉 웨스트민스터는 칼빈의 구조를 신조의 언어로 다시 쓴 문서다.</p>
+  <h3 class="sh">설교자에게</h3>
+  <p class="para">《기독교 강요》 최종판은 설교 준비의 광산이다. 특히 3권 6~10장(그리스도인의 삶)은 자기 부인·십자가·장래 생명의 묵상·현재 삶의 사용이라는 네 주제로 설교 시리즈를 만들 수 있다. 3권 21~24장(예정)은 차가운 논쟁이 아니라 "성도의 확신"을 세우는 목회의 자리로 읽힐 때 가장 칼빈답다. 그리고 4권 1~2장의 교회론은 오늘의 회중에게 "교회는 내가 세운 것이 아니라 하나님이 세우신 어머니"라는 말로 설교할 수 있다.</p>
+</section>
+
+    <section class="sermons-wrap" id="ed-sermons">
+      <h2>관련 교리설교 — 5부서</h2>
+      <p class="sub">《기독교 강요》가 다루는 주제를 신앙고백서고의 5부서 교리설교(장년부·청년부·중고등부·유년부·유치부)로 바로 이어 읽으실 수 있습니다. 부서 이름을 누르면 그 부서의 설교가 열립니다.</p>
+      <div class="tblscroll"><table class="sermons"><thead><tr><th>주제</th><th>장년부</th><th>청년부</th><th>중고등부</th><th>유년부</th><th>유치부</th></tr></thead><tbody><tr><th><span class="dn">02</span>성경과 계시</th><td><a href="./신앙고백.html#sermon/scripture/adult" title="성경과 계시 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/scripture/youth" title="성경과 계시 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/scripture/mid" title="성경과 계시 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/scripture/elem_parent" title="성경과 계시 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/scripture/kinder_parent" title="성경과 계시 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">21</span>교회</th><td><a href="./신앙고백.html#sermon/church/adult" title="교회 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/church/youth" title="교회 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/church/mid" title="교회 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/church/elem_parent" title="교회 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/church/kinder_parent" title="교회 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">27</span>교회와 국가</th><td><a href="./신앙고백.html#sermon/church_state/adult" title="교회와 국가 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/church_state/youth" title="교회와 국가 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/church_state/mid" title="교회와 국가 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/church_state/elem_parent" title="교회와 국가 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/church_state/kinder_parent" title="교회와 국가 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">10</span>율법과 십계명</th><td><a href="./신앙고백.html#sermon/law/adult" title="율법과 십계명 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/law/youth" title="율법과 십계명 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/law/mid" title="율법과 십계명 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/law/elem_parent" title="율법과 십계명 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/law/kinder_parent" title="율법과 십계명 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">08</span>타락과 죄</th><td><a href="./신앙고백.html#sermon/fall/adult" title="타락과 죄 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/fall/youth" title="타락과 죄 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/fall/mid" title="타락과 죄 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/fall/elem_parent" title="타락과 죄 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/fall/kinder_parent" title="타락과 죄 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">11</span>그리스도의 위격</th><td><a href="./신앙고백.html#sermon/christ_person/adult" title="그리스도의 위격 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/christ_person/youth" title="그리스도의 위격 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/christ_person/mid" title="그리스도의 위격 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/christ_person/elem_parent" title="그리스도의 위격 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/christ_person/kinder_parent" title="그리스도의 위격 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">17</span>회개와 믿음</th><td><a href="./신앙고백.html#sermon/repentance_faith/adult" title="회개와 믿음 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/repentance_faith/youth" title="회개와 믿음 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/repentance_faith/mid" title="회개와 믿음 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/repentance_faith/elem_parent" title="회개와 믿음 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/repentance_faith/kinder_parent" title="회개와 믿음 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">01</span>삼위일체</th><td><a href="./신앙고백.html#sermon/trinity/adult" title="삼위일체 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/trinity/youth" title="삼위일체 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/trinity/mid" title="삼위일체 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/trinity/elem_parent" title="삼위일체 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/trinity/kinder_parent" title="삼위일체 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">13</span>성령과 그 사역</th><td><a href="./신앙고백.html#sermon/spirit/adult" title="성령과 그 사역 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/spirit/youth" title="성령과 그 사역 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/spirit/mid" title="성령과 그 사역 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/spirit/elem_parent" title="성령과 그 사역 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/spirit/kinder_parent" title="성령과 그 사역 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">24</span>기도</th><td><a href="./신앙고백.html#sermon/prayer/adult" title="기도 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/prayer/youth" title="기도 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/prayer/mid" title="기도 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/prayer/elem_parent" title="기도 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/prayer/kinder_parent" title="기도 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">19</span>성례와 세례</th><td><a href="./신앙고백.html#sermon/sacrament_baptism/adult" title="성례와 세례 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/sacrament_baptism/youth" title="성례와 세례 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/sacrament_baptism/mid" title="성례와 세례 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/sacrament_baptism/elem_parent" title="성례와 세례 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/sacrament_baptism/kinder_parent" title="성례와 세례 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">20</span>성찬</th><td><a href="./신앙고백.html#sermon/supper/adult" title="성찬 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/supper/youth" title="성찬 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/supper/mid" title="성찬 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/supper/elem_parent" title="성찬 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/supper/kinder_parent" title="성찬 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">26</span>자유의지</th><td><a href="./신앙고백.html#sermon/free_will/adult" title="자유의지 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/free_will/youth" title="자유의지 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/free_will/mid" title="자유의지 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/free_will/elem_parent" title="자유의지 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/free_will/kinder_parent" title="자유의지 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">22</span>교회의 직분과 치리</th><td><a href="./신앙고백.html#sermon/office_discipline/adult" title="교회의 직분과 치리 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/office_discipline/youth" title="교회의 직분과 치리 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/office_discipline/mid" title="교회의 직분과 치리 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/office_discipline/elem_parent" title="교회의 직분과 치리 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/office_discipline/kinder_parent" title="교회의 직분과 치리 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">03</span>하나님의 속성</th><td><a href="./신앙고백.html#sermon/god/adult" title="하나님의 속성 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/god/youth" title="하나님의 속성 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/god/mid" title="하나님의 속성 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/god/elem_parent" title="하나님의 속성 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/god/kinder_parent" title="하나님의 속성 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">07</span>인간과 하나님의 형상</th><td><a href="./신앙고백.html#sermon/man/adult" title="인간과 하나님의 형상 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/man/youth" title="인간과 하나님의 형상 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/man/mid" title="인간과 하나님의 형상 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/man/elem_parent" title="인간과 하나님의 형상 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/man/kinder_parent" title="인간과 하나님의 형상 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">23</span>예배와 주일</th><td><a href="./신앙고백.html#sermon/worship_sabbath/adult" title="예배와 주일 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/worship_sabbath/youth" title="예배와 주일 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/worship_sabbath/mid" title="예배와 주일 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/worship_sabbath/elem_parent" title="예배와 주일 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/worship_sabbath/kinder_parent" title="예배와 주일 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">04</span>창조</th><td><a href="./신앙고백.html#sermon/creation/adult" title="창조 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/creation/youth" title="창조 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/creation/mid" title="창조 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/creation/elem_parent" title="창조 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/creation/kinder_parent" title="창조 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">05</span>섭리와 주권</th><td><a href="./신앙고백.html#sermon/providence/adult" title="섭리와 주권 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/providence/youth" title="섭리와 주권 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/providence/mid" title="섭리와 주권 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/providence/elem_parent" title="섭리와 주권 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/providence/kinder_parent" title="섭리와 주권 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">18</span>확신과 양자됨</th><td><a href="./신앙고백.html#sermon/assurance_adoption/adult" title="확신과 양자됨 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/assurance_adoption/youth" title="확신과 양자됨 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/assurance_adoption/mid" title="확신과 양자됨 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/assurance_adoption/elem_parent" title="확신과 양자됨 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/assurance_adoption/kinder_parent" title="확신과 양자됨 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">14</span>은혜와 구원</th><td><a href="./신앙고백.html#sermon/grace/adult" title="은혜와 구원 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/grace/youth" title="은혜와 구원 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/grace/mid" title="은혜와 구원 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/grace/elem_parent" title="은혜와 구원 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/grace/kinder_parent" title="은혜와 구원 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">09</span>언약</th><td><a href="./신앙고백.html#sermon/covenant/adult" title="언약 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/covenant/youth" title="언약 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/covenant/mid" title="언약 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/covenant/elem_parent" title="언약 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/covenant/kinder_parent" title="언약 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">12</span>그리스도의 사역</th><td><a href="./신앙고백.html#sermon/christ_work/adult" title="그리스도의 사역 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/christ_work/youth" title="그리스도의 사역 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/christ_work/mid" title="그리스도의 사역 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/christ_work/elem_parent" title="그리스도의 사역 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/christ_work/kinder_parent" title="그리스도의 사역 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">15</span>칭의</th><td><a href="./신앙고백.html#sermon/justification/adult" title="칭의 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/justification/youth" title="칭의 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/justification/mid" title="칭의 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/justification/elem_parent" title="칭의 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/justification/kinder_parent" title="칭의 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">16</span>성화와 선행</th><td><a href="./신앙고백.html#sermon/sanctification/adult" title="성화와 선행 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/sanctification/youth" title="성화와 선행 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/sanctification/mid" title="성화와 선행 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/sanctification/elem_parent" title="성화와 선행 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/sanctification/kinder_parent" title="성화와 선행 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">25</span>부활과 영생</th><td><a href="./신앙고백.html#sermon/resurrection_life/adult" title="부활과 영생 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/resurrection_life/youth" title="부활과 영생 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/resurrection_life/mid" title="부활과 영생 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/resurrection_life/elem_parent" title="부활과 영생 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/resurrection_life/kinder_parent" title="부활과 영생 · 유치부 교리설교">유치부</a></td></tr><tr><th><span class="dn">06</span>예정과 선택</th><td><a href="./신앙고백.html#sermon/predestination/adult" title="예정과 선택 · 장년부 교리설교">장년부</a></td><td><a href="./신앙고백.html#sermon/predestination/youth" title="예정과 선택 · 청년부 교리설교">청년부</a></td><td><a href="./신앙고백.html#sermon/predestination/mid" title="예정과 선택 · 중고등부 교리설교">중고등부</a></td><td><a href="./신앙고백.html#sermon/predestination/elem_parent" title="예정과 선택 · 유년부 교리설교">유년부</a></td><td><a href="./신앙고백.html#sermon/predestination/kinder_parent" title="예정과 선택 · 유치부 교리설교">유치부</a></td></tr></tbody></table></div>
+      <p class="sub" style="margin-top:12px">교리설교 본문은 <a href="./신앙고백.html">신앙고백서고</a>에 있으며, 이 표의 단추는 그 설교로 바로 들어갑니다.</p>
+    </section>
+  </div>
+</main>
+
+<footer class="jh-foot" aria-label="만든이와 후원 안내">
+  <div class="wrap">
+    <div class="jh-row">
+      <span><b>만든이</b>: 정성헌 목사</span>
+      <span><b>교회</b>: 대구선교교회</span>
+      <span><b>교단</b>: 대한예수교 장로회 재건총회</span>
+      <span><b>문의</b>: <a href="mailto:c56612@daum.net">c56612@daum.net</a></span>
+    </div>
+    <p class="jh-acct">자원후원계좌: iM뱅크 508-10-9580903 정성헌(일본선교)</p>
+    <p class="jh-desc">후원금은 선교와 사역과 연구에 사용됩니다.</p>
+  </div>
+</footer>
+
+<script>
+/* 지금 보고 있는 판에 불을 켜는 표시 */
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.edbar a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function up(){
+    var y=window.scrollY+80, k=0;
+    secs.forEach(function(s,i){ if(s && s.offsetTop<=y) k=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===k); });
+  }
+  window.addEventListener('scroll',up,{passive:true});
+  window.addEventListener('resize',up);
+  up();
+})();
+</script>
+</body>
+</html>

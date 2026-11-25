@@ -1490,6 +1490,11 @@ function resetDrawerTop(){
     bind(); onScroll(); setTb();
     var h = decodeURIComponent(location.hash || '').replace('#', '');
     if (h && BYID[h]) { openUnit(h); }
+    else if (h) {
+      /* 부문(part10)·장(sec10-1) 이름으로 들어와도 그 자리의 첫 조항을 연다 */
+      var pe = document.getElementById(h);
+      if (pe) { var fu = pe.querySelector('.unit'); if (fu && BYID[fu.id]) { openUnit(fu.id); } }
+    }
   });
   if (document.readyState !== 'loading') { bind(); onScroll(); }
 
