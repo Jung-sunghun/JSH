@@ -19,12 +19,6 @@ header{position:fixed;top:0;left:0;right:0;z-index:20;
  padding:10px 14px 16px;display:flex;flex-direction:column;gap:8px;pointer-events:none}
 header>*{pointer-events:auto}
 .toprow{display:flex;align-items:center;gap:10px}
-.homebtn{flex:0 0 auto;align-self:center;display:inline-flex;align-items:center;justify-content:center;
- width:36px;height:36px;border-radius:50%;background:#b3261e;border:1px solid #e2504a;color:#fff;
- font-size:9.5px;font-weight:800;letter-spacing:.03em;line-height:1;text-decoration:none;
- box-shadow:0 2px 8px rgba(0,0,0,.45)}
-.homebtn:hover{background:#d13a30;border-color:#f07c75}
-.homebtn:focus-visible{outline:2px solid #f2dfb2;outline-offset:2px}
 .brand{display:flex;align-items:center;gap:6px 10px;flex-wrap:wrap;min-width:0}
 .brand h1{font-size:15px;margin:0;font-weight:700;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:0 1 auto;min-width:0}
 .brand .sub{font-size:11.5px;color:var(--tx3);line-height:1.45;white-space:normal;word-break:keep-all;overflow-wrap:anywhere;flex:1 1 320px;min-width:0}
@@ -89,7 +83,6 @@ header>*{pointer-events:auto}
 #load .bar2 i{display:block;height:100%;width:10%;background:var(--acc);transition:width .25s}
 @media (max-width:760px){
  header{padding:8px 10px 12px;gap:6px}
- .homebtn{width:32px;height:32px;font-size:8.5px}
  .brand h1{font-size:13.5px}
  .brand .sub{font-size:10.5px;flex-basis:100%;line-height:1.42}
  .brand .stat{font-size:10.5px}
@@ -110,10 +103,6 @@ header>*{pointer-events:auto}
 <canvas id="cv"></canvas>
 <header>
  <div class="brand">
-  <a class="homebtn" id="homeBtn" href="https://jung-sunghun.github.io/JSH/공유/" title="정성헌 목사 서고(書庫) 대문으로" aria-label="정성헌 목사 서고 대문으로">HOME</a>
-  <script>/* HOME 단추: 웹서버에서 열면 이 파일이 놓인 자리(공유/) 기준 상대 경로로,
-     PC에서 파일로 열면(file://) 웹서버 대문으로 간다. */
-   try{ if(/^https?:$/.test(location.protocol)){ document.getElementById('homeBtn').setAttribute('href','./'); } }catch(e){}</script>
   <h1>칼빈 《기독교 강요》 연결 지도</h1>
   <span class="sub">장 칼빈(John Calvin) · 《기독교 강요》 1559년 라틴어 최종판(Institutio Christianae Religionis) · 4권 80장 · 주제 허브 27</span>
   <span class="stat" id="stat"></span>
