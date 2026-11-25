@@ -79,7 +79,10 @@ button{font-family:inherit}
   background:rgba(9,20,36,.52);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
 .np[hidden]{display:none!important}
 .np-card{width:min(1040px,96vw);max-height:86vh;overflow-y:auto;-webkit-overflow-scrolling:touch;
-  background:#fff;border-radius:18px;box-shadow:0 26px 70px rgba(8,14,24,.45),0 2px 8px rgba(8,14,24,.2)}
+  background:#fff;border-radius:18px;box-shadow:0 26px 70px rgba(8,14,24,.45),0 2px 8px rgba(8,14,24,.2);
+  animation:npdrop .16s ease-out}
+@keyframes npdrop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){ .np-card{animation:none} }
 .np .wrap{position:relative;max-width:1040px;padding-top:22px;padding-bottom:30px}
 .np-head{background:#0b1a2b;color:#fff;padding:11px 0 12px;
   position:sticky;top:0;z-index:2;border-radius:18px 18px 0 0}
