@@ -117,6 +117,19 @@ table.sermons td a:hover{color:var(--accent);text-decoration:underline}
 .jh-foot .jh-row span{white-space:nowrap;margin-right:14px}
 .jh-foot .jh-acct{color:var(--navy3);font-weight:700;margin-top:6px}
 
+
+/* ── 상단 UP · ◀ 전 · 후 ▶ 단추 ───────────────────────────── */
+.topacts{display:flex;align-items:center;gap:10px;margin-left:auto;flex-wrap:wrap}
+.upbtn{-webkit-appearance:none;appearance:none;cursor:pointer;height:34px;padding:0 16px;
+  border-radius:999px;border:1px solid #b8860b;color:#3a2a00;font-family:inherit;
+  font-size:.82em;font-weight:900;letter-spacing:.06em;
+  background:linear-gradient(180deg,#f0d488,#d9ae37);box-shadow:0 4px 12px rgba(0,0,0,.24)}
+.upbtn:hover{background:linear-gradient(180deg,#f6e0a4,#e0b746)}
+.upbtn:focus-visible{outline:2px solid #ffe08a;outline-offset:2px}
+@media (max-width:640px){
+  .topacts{margin-left:0;width:100%}
+  .upbtn{height:30px;padding:0 12px;font-size:.76em}
+}
 @media (max-width:640px){
   body{font-size:16px}
   .wrap{padding:0 15px}
@@ -134,6 +147,89 @@ table.sermons td a:hover{color:var(--accent);text-decoration:underline}
   table.sermons{font-size:.8em}
   table.sermons th,table.sermons td{padding:5px 4px}
 }
+
+/* ══ 서고 공통: ↑·↓ 한 알약(캡슐) 단추 — 1.모세오경 최신 규격(15차) ══ */
+.gopair{position:fixed;right:26px;bottom:26px;z-index:150;display:flex;flex-direction:column;width:50px;
+  margin:0;padding:0;overflow:hidden;border-radius:26px;
+  border:1.5px solid #6ec28e;background:#c8ebd4;
+  box-shadow:0 10px 26px rgba(22,101,52,.26);transition:opacity .16s ease,box-shadow .18s ease}
+.gopair.left{left:26px;right:auto}
+#goMain .gobtn,#goSide .gobtn{display:flex;align-items:center;justify-content:center;width:100%;height:50px;padding:0;
+  border:0;border-radius:0;background:transparent;color:#166534;cursor:pointer;
+  font-family:inherit;font-size:0;line-height:0;transition:background .18s ease}
+/* 두 화살표 사이 얇은 구분선 — 한 캡슐 안의 위 칸/아래 칸 */
+#goMain .gobtn.up,#goSide .gobtn.up{border-bottom:1px solid #6ec28e}
+#goMain .gobtn:hover,#goSide .gobtn:hover{background:#b7e4c7}
+#goMain .gobtn:active,#goSide .gobtn:active{background:#a9dcbd}
+#goMain .gobtn:focus-visible,#goSide .gobtn:focus-visible{outline:3px solid #ffe08a;outline-offset:-3px}
+.gopair .ticon{display:block;width:24px;height:24px;overflow:visible;transition:transform .18s ease}
+.gopair .ticon path{fill:none;stroke:currentColor;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.gopair .up:hover .ticon{transform:translateY(-2px)}
+.gopair .dn:hover .ticon{transform:translateY(2px)}
+html[data-theme="dark"] .gopair{background:#2a6b4a;border-color:#7dd3a6}
+html[data-theme="dark"] #goMain .gobtn,html[data-theme="dark"] #goSide .gobtn{color:#e8fff1}
+html[data-theme="dark"] #goMain .gobtn.up,html[data-theme="dark"] #goSide .gobtn.up{border-bottom-color:#7dd3a6}
+html[data-theme="dark"] #goMain .gobtn:hover,html[data-theme="dark"] #goSide .gobtn:hover{background:#348057}
+html.drawer-open .gopair{opacity:0;pointer-events:none}
+/* 캡슐에 본문·목차 마지막 줄이 영영 가리지 않도록 아래 여백을 준다 */
+main{padding-bottom:150px}
+@media (min-width:1025px){ aside,aside.side{padding-bottom:190px} }
+/* ── 휴대폰·태블릿: 목차 캡슐은 숨기고, 본문 캡슐은 다음(Daum) 앱 자체 ↑ 단추를 피해 위로 ──
+   앱이 오른쪽 맨 아래(bottom 16~24px, 지름 ~44px)에 흰 원형 ↑를 띄우므로 그 위 90px에 둔다. */
+@media (max-width:1024px){
+  .gopair.left{display:none!important}
+  /* 휴대폰·태블릿: 캡슐을 PC(50px×102px)의 2/3 크기로 — 너비 34px · 칸 높이 34px(합 69px) · 모서리 18px · 아이콘 16px */
+  #goMain{right:14px;bottom:calc(90px + env(safe-area-inset-bottom,0px));width:34px;border-radius:18px}
+  #goMain .gobtn{height:34px}
+  #goMain .ticon{width:16px;height:16px}
+  main{padding-bottom:240px}
+}
+/* ══════════════════════════════════════════════════════════════════════
+   15차 ⑫: 휴대폰 목차 서랍(☰) 안 ↑·↓ 캡슐
+   — 서랍을 열면 목차 캡슐이 서랍 안 오른쪽 아래에 PC의 2/3 크기
+     (34px×34px 두 칸 = 약 69px, 모서리 18px, 아이콘 16px)로 나타나고,
+     닫으면 본문 캡슐만 남는다. 캡슐은 서랍이 닫히지 않게 서랍 밖에 있다.
+   ══════════════════════════════════════════════════════════════════════ */
+@media (max-width:1024px){
+  html.drawer-open .gopair.left{display:flex!important;visibility:visible;
+    opacity:1;pointer-events:auto;right:auto;
+    bottom:calc(22px + env(safe-area-inset-bottom,0px));width:34px;border-radius:18px;
+    box-shadow:0 6px 16px rgba(22,101,52,.28);z-index:151}
+  html.drawer-open #toTopLeft{display:flex!important;visibility:visible}
+  #drawerFade{display:none}
+  /* 캡슐 자리(bottom 0~132px)로 흘러든 목차 글자를 서랍 바탕색으로 부드럽게 지운다 */
+  html.drawer-open #drawerFade{display:block;position:fixed;left:0;bottom:0;width:0;height:132px;
+    z-index:149;pointer-events:none;
+    background:linear-gradient(180deg,transparent 0%,#dfe8f3 58%,#dfe8f3 100%);
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 46%);mask-image:linear-gradient(180deg,transparent 0%,#000 46%)}
+  html.drawer-open #goSide .gobtn{height:34px}
+  html.drawer-open #goSide .ticon{width:16px;height:16px}
+  /* 캡슐이 목차 마지막 줄을 가리지 않도록 서랍 아래를 캡슐 높이만큼 비운다 */
+  html.drawer-open aside.side,html.drawer-open aside{padding-bottom:132px}
+}
+@media print{ .gopair{display:none!important} }
+
+
+/* ══ 상단 ◀ 전 · 후 ▶ (2026-11-21) — 서고 안에서 옮겨 온 화면을 되돌아가고 다시 앞으로 ══ */
+.jh-nav{flex:0 0 auto;display:inline-flex;align-items:stretch;min-width:0;height:34px;
+  border:1px solid rgba(255,255,255,.62);border-radius:999px;overflow:hidden;
+  background:rgba(255,255,255,.16);box-shadow:0 2px 8px rgba(0,0,0,.16)}
+.jh-nav>button{-webkit-appearance:none;appearance:none;margin:0;padding:0 10px;min-width:0;
+  display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;
+  color:#fff;font-family:inherit;font-size:.82em;font-weight:800;letter-spacing:-.01em;line-height:1;
+  white-space:nowrap;cursor:pointer;transition:background .15s ease,opacity .15s ease}
+.jh-nav>button+button{border-left:1px solid rgba(255,255,255,.42)}
+.jh-nav>button:hover:not(:disabled){background:rgba(255,255,255,.24)}
+.jh-nav>button:active:not(:disabled){background:rgba(255,255,255,.34)}
+.jh-nav>button:focus-visible{outline:2px solid #ffe08a;outline-offset:-3px}
+.jh-nav>button:disabled{opacity:.35;cursor:default}
+@media (max-width:1120px){.jh-nav{height:32px}.jh-nav>button{font-size:.78em;padding:0 8px}}
+@media (max-width:767px){.jh-nav{height:32px}.jh-nav>button{font-size:.76em;padding:0 7px}}
+@media (max-width:430px){.jh-nav{height:27px}.jh-nav>button{font-size:.6em;padding:0 3px}}
+/* '만든 이야기' 앞에 바짝 — 넓은 화면에서만 (좁은 화면 규칙은 건드리지 않는다) */
+@media (min-width:901px){.topbar .jh-nav+.storybtn{margin-left:10px}}
+@media print{.jh-nav{display:none!important}}
+
 </style>
 </head>
 <body>
@@ -148,6 +244,10 @@ table.sermons td a:hover{color:var(--accent);text-decoration:underline}
       <h1>칼빈 기독교강요서고(書庫)</h1>
       <span class="sub">Institutio Christianae Religionis · 1536 초판 · 1559 최종판</span>
       <a class="mapbtn" href="./기독교강요그래프.html">🗺️ 강요 색인 연결지도 바로가기</a>
+    </div>
+    <div class="topacts">
+      <button type="button" class="upbtn" id="upBtn" title="이 방의 첫 페이지(맨 위)로" aria-label="이 방의 첫 페이지로">UP</button>
+      <div class="jh-nav" role="group" aria-label="이전 단계·다음 단계로 이동"><button type="button" id="jhBack" title="이전 단계" aria-label="이전 단계">&#9664; 전</button><button type="button" id="jhFwd" title="다음 단계" aria-label="다음 단계">후 &#9654;</button></div>
     </div>
   </div>
 </header>
@@ -233,6 +333,120 @@ table.sermons td a:hover{color:var(--accent);text-decoration:underline}
     <p class="jh-desc">후원금은 선교와 사역과 연구에 사용됩니다.</p>
   </div>
 </footer>
+
+<nav class="gopair" id="goMain" aria-label="본문 위아래 이동"><button type="button" class="gobtn up" id="toTop" aria-label="본문 맨 위로" title="본문 맨 위로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.6V5.4"/><path d="M5.2 12.2 12 5.4l6.8 6.8"/></svg></button><button type="button" class="gobtn dn" id="toBot" aria-label="본문 맨 아래로" title="본문 맨 아래로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.4v13.6"/><path d="M5.2 11.2 12 18l6.8-6.8"/></svg></button></nav>
+
+
+<nav class="gopair" id="goMain" aria-label="본문 위아래 이동"><button type="button" class="gobtn up" id="toTop" aria-label="본문 맨 위로" title="본문 맨 위로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.6V5.4"/><path d="M5.2 12.2 12 5.4l6.8 6.8"/></svg></button><button type="button" class="gobtn dn" id="toBot" aria-label="본문 맨 아래로" title="본문 맨 아래로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.4v13.6"/><path d="M5.2 11.2 12 18l6.8-6.8"/></svg></button></nav>
+
+
+/* ---------- 15차 ①: ↑·↓ 한 캡슐 단추 — PC는 목차창·본문 양쪽, 휴대폰은 본문 하나 ---------- */
+(function(){
+  function wire(){
+    var side = document.querySelector('aside.side') || document.querySelector('aside') || document.getElementById('toc');
+    var main = document.querySelector('main');
+    var docH = function(){ return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight); };
+    var go = function(el, top, fb){ try{ el.scrollTo({top: top, behavior:'smooth'}); }catch(e){ fb(); } };
+    var click = function(sel, fn){
+      var el = document.querySelector(sel);
+      if(el) el.addEventListener('click', function(ev){ ev.preventDefault(); fn(); });
+    };
+    click('#goMain .up', function(){
+      go(window, 0, function(){ window.scrollTo(0, 0); });
+      if(main) go(main, 0, function(){ main.scrollTop = 0; });
+    });
+    click('#goMain .dn', function(){
+      var y = docH();
+      go(window, y, function(){ window.scrollTo(0, y); });
+      if(main) go(main, main.scrollHeight, function(){ main.scrollTop = main.scrollHeight; });
+    });
+    click('#goSide .up', function(){ if(side) go(side, 0, function(){ side.scrollTop = 0; }); });
+    click('#goSide .dn', function(){ if(side) go(side, side.scrollHeight, function(){ side.scrollTop = side.scrollHeight; }); });
+    /* 15차 ⑫: 서랍이 열리면 목차 캡슐이 서랍 안 오른쪽 아래로 들어온다 */
+    function placeDrawerGo(){
+      var g = document.getElementById('goSide');
+      if(!g) return;
+      var f = document.getElementById('drawerFade');
+      if(!f){ f = document.createElement('div'); f.id = 'drawerFade';
+        f.setAttribute('aria-hidden','true'); document.body.appendChild(f); }
+      if(window.innerWidth > 1024){ g.style.left = ''; g.style.right = ''; return; }
+      var a = side || document.querySelector('aside.side') || document.querySelector('aside');
+      var w = a ? a.getBoundingClientRect().width : 0;
+      if(!w) return;
+      g.style.right = 'auto';
+      g.style.left = Math.max(6, Math.round(w - 48)) + 'px';
+      f.style.width = Math.round(w) + 'px';
+    }
+    window.placeDrawerGo = placeDrawerGo;
+    window.addEventListener('resize', placeDrawerGo);
+    window.addEventListener('orientationchange', function(){ setTimeout(placeDrawerGo, 220); });
+    placeDrawerGo();
+
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire); else wire();
+})();
+
+
+<script>
+/* 판(1536 ↔ 1559 ↔ 교리설교) 사이를 옮겨 다닌 자리를 기록한다 */
+(function(){
+  var bar=document.querySelector('.edbar');
+  function bartop(){ return bar?bar.offsetHeight:0; }
+  function ids(){ return ['ed-1536','ed-1559','ed-sermons']; }
+  function cur(){
+    var y=window.scrollY+120+bartop(), k=ids()[0];
+    ids().forEach(function(id){ var el=document.getElementById(id); if(el&&el.offsetTop<=y) k=id; });
+    return k;
+  }
+  window.gotoEdition=function(id){
+    var el=document.getElementById(id); if(!el) return;
+    var y=el.getBoundingClientRect().top+window.scrollY-bartop()-8;
+    window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
+  };
+  [].slice.call(document.querySelectorAll('.edbar a')).forEach(function(a){
+    a.addEventListener('click',function(e){ e.preventDefault(); window.gotoEdition(a.getAttribute('href').slice(1)); });
+  });
+  var up=document.getElementById('upBtn');
+  if(up) up.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+  /* ◀ 전 · 후 ▶ — 이 방 안에서 옮겨 다닌 판을 기록한다 */
+  (function(){
+    var B=document.getElementById('jhBack'), F=document.getElementById('jhFwd');
+    if(!B||!F) return;
+    var hist=[cur()], pos=0;
+    function paint(){ B.disabled=pos<=0; F.disabled=pos>=hist.length-1; }
+    function rec(){
+      var c=cur();
+      if(hist[pos]!==c){ hist=hist.slice(0,pos+1); hist.push(c); pos=hist.length-1;
+        if(hist.length>30){ hist.shift(); pos--; } }
+      paint();
+    }
+    window.gotoEdition=function(id){
+      var el=document.getElementById(id); if(!el) return;
+      var y=el.getBoundingClientRect().top+window.scrollY-bartop()-8;
+      hist=hist.slice(0,pos+1); hist.push(id); pos=hist.length-1; paint();
+      window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
+    };
+    B.addEventListener('click',function(e){
+      e.preventDefault(); if(pos<=0) return;
+      pos--; paint();
+      var id=hist[pos], el=document.getElementById(id);
+      if(el) window.scrollTo({top:Math.max(0,el.getBoundingClientRect().top+window.scrollY-bartop()-8),behavior:'smooth'});
+    });
+    F.addEventListener('click',function(e){
+      e.preventDefault(); if(pos>=hist.length-1) return;
+      pos++; paint();
+      var id=hist[pos], el=document.getElementById(id);
+      if(el) window.scrollTo({top:Math.max(0,el.getBoundingClientRect().top+window.scrollY-bartop()-8),behavior:'smooth'});
+    });
+    /* 스크롤로 다른 판에 들어가면 그것도 기록에 남긴다 */
+    var t=null;
+    window.addEventListener('scroll',function(){
+      if(t) clearTimeout(t); t=setTimeout(rec,420);
+    },{passive:true});
+    paint();
+  })();
+})();
+</script>
 
 <script>
 /* 지금 보고 있는 판에 불을 켜는 표시 */

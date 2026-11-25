@@ -23,15 +23,15 @@ button{font-family:inherit}
 
 /* ── 머리 ───────────────────────────────────────────── */
 .hero{background:linear-gradient(160deg,#162d47 0%,#1d3a5c 58%,#24466c 100%);
-  color:#fff;padding:32px 0 28px;border-bottom:4px solid var(--accent)}
+  color:#fff;padding:26px 0 24px;border-bottom:4px solid var(--accent)}
 .hero .kick{display:inline-block;font-size:.74em;letter-spacing:.2em;font-weight:800;color:#e6c98a}
-.hero h1{margin-top:8px;font-size:2em;line-height:1.25;letter-spacing:-.03em;font-weight:800}
-.hero .sub{margin-top:8px;color:#c9d9ea;font-size:.94em}
-.values{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.hero h1{margin-top:6px;font-size:1.88em;line-height:1.25;letter-spacing:-.03em;font-weight:800}
+.hero .sub{margin-top:6px;color:#c9d9ea;font-size:.9em}
+.values{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:16px}
 .vbox{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);
-  border-radius:14px;padding:13px 16px}
+  border-radius:13px;padding:11px 15px}
 .vbox h3{font-size:.8em;letter-spacing:.16em;font-weight:800;color:#f2dfb2;margin-bottom:6px}
-.vbox p{font-size:.92em;line-height:1.7;color:#eaf1f8}
+.vbox p{font-size:.89em;line-height:1.65;color:#eaf1f8}
 
 /* ── 7메뉴 ──────────────────────────────────────────── */
 .mainnav{background:var(--navy4);border-bottom:1px solid rgba(255,255,255,.14);
@@ -198,6 +198,115 @@ main{padding:30px 0 6px}
 @media (min-width:901px){
   .np[hidden]{display:none}
 }
+
+/* ══ 서고 공통: ↑·↓ 한 알약(캡슐) 단추 — 1.모세오경 최신 규격(15차) ══ */
+.gopair{position:fixed;right:26px;bottom:26px;z-index:150;display:flex;flex-direction:column;width:50px;
+  margin:0;padding:0;overflow:hidden;border-radius:26px;
+  border:1.5px solid #6ec28e;background:#c8ebd4;
+  box-shadow:0 10px 26px rgba(22,101,52,.26);transition:opacity .16s ease,box-shadow .18s ease}
+.gopair.left{left:26px;right:auto}
+#goMain .gobtn,#goSide .gobtn{display:flex;align-items:center;justify-content:center;width:100%;height:50px;padding:0;
+  border:0;border-radius:0;background:transparent;color:#166534;cursor:pointer;
+  font-family:inherit;font-size:0;line-height:0;transition:background .18s ease}
+/* 두 화살표 사이 얇은 구분선 — 한 캡슐 안의 위 칸/아래 칸 */
+#goMain .gobtn.up,#goSide .gobtn.up{border-bottom:1px solid #6ec28e}
+#goMain .gobtn:hover,#goSide .gobtn:hover{background:#b7e4c7}
+#goMain .gobtn:active,#goSide .gobtn:active{background:#a9dcbd}
+#goMain .gobtn:focus-visible,#goSide .gobtn:focus-visible{outline:3px solid #ffe08a;outline-offset:-3px}
+.gopair .ticon{display:block;width:24px;height:24px;overflow:visible;transition:transform .18s ease}
+.gopair .ticon path{fill:none;stroke:currentColor;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.gopair .up:hover .ticon{transform:translateY(-2px)}
+.gopair .dn:hover .ticon{transform:translateY(2px)}
+html[data-theme="dark"] .gopair{background:#2a6b4a;border-color:#7dd3a6}
+html[data-theme="dark"] #goMain .gobtn,html[data-theme="dark"] #goSide .gobtn{color:#e8fff1}
+html[data-theme="dark"] #goMain .gobtn.up,html[data-theme="dark"] #goSide .gobtn.up{border-bottom-color:#7dd3a6}
+html[data-theme="dark"] #goMain .gobtn:hover,html[data-theme="dark"] #goSide .gobtn:hover{background:#348057}
+html.drawer-open .gopair{opacity:0;pointer-events:none}
+/* 캡슐에 본문·목차 마지막 줄이 영영 가리지 않도록 아래 여백을 준다 */
+main{padding-bottom:150px}
+@media (min-width:1025px){ aside,aside.side{padding-bottom:190px} }
+/* ── 휴대폰·태블릿: 목차 캡슐은 숨기고, 본문 캡슐은 다음(Daum) 앱 자체 ↑ 단추를 피해 위로 ──
+   앱이 오른쪽 맨 아래(bottom 16~24px, 지름 ~44px)에 흰 원형 ↑를 띄우므로 그 위 90px에 둔다. */
+@media (max-width:1024px){
+  .gopair.left{display:none!important}
+  /* 휴대폰·태블릿: 캡슐을 PC(50px×102px)의 2/3 크기로 — 너비 34px · 칸 높이 34px(합 69px) · 모서리 18px · 아이콘 16px */
+  #goMain{right:14px;bottom:calc(90px + env(safe-area-inset-bottom,0px));width:34px;border-radius:18px}
+  #goMain .gobtn{height:34px}
+  #goMain .ticon{width:16px;height:16px}
+  main{padding-bottom:240px}
+}
+/* ══════════════════════════════════════════════════════════════════════
+   15차 ⑫: 휴대폰 목차 서랍(☰) 안 ↑·↓ 캡슐
+   — 서랍을 열면 목차 캡슐이 서랍 안 오른쪽 아래에 PC의 2/3 크기
+     (34px×34px 두 칸 = 약 69px, 모서리 18px, 아이콘 16px)로 나타나고,
+     닫으면 본문 캡슐만 남는다. 캡슐은 서랍이 닫히지 않게 서랍 밖에 있다.
+   ══════════════════════════════════════════════════════════════════════ */
+@media (max-width:1024px){
+  html.drawer-open .gopair.left{display:flex!important;visibility:visible;
+    opacity:1;pointer-events:auto;right:auto;
+    bottom:calc(22px + env(safe-area-inset-bottom,0px));width:34px;border-radius:18px;
+    box-shadow:0 6px 16px rgba(22,101,52,.28);z-index:151}
+  html.drawer-open #toTopLeft{display:flex!important;visibility:visible}
+  #drawerFade{display:none}
+  /* 캡슐 자리(bottom 0~132px)로 흘러든 목차 글자를 서랍 바탕색으로 부드럽게 지운다 */
+  html.drawer-open #drawerFade{display:block;position:fixed;left:0;bottom:0;width:0;height:132px;
+    z-index:149;pointer-events:none;
+    background:linear-gradient(180deg,transparent 0%,#dfe8f3 58%,#dfe8f3 100%);
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 46%);mask-image:linear-gradient(180deg,transparent 0%,#000 46%)}
+  html.drawer-open #goSide .gobtn{height:34px}
+  html.drawer-open #goSide .ticon{width:16px;height:16px}
+  /* 캡슐이 목차 마지막 줄을 가리지 않도록 서랍 아래를 캡슐 높이만큼 비운다 */
+  html.drawer-open aside.side,html.drawer-open aside{padding-bottom:132px}
+}
+@media print{ .gopair{display:none!important} }
+
+
+/* ── 길잡이 검색 · 최근 연 서고 ───────────────────────── */
+.finder{background:var(--paper);border-bottom:1px solid var(--line);padding:12px 0 11px}
+.findrow{display:flex;align-items:center;gap:10px}
+.findlabel{flex:0 0 auto;font-size:.86em;font-weight:800;color:var(--navy);letter-spacing:-.01em;white-space:nowrap}
+.findinput{flex:1 1 auto;min-width:0;min-height:46px;padding:9px 15px;font-family:inherit;font-size:1em;
+  color:var(--ink);background:#f7f9fc;border:1.5px solid #c9d8e8;border-radius:12px}
+.findinput::placeholder{color:#8a9bb0}
+.findinput:focus{outline:none;border-color:var(--navy3);background:#fff;box-shadow:0 0 0 3px rgba(36,70,108,.12)}
+.findchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.findchips button{-webkit-appearance:none;appearance:none;cursor:pointer;font-family:inherit;
+  font-size:.78em;font-weight:700;color:var(--navy2);background:#eff3f8;border:1px solid #dde7f1;
+  border-radius:999px;padding:5px 11px}
+.findchips button:hover{background:#e4edf7;border-color:#c2d4e6}
+.findres{margin-top:10px;border:1px solid var(--line);border-radius:12px;background:#fff;
+  box-shadow:0 12px 28px rgba(15,23,42,.10);max-height:56vh;overflow-y:auto}
+.fres{display:flex;align-items:baseline;gap:10px;padding:10px 14px;border-bottom:1px solid #eef2f7}
+.fres:last-child{border-bottom:0}
+.fres:hover{background:#f4f8fc}
+.fres .fs{flex:0 0 auto;font-size:.72em;font-weight:800;color:#fff;background:var(--navy3);
+  border-radius:6px;padding:2px 8px;white-space:nowrap}
+.fres b{font-size:.92em;color:var(--navy);font-weight:800;line-height:1.45}
+.fres .fgo{margin-left:auto;font-size:.76em;font-weight:800;color:var(--accent);white-space:nowrap}
+.fnone{padding:14px 16px;font-size:.88em;color:var(--muted)}
+.recent{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-top:11px}
+.recent .rh{font-size:.78em;font-weight:800;color:var(--muted)}
+.recent a{display:inline-flex;align-items:center;gap:5px;font-size:.8em;font-weight:700;
+  color:var(--navy2);background:#f2f6fb;border:1px solid #d6e2ef;border-radius:999px;padding:5px 12px}
+.recent a:hover{background:#e6eef8;border-color:#bfd2e6}
+.recent .rc{font-size:.9em;color:#93a3b6;background:none;border:0;padding:2px 4px;cursor:pointer}
+@media (max-width:900px){
+  .findrow{flex-wrap:wrap}
+  .findlabel{flex:1 1 100%}
+  .findinput{min-height:46px;font-size:.96em}
+  .fres{flex-wrap:wrap;gap:6px}
+  .fres .fgo{margin-left:0}
+}
+
+/* ── 유틸·도구 줄 ─────────────────────────────────────── */
+.toolsbar{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:30px 0 0;
+  padding:15px 18px;background:#fff;border:1px solid var(--line);border-radius:14px}
+.tools-h{font-size:.78em;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-right:2px}
+.tool{display:inline-flex;align-items:center;gap:7px;font-size:.88em;font-weight:800;color:var(--navy2);
+  background:#f2f6fb;border:1px solid #d6e2ef;border-radius:999px;padding:9px 16px}
+.tool:hover{background:#e6eef8;border-color:#bfd2e6;color:var(--navy)}
+@media (max-width:900px){ .toolsbar{padding:13px 14px} .tool{font-size:.84em;padding:8px 13px} }
+
 </style>
 </head>
 <body>
@@ -237,6 +346,30 @@ main{padding:30px 0 6px}
   </div>
 </header>
 
+
+<section class="finder" id="finder" aria-label="목회서고 길잡이 검색">
+  <div class="wrap">
+    <div class="findrow">
+      <span class="findlabel">🔎 길잡이 검색</span>
+      <input class="findinput" id="qAll" type="search" autocomplete="off"
+             aria-label="서고 길잡이 검색"
+             placeholder="낱말·책 이름·주제 — 예: 칭의, 안식일, 창세기 22장, 신천지, 무천년, 헌법">
+    </div>
+    <div class="findchips" id="findChips">
+      <button type="button" data-q="칭의">칭의</button>
+      <button type="button" data-q="안식일">안식일</button>
+      <button type="button" data-q="창세기 22장">창세기 22장</button>
+      <button type="button" data-q="신천지">신천지</button>
+      <button type="button" data-q="무천년">무천년</button>
+      <button type="button" data-q="헌법">헌법</button>
+      <button type="button" data-q="원어">원어</button>
+    </div>
+    <div class="findres" id="findRes" hidden></div>
+    <div class="recent" id="recentBox" hidden></div>
+  </div>
+</section>
+
+
 <nav class="mainnav" id="mainnav" aria-label="목회서고 상단 메뉴">
   <div class="wrap navwrap">
     <div class="nv" data-key="bib"><button type="button" class="nvb" id="nvb-bib" aria-expanded="false" aria-controls="np-bib"><span class="num">1</span><span class="lb">성경주석</span><span class="sub">구약1 ~ 신약3 · 8권</span><span class="car" aria-hidden="true">▾</span></button></div><div class="nv" data-key="conf"><button type="button" class="nvb" id="nvb-conf" aria-expanded="false" aria-controls="np-conf"><span class="num">2</span><span class="lb">신앙고백</span><span class="sub">23개 고백</span><span class="car" aria-hidden="true">▾</span></button></div><div class="nv" data-key="calvin"><button type="button" class="nvb" id="nvb-calvin" aria-expanded="false" aria-controls="np-calvin"><span class="num">3</span><span class="lb">칼빈 기독교강요</span><span class="sub">전문 · 색인지도</span><span class="car" aria-hidden="true">▾</span></button></div><div class="nv" data-key="orig"><button type="button" class="nvb" id="nvb-orig" aria-expanded="false" aria-controls="np-orig"><span class="num">4</span><span class="lb">원어성경 단어빈도</span><span class="sub">핵심어 300개</span><span class="car" aria-hidden="true">▾</span></button></div><div class="nv" data-key="kor"><button type="button" class="nvb" id="nvb-kor" aria-expanded="false" aria-controls="np-kor"><span class="num">5</span><span class="lb">한글 성경 단어빈도</span><span class="sub">개역개정 · 핵심어 300개</span><span class="car" aria-hidden="true">▾</span></button></div><div class="nv" data-key="jae"><button type="button" class="nvb" id="nvb-jae" aria-expanded="false" aria-controls="np-jae"><span class="num">6</span><span class="lb">재건총회 자료실</span><span class="sub">헌법 1·2 · 규칙 · 결의문</span><span class="car" aria-hidden="true">▾</span></button></div><div class="nv" data-key="shin"><button type="button" class="nvb" id="nvb-shin" aria-expanded="false" aria-controls="np-shin"><span class="num">7</span><span class="lb">신학지남</span><span class="sub">4,916편 색인</span><span class="car" aria-hidden="true">▾</span></button></div><div class="nv" data-key="her"><button type="button" class="nvb" id="nvb-her" aria-expanded="false" aria-controls="np-her"><span class="num">8</span><span class="lb">유사종교</span><span class="sub">83항목</span><span class="car" aria-hidden="true">▾</span></button></div>
@@ -258,8 +391,14 @@ main{padding:30px 0 6px}
     <section class="card" id="c-shin"><span class="tag">서고 07 · 신학지남서고(書庫)</span><h2>신학지남서고(書庫) — 1918–2011 · 4,916편</h2><p class="lead">《신학지남》 전편을 한 파일로 모은 통합판입니다. 통권 제1–309호를 넘겨 읽고, 낱말로 찾고, 주제 12갈래와 연대 6구간, 저자 711명으로 모아 볼 수 있습니다. 파일이 약 37MB라 처음 열 때 네트워크 속도에 따라 몇 초 걸릴 수 있습니다.</p><ul class="chips"><li>통권 제1–309호</li><li>주제 12갈래</li><li>연대 6구간</li><li>저자 711명</li><li>낱말 검색</li><li>한 파일 오프라인 문서 (약 37MB)</li></ul><a class="go" href="./신학지남.html">신학지남서고 열기 →</a></section>
     <section class="card" id="c-her"><span class="tag">서고 08 · 유사종교서고(書庫)</span><h2>유사종교서고(類似宗敎) — 여섯 진영 83항목</h2><p class="lead">꾸란과 이슬람, 한국의 유사종교와 이단, 자유주의 신학, 문서설과 성경비평, 퀴어신학, 무신론과 사탄주의 — 여섯 진영의 주장을 그들의 근거와 논조 그대로 왼쪽에, 개혁주의·성경신학·언약신학의 대조를 오른쪽에 두었습니다. 부록으로 꾸란 114수라 6,236절 한글 전문을 실었습니다.</p><ul class="chips"><li>꾸란과 이슬람 9항목</li><li>유사종교와 이단 31항목</li><li>자유주의 신학 8항목</li><li>문서설과 성경비평 8항목</li><li>퀴어신학 19항목</li><li>무신론과 사탄주의 8항목</li><li>부록 · 꾸란 114수라</li></ul><a class="go" href="./유사종교.html">유사종교서고 열기 →</a></section>
 
-    <h2 class="utils-h">보조 도구 · 다른 서고</h2>
-    <div class="utils"><a class="util" href="./설교그래프.html"><b>설교 연결 지도</b><span>설교 원고 3,165편을 시리즈·본문·주제로 이은 그래프</span></a><a class="util" href="./기독교강요그래프.html"><b>강요 색인 연결지도</b><span>칼빈 기독교 강요 1559 최종판 4권 80장을 주제 27로 이은 지도</span></a><a class="util" href="./문서뷰어.html"><b>문서뷰어</b><span>워드·PDF·한글 문서를 브라우저에서 바로 읽기</span></a><a class="util" href="./윷놀이.html"><b>한국 전통 윷놀이</b><span>정월의 스물아홉 칸 윷판 — 파랑이와 한 판</span></a></div>
+    
+<div class="toolsbar" aria-label="유틸·도구">
+  <span class="tools-h">유틸·도구</span>
+  <a class="tool" href="./문서뷰어.html">📄 만능 문서뷰어</a>
+  <a class="tool" href="./설교그래프.html">🕸️ 설교 그래프</a>
+  <a class="tool" href="./윷놀이.html">🎲 한국 전통 윷놀이</a>
+</div>
+
   </div>
 </main>
 
@@ -276,8 +415,169 @@ main{padding:30px 0 6px}
   </div>
 </footer>
 
+<nav class="gopair" id="goMain" aria-label="본문 위아래 이동"><button type="button" class="gobtn up" id="toTop" aria-label="본문 맨 위로" title="본문 맨 위로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.6V5.4"/><path d="M5.2 12.2 12 5.4l6.8 6.8"/></svg></button><button type="button" class="gobtn dn" id="toBot" aria-label="본문 맨 아래로" title="본문 맨 아래로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.4v13.6"/><path d="M5.2 11.2 12 18l6.8-6.8"/></svg></button></nav>
+
+<script id="gopairJS">
+/* ---------- 15차 ①: ↑·↓ 한 캡슐 단추 — PC는 목차창·본문 양쪽, 휴대폰은 본문 하나 ---------- */
+(function(){
+  function wire(){
+    var side = document.querySelector('aside.side') || document.querySelector('aside') || document.getElementById('toc');
+    var main = document.querySelector('main');
+    var docH = function(){ return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight); };
+    var go = function(el, top, fb){ try{ el.scrollTo({top: top, behavior:'smooth'}); }catch(e){ fb(); } };
+    var click = function(sel, fn){
+      var el = document.querySelector(sel);
+      if(el) el.addEventListener('click', function(ev){ ev.preventDefault(); fn(); });
+    };
+    click('#goMain .up', function(){
+      go(window, 0, function(){ window.scrollTo(0, 0); });
+      if(main) go(main, 0, function(){ main.scrollTop = 0; });
+    });
+    click('#goMain .dn', function(){
+      var y = docH();
+      go(window, y, function(){ window.scrollTo(0, y); });
+      if(main) go(main, main.scrollHeight, function(){ main.scrollTop = main.scrollHeight; });
+    });
+    click('#goSide .up', function(){ if(side) go(side, 0, function(){ side.scrollTop = 0; }); });
+    click('#goSide .dn', function(){ if(side) go(side, side.scrollHeight, function(){ side.scrollTop = side.scrollHeight; }); });
+    /* 15차 ⑫: 서랍이 열리면 목차 캡슐이 서랍 안 오른쪽 아래로 들어온다 */
+    function placeDrawerGo(){
+      var g = document.getElementById('goSide');
+      if(!g) return;
+      var f = document.getElementById('drawerFade');
+      if(!f){ f = document.createElement('div'); f.id = 'drawerFade';
+        f.setAttribute('aria-hidden','true'); document.body.appendChild(f); }
+      if(window.innerWidth > 1024){ g.style.left = ''; g.style.right = ''; return; }
+      var a = side || document.querySelector('aside.side') || document.querySelector('aside');
+      var w = a ? a.getBoundingClientRect().width : 0;
+      if(!w) return;
+      g.style.right = 'auto';
+      g.style.left = Math.max(6, Math.round(w - 48)) + 'px';
+      f.style.width = Math.round(w) + 'px';
+    }
+    window.placeDrawerGo = placeDrawerGo;
+    window.addEventListener('resize', placeDrawerGo);
+    window.addEventListener('orientationchange', function(){ setTimeout(placeDrawerGo, 220); });
+    placeDrawerGo();
+
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire); else wire();
+})();
+</script>
+
+
 <script>
-/* 7메뉴 드롭다운 — PC는 마우스 오버, 휴대폰·태블릿은 누르면 펼침(아코디언) */
+/* ── 길잡이 검색 · 최근 연 서고 (localStorage) ───────────────── */
+(function(){
+  var IDX = [{"l":"구약 1. 모세오경","s":"성경주석서고","h":"./1.모세오경.html","t":"창세기 출애굽기 레위기 민수기 신명기 모세오경 오경 창 출 레 민 신 187장"},{"l":"구약 2. 역사서","s":"성경주석서고","h":"./2.역사서.html","t":"여호수아 사사기 룻기 사무엘상 사무엘하 열왕기상 열왕기하 역대상 역대하 에스라 느헤미야 에스더 수 삿 룻 삼상 삼하 왕상 왕하 대상 대하 스 느 에 249장"},{"l":"구약 3. 시가서","s":"성경주석서고","h":"./3.시가서.html","t":"욥기 시편 잠언 전도서 아가 욥 시 잠 전 아 시가 243장"},{"l":"구약 4. 대선지서","s":"성경주석서고","h":"./4.대선지서.html","t":"이사야 예레미야 애가 에스겔 다니엘 사 렘 애 겔 단 대선지 183장"},{"l":"구약 5. 소선지서","s":"성경주석서고","h":"./5.소선지서.html","t":"호세아 요엘 아모스 오바댜 요나 미가 나훔 하박국 스바냐 학개 스가랴 말라기 호 욜 암 옵 욘 미 나 합 습 학 슥 말 소선지 67장"},{"l":"신약 1. 복음서·사도행전","s":"성경주석서고","h":"./6.복음서·사도행전.html","t":"마태복음 마가복음 누가복음 요한복음 사도행전 마 막 눅 요 행 복음서 신약1 117장"},{"l":"신약 2. 바울서신","s":"성경주석서고","h":"./7.바울서신.html","t":"로마서 고린도전서 고린도후서 갈라디아서 에베소서 빌립보서 골로새서 데살로니가전서 데살로니가후서 디모데전서 디모데후서 디도서 빌레몬서 롬 고전 고후 갈 엡 빌 골 살전 살후 딤전 딤후 딛 몬 바울 13권 87장"},{"l":"신약 3. 일반서신·계시록","s":"성경주석서고","h":"./8.일반서신·계시록.html","t":"히브리서 야고보서 베드로전서 베드로후서 요한1서 요한2서 요한3서 유다서 요한계시록 계시록 히 약 벧전 벧후 요일 요이 요삼 유 계 9권 56장"},{"l":"01 사도신경","s":"신앙고백서고","h":"./신앙고백.html#apostles","t":"사도신경"},{"l":"02 니케아-콘스탄티노플 신조","s":"신앙고백서고","h":"./신앙고백.html#nicene","t":"니케아-콘스탄티노플 신조"},{"l":"03 칼케돈 신조 (정의)","s":"신앙고백서고","h":"./신앙고백.html#chalcedon","t":"칼케돈 신조 (정의)"},{"l":"04 아타나시우스 신조","s":"신앙고백서고","h":"./신앙고백.html#athanasian","t":"아타나시우스 신조"},{"l":"05 오렌지 공의회 신조","s":"신앙고백서고","h":"./신앙고백.html#orange","t":"오렌지 공의회 신조"},{"l":"06 아우크스부르크 신앙고백","s":"신앙고백서고","h":"./신앙고백.html#augsburg","t":"아우크스부르크 신앙고백"},{"l":"07 칼빈 《기독교 강요》 초판 (1536)","s":"신앙고백서고","h":"./신앙고백.html#institutes1536","t":"칼빈 《기독교 강요》 초판 (1536)"},{"l":"08 칼빈 제네바 요리문답 (1545)","s":"신앙고백서고","h":"./신앙고백.html#geneva1545","t":"칼빈 제네바 요리문답 (1545)"},{"l":"09 프랑스(갈리아) 신앙고백","s":"신앙고백서고","h":"./신앙고백.html#french1559","t":"프랑스(갈리아) 신앙고백"},{"l":"10 칼빈 《기독교 강요》 최종판 (1559)","s":"신앙고백서고","h":"./신앙고백.html#institutes1559","t":"칼빈 《기독교 강요》 최종판 (1559)"},{"l":"11 스코틀랜드 신앙고백","s":"신앙고백서고","h":"./신앙고백.html#scots1560","t":"스코틀랜드 신앙고백"},{"l":"12 벨직 신앙고백","s":"신앙고백서고","h":"./신앙고백.html#belgic","t":"벨직 신앙고백"},{"l":"13 하이델베르크 요리문답","s":"신앙고백서고","h":"./신앙고백.html#heidelberg","t":"하이델베르크 요리문답"},{"l":"14 제2스위스 신앙고백","s":"신앙고백서고","h":"./신앙고백.html#helvetic","t":"제2스위스 신앙고백"},{"l":"15 영국 39개조 신조","s":"신앙고백서고","h":"./신앙고백.html#articles39","t":"영국 39개조 신조"},{"l":"16 도르트 신조","s":"신앙고백서고","h":"./신앙고백.html#dordt","t":"도르트 신조"},{"l":"17 웨스트민스터 신앙고백서","s":"신앙고백서고","h":"./신앙고백.html#wcf","t":"웨스트민스터 신앙고백서"},{"l":"18 웨스트민스터 소요리문답","s":"신앙고백서고","h":"./신앙고백.html#wsc","t":"웨스트민스터 소요리문답"},{"l":"19 웨스트민스터 대요리문답","s":"신앙고백서고","h":"./신앙고백.html#wlc","t":"웨스트민스터 대요리문답"},{"l":"20 사보이 선언","s":"신앙고백서고","h":"./신앙고백.html#savoy","t":"사보이 선언"},{"l":"21 런던 침례교 신앙고백 (1689)","s":"신앙고백서고","h":"./신앙고백.html#lbc1689","t":"런던 침례교 신앙고백 (1689)"},{"l":"22 대한예수교장로회 12신조","s":"신앙고백서고","h":"./신앙고백.html#pck1907","t":"대한예수교장로회 12신조"},{"l":"23 바르멘 신학적 선언","s":"신앙고백서고","h":"./신앙고백.html#barmen","t":"바르멘 신학적 선언"},{"l":"01 삼위일체","s":"교리설교 5부서","h":"./신앙고백.html#sermon/trinity/adult","t":"삼위일체 성부 성자 성령 교리설교 설교 장년부"},{"l":"02 성경과 계시","s":"교리설교 5부서","h":"./신앙고백.html#sermon/scripture/adult","t":"성경 계시 무오 영감 정경 교리설교 설교 장년부"},{"l":"03 하나님의 속성","s":"교리설교 5부서","h":"./신앙고백.html#sermon/god/adult","t":"하나님 속성 신론 교리설교 설교 장년부"},{"l":"04 창조","s":"교리설교 5부서","h":"./신앙고백.html#sermon/creation/adult","t":"창조 천지창조 교리설교 설교 장년부"},{"l":"05 섭리와 주권","s":"교리설교 5부서","h":"./신앙고백.html#sermon/providence/adult","t":"섭리 주권 교리설교 설교 장년부"},{"l":"06 예정과 선택","s":"교리설교 5부서","h":"./신앙고백.html#sermon/predestination/adult","t":"예정 선택 유기 교리설교 설교 장년부"},{"l":"07 인간과 하나님의 형상","s":"교리설교 5부서","h":"./신앙고백.html#sermon/man/adult","t":"인간 하나님의 형상 교리설교 설교 장년부"},{"l":"08 타락과 죄","s":"교리설교 5부서","h":"./신앙고백.html#sermon/fall/adult","t":"타락 죄 원죄 교리설교 설교 장년부"},{"l":"09 언약","s":"교리설교 5부서","h":"./신앙고백.html#sermon/covenant/adult","t":"언약 은혜언약 행위언약 교리설교 설교 장년부"},{"l":"10 율법과 십계명","s":"교리설교 5부서","h":"./신앙고백.html#sermon/law/adult","t":"율법 십계명 교리설교 설교 장년부"},{"l":"11 그리스도의 위격","s":"교리설교 5부서","h":"./신앙고백.html#sermon/christ_person/adult","t":"그리스도 위격 두 성품 교리설교 설교 장년부"},{"l":"12 그리스도의 사역","s":"교리설교 5부서","h":"./신앙고백.html#sermon/christ_work/adult","t":"그리스도 사역 대속 십자가 부활 삼중직무 교리설교 설교 장년부"},{"l":"13 성령과 그 사역","s":"교리설교 5부서","h":"./신앙고백.html#sermon/spirit/adult","t":"성령 은사 중생 교리설교 설교 장년부"},{"l":"14 은혜와 구원","s":"교리설교 5부서","h":"./신앙고백.html#sermon/grace/adult","t":"은혜 구원 교리설교 설교 장년부"},{"l":"15 칭의","s":"교리설교 5부서","h":"./신앙고백.html#sermon/justification/adult","t":"칭의 의롭다하심 교리설교 설교 장년부"},{"l":"16 성화와 선행","s":"교리설교 5부서","h":"./신앙고백.html#sermon/sanctification/adult","t":"성화 선행 교리설교 설교 장년부"},{"l":"17 회개와 믿음","s":"교리설교 5부서","h":"./신앙고백.html#sermon/repentance_faith/adult","t":"회개 믿음 교리설교 설교 장년부"},{"l":"18 확신과 양자됨","s":"교리설교 5부서","h":"./신앙고백.html#sermon/assurance_adoption/adult","t":"확신 양자 교리설교 설교 장년부"},{"l":"19 성례와 세례","s":"교리설교 5부서","h":"./신앙고백.html#sermon/sacrament_baptism/adult","t":"성례 세례 교리설교 설교 장년부"},{"l":"20 성찬","s":"교리설교 5부서","h":"./신앙고백.html#sermon/supper/adult","t":"성찬圣餐 성만찬 교리설교 설교 장년부"},{"l":"21 교회","s":"교리설교 5부서","h":"./신앙고백.html#sermon/church/adult","t":"교회 교리설교 설교 장년부"},{"l":"22 교회의 직분과 치리","s":"교리설교 5부서","h":"./신앙고백.html#sermon/office_discipline/adult","t":"직분 장로 목사 집사 권징 치리 교리설교 설교 장년부"},{"l":"23 예배와 주일","s":"교리설교 5부서","h":"./신앙고백.html#sermon/worship_sabbath/adult","t":"예배 주일 안식일 안식 교리설교 설교 장년부"},{"l":"24 기도","s":"교리설교 5부서","h":"./신앙고백.html#sermon/prayer/adult","t":"기도 주기도문 교리설교 설교 장년부"},{"l":"25 부활과 영생","s":"교리설교 5부서","h":"./신앙고백.html#sermon/resurrection_life/adult","t":"부활 영생 종말 천년왕국 무천년 아천년 재림 심판 교리설교 설교 장년부"},{"l":"26 자유의지","s":"교리설교 5부서","h":"./신앙고백.html#sermon/free_will/adult","t":"자유의지 의지 교리설교 설교 장년부"},{"l":"27 교회와 국가","s":"교리설교 5부서","h":"./신앙고백.html#sermon/church_state/adult","t":"교회 국가 정교분리 교리설교 설교 장년부"},{"l":"강요 전문 — 1536 초판 (6장)","s":"칼빈 기독교강요","h":"./기독교강요.html#ed-1536","t":"칼빈 강요 초판 1536 Institutes"},{"l":"강요 전문 — 1559 최종판 (4권 80장)","s":"칼빈 기독교강요","h":"./기독교강요.html#ed-1559","t":"칼빈 강요 최종판 1559 4권 80장 Institutes"},{"l":"강요 색인 연결지도 (1559)","s":"칼빈 기독교강요","h":"./기독교강요그래프.html","t":"칼빈 강요 그래프 주제 27 색인 지도"},{"l":"강요 5부서 교리설교","s":"칼빈 기독교강요","h":"./기독교강요.html#ed-sermons","t":"교리설교 장년부 청년부 중고등부 유년부 유치부"},{"l":"원어성경 단어빈도 — 핵심어 300개","s":"원어성경","h":"./원어성경그래프.html","t":"원어 히브리어 헬라어 아람어 스트롱 음역 빈도 단어 핵심어 300"},{"l":"개역개정 단어빈도 — 핵심어 300개","s":"한글 성경","h":"./개역개정그래프.html","t":"개역개정 한글 단어 빈도 조사 핵심어 300"},{"l":"재건총회 헌법 1 (웨민 제외)","s":"재건총회 자료실","h":"../JAEGUN/재건총회헌법1.html","t":"헌법 신조 교회정치 권징조례 예배와 예식"},{"l":"재건총회 헌법 2 (웨민 포함)","s":"재건총회 자료실","h":"../JAEGUN/재건총회헌법2.html","t":"헌법 웨스트민스터 신앙고백 대요리문답 소요리문답"},{"l":"재건총회 헌법적 규칙","s":"재건총회 자료실","h":"../JAEGUN/재건총회헌법1.html#part10","t":"헌법적 규칙 총회규칙 장례조례"},{"l":"전체 회기 총회 결의문 (72~108회)","s":"재건총회 자료실","h":"../JAEGUN/재건총회헌법1.html#part9","t":"총회 결의 결의사항 회기"},{"l":"신학지남 주제 — 설교·강도","s":"신학지남서고","h":"./신학지남.html#/idx/topics~t-sermon","t":"신학지남 논문 글"},{"l":"신학지남 주제 — 소식·통신·자료","s":"신학지남서고","h":"./신학지남.html#/idx/topics~t-notice","t":"신학지남 논문 글"},{"l":"신학지남 주제 — 인물·전기","s":"신학지남서고","h":"./신학지남.html#/idx/topics~t-person","t":"신학지남 논문 글"},{"l":"신학지남 주제 — 서평·비평","s":"신학지남서고","h":"./신학지남.html#/idx/topics~t-review","t":"신학지남 논문 글"},{"l":"신학지남 주제 — 교육·주일학교","s":"신학지남서고","h":"./신학지남.html#/idx/topics~t-education","t":"신학지남 논문 글"},{"l":"신학지남 주제 — 선교·전도","s":"신학지남서고","h":"./신학지남.html#/idx/topics~t-mission","t":"신학지남 논문 글"},{"l":"신학지남 주제 — 교회·목회","s":"신학지남서고","h":"./신학지남.html#/idx/topics~t-church","t":"신학지남 논문 글"},{"l":"신학지남 주제 — 교회사·역사","s":"신학지남서고","h":"./신학지남.html#/idx/topics~t-history","t":"신학지남 논문 글"},{"l":"신학지남 주제 — 성경·주해","s":"신학지남서고","h":"./신학지남.html#/idx/topics~t-bible","t":"신학지남 논문 글"},{"l":"신학지남 주제 — 조직신학·교의","s":"신학지남서고","h":"./신학지남.html#/idx/topics~t-systematic","t":"신학지남 논문 글"},{"l":"신학지남 주제 — 사회·윤리·생활","s":"신학지남서고","h":"./신학지남.html#/idx/topics~t-social","t":"신학지남 논문 글"},{"l":"신학지남 주제 — 그 밖의 글","s":"신학지남서고","h":"./신학지남.html#/idx/topics~t-etc","t":"신학지남 논문 글"},{"l":"신학지남 연대 — 1918–1949","s":"신학지남서고","h":"./신학지남.html#/idx/era/e1","t":"신학지남 연도"},{"l":"신학지남 연대 — 1950–1969","s":"신학지남서고","h":"./신학지남.html#/idx/era/e2","t":"신학지남 연도"},{"l":"신학지남 연대 — 1970년대","s":"신학지남서고","h":"./신학지남.html#/idx/era/e3","t":"신학지남 연도"},{"l":"신학지남 연대 — 1980년대","s":"신학지남서고","h":"./신학지남.html#/idx/era/e4","t":"신학지남 연도"},{"l":"신학지남 연대 — 1990년대","s":"신학지남서고","h":"./신학지남.html#/idx/era/e5","t":"신학지남 연도"},{"l":"신학지남 연대 — 2000–2011","s":"신학지남서고","h":"./신학지남.html#/idx/era/e6","t":"신학지남 연도"},{"l":"신학지남 통권별 (제1–309호)","s":"신학지남서고","h":"./신학지남.html#/idx/issues","t":"통권 호"},{"l":"신학지남 전체 목록 4,916편","s":"신학지남서고","h":"./신학지남.html#/idx/all","t":"전체 목록"},{"l":"신학지남 저자별 711명","s":"신학지남서고","h":"./신학지남.html#/idx/authors","t":"저자"},{"l":"유사종교 — 꾸란과 이슬람","s":"유사종교서고","h":"./유사종교.html#p1a1","t":""},{"l":"유사종교 — 유사종교와 이단","s":"유사종교서고","h":"./유사종교.html#p2a17","t":""},{"l":"유사종교 — 자유주의 신학","s":"유사종교서고","h":"./유사종교.html#p3a1","t":""},{"l":"유사종교 — 문서설과 성경비평","s":"유사종교서고","h":"./유사종교.html#p4a1","t":""},{"l":"유사종교 — 퀴어신학","s":"유사종교서고","h":"./유사종교.html#p5a8","t":""},{"l":"유사종교 — 무신론과 사탄주의","s":"유사종교서고","h":"./유사종교.html#p6a1","t":""},{"l":"타우히드 — “하나님은 단 한 분”과 삼위일체의 부정","s":"유사종교 · 꾸란과 이슬람","h":"./유사종교.html#p1a1","t":"수라 112 · 5:73 꾸란과 이슬람"},{"l":"“하나님은 아들을 두지 않으셨다” — 성육신에 대한 오해와 그 답","s":"유사종교 · 꾸란과 이슬람","h":"./유사종교.html#p1a2","t":"수라 5:116 · 9:30 꾸란과 이슬람"},{"l":"예수는 하나님의 말씀과 예언자 — 참된 예수, 그러나 하나님은 아닌 예수","s":"유사종교 · 꾸란과 이슬람","h":"./유사종교.html#p1a3","t":"수라 4:171 · 43:59 꾸란과 이슬람"},{"l":"십자가 사건의 부정 — “그들은 그를 죽이지 않았다”","s":"유사종교 · 꾸란과 이슬람","h":"./유사종교.html#p1a4","t":"수라 4:157-158 꾸란과 이슬람"},{"l":"마지막 심판자는 하나님이시다 — 예수의 재림과 심판권 부정","s":"유사종교 · 꾸란과 이슬람","h":"./유사종교.html#p1a5","t":"수라 4:59 · 3:55 꾸란과 이슬람"},{"l":"타흐리프 — “성경은 사람의 손으로 변조되었다”","s":"유사종교 · 꾸란과 이슬람","h":"./유사종교.html#p1a6","t":"수라 2:79 · 5:13 꾸란과 이슬람"},{"l":"무함마드는 마지막 예언자 — 계시의 종결과 “예언자들의 인”","s":"유사종교 · 꾸란과 이슬람","h":"./유사종교.html#p1a7","t":"수라 33:40 꾸란과 이슬람"},{"l":"저울과 행위 — 구원은 하나님의 자비와 순종으로","s":"유사종교 · 꾸란과 이슬람","h":"./유사종교.html#p1a8","t":"수라 7:8-9 · 3:31 꾸란과 이슬람"},{"l":"천국과 지옥 — 대속 없는 심판, 그러나 자비의 문","s":"유사종교 · 꾸란과 이슬람","h":"./유사종교.html#p1a9","t":"수라 2:81-82 꾸란과 이슬람"},{"l":"교주와 계보 — 박태선·유재열·백만봉에서 이만희까지","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a17","t":"신천지 · 계보 유사종교와 이단"},{"l":"“계시록의 실상” — 배도·멸망·구원의 노정","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a1","t":"신천지 · 실상교리 유사종교와 이단"},{"l":"144,000과 흰 무리 — 육체 영생 교리","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a2","t":"신천지 · 계 7장 유사종교와 이단"},{"l":"“보혜사”와 약속의 목자 — 성령 자리에 사람을 세우는 논법","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a3","t":"신천지 · 요 14:16 유사종교와 이단"},{"l":"비유풀이(짝 교리) — 상징에 실체를 배정하는 해석","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a18","t":"신천지 · 비유풀이 유사종교와 이단"},{"l":"요한계시록의 구속사적 독법 — 이만희 해석의 네 가지 왜곡","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a19","t":"신천지 · 계시록 구속사 유사종교와 이단"},{"l":"삼위일체의 부정 — 예수는 미가엘, 성령은 활동력","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a4","t":"여증 · 요 14:28 유사종교와 이단"},{"l":"1914년 — 보이지 않는 재림과 왕국의 시작","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a5","t":"여증 · 계 11:15 유사종교와 이단"},{"l":"영혼과 지옥의 부정 — 144,000과 “큰 무리”","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a6","t":"여증 · 계 14:3 유사종교와 이단"},{"l":"“회복”과 새로운 경전 — 성경 옆에 놓인 세 권의 책","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a7","t":"몰몬 · 회복 유사종교와 이단"},{"l":"신회와 하나님의 진보 — “하나님도 한때 인간이셨다”","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a8","t":"몰몬 · 신회 유사종교와 이단"},{"l":"원리강론 — 창조원리와 성적 타락론","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a9","t":"통일교 · 원리강론 유사종교와 이단"},{"l":"“예수의 사명은 실패했다” — 재림주와 참부모","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a10","t":"통일교 · 재림론 유사종교와 이단"},{"l":"안상홍과 장길자 — 죽은 사람을 재림주로 세우는 논법","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a20","t":"하나님의교회 · 안상홍 유사종교와 이단"},{"l":"어머니 하나님 — “우리”라는 복수와 예루살렘 어머니","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a11","t":"하나님의교회 · 어머니 하나님 유사종교와 이단"},{"l":"1988년과 안식일·유월절 — 절기를 구원의 조건으로","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a12","t":"하나님의교회 · 절기 유사종교와 이단"},{"l":"십자가·생명책·수건 — 우상 논법과 명부 구원론","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a21","t":"하나님의교회 · 십자가 유사종교와 이단"},{"l":"1988·1994·1999·2012 — 네 번 옮겨진 종말의 날짜","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a22","t":"하나님의교회 · 시한부 유사종교와 이단"},{"l":"멜기세덱의 반차 — “아비도 어미도 없다”를 이방 출생으로 읽는 법","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a25","t":"하나님의교회 · 멜기세덱 유사종교와 이단"},{"l":"성령과 신부 — 계 22:17의 초청과 “새 이름”(계 2:17·3:12)","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a26","t":"하나님의교회 · 성령과 신부 유사종교와 이단"},{"l":"무화과나무 — 가지와 잎사귀에서 1988년을 계산하는 법","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a27","t":"하나님의교회 · 무화과나무 유사종교와 이단"},{"l":"3차의 7개 절기 — 그림자와 실체를 바꾼 표","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a28","t":"하나님의교회 · 3차 7절기 유사종교와 이단"},{"l":"“구름은 육체다” — 재림을 숨은 사람으로 바꾸는 해석","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a29","t":"하나님의교회 · 재림의 방식 유사종교와 이단"},{"l":"안식교와 구원파 — 계보와 반대편 끝에서 만나는 자리","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a30","t":"하나님의교회 · 안식교·구원파 유사종교와 이단"},{"l":"개혁주의 신학으로 본 하나님의교회 — 여섯 자리에서 무너지는 고백","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a31","t":"하나님의교회 · 개혁주의 비판 유사종교와 이단"},{"l":"1844년 조사심판과 엘렌 화이트의 계시","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a13","t":"안식교 · 조사심판 유사종교와 이단"},{"l":"토요 안식일과 영혼멸절 — 구원의 조건이 된 날짜","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a14","t":"안식교 · 안식일 유사종교와 이단"},{"l":"“깨달음”으로 얻는 구원 — 영지주의적 구조","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a15","t":"구원파 · 깨달음 유사종교와 이단"},{"l":"“회개하지 말라, 죄인이라 하면 지옥 간다”","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a16","t":"구원파 · 회개 유사종교와 이단"},{"l":"모략 전도 — 정체를 숨기고 접근하는 방식","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a23","t":"모략 전도 · 접근 방식 유사종교와 이단"},{"l":"상담과 예방 — 가정과 교회가 할 일","s":"유사종교 · 유사종교와 이단","h":"./유사종교.html#p2a24","t":"상담 · 예방 지침 유사종교와 이단"},{"l":"“절대 의존의 감정” — 종교를 경험으로 정의하기","s":"유사종교 · 자유주의 신학","h":"./유사종교.html#p3a1","t":"슐라이어마허 · 종교론 자유주의 신학"},{"l":"성경은 “신앙 경험의 기록”인가","s":"유사종교 · 자유주의 신학","h":"./유사종교.html#p3a2","t":"자유주의 · 성경론 자유주의 신학"},{"l":"“아버지·영혼·사랑” — 기독교의 본질은 무엇인가","s":"유사종교 · 자유주의 신학","h":"./유사종교.html#p3a3","t":"하르낙 · 본질 자유주의 신학"},{"l":"교리의 “헬라화” — 삼위일체를 후대의 발명으로 보는 시각","s":"유사종교 · 자유주의 신학","h":"./유사종교.html#p3a4","t":"하르낙 · 교리사 자유주의 신학"},{"l":"철저한 종말론 — 다시 그려진 예수, 사라진 부활","s":"유사종교 · 자유주의 신학","h":"./유사종교.html#p3a5","t":"슈바이처 · 역사적 예수 자유주의 신학"},{"l":"민중은 새로운 주체인가 — 안병무의 민중론","s":"유사종교 · 자유주의 신학","h":"./유사종교.html#p3a6","t":"민중신학 · 민중 자유주의 신학"},{"l":"해방신학 — 가난한 자의 우선적 선택과 마르크스주의","s":"유사종교 · 자유주의 신학","h":"./유사종교.html#p3a7","t":"해방신학 · 사회분석 자유주의 신학"},{"l":"박형룡과 김재준 — 성경의 권위는 어디에 있는가","s":"유사종교 · 자유주의 신학","h":"./유사종교.html#p3a8","t":"한국 · 성경관 자유주의 신학"},{"l":"JEDP — 네 자료와 이스라엘 종교의 세 단계","s":"유사종교 · 문서설과 성경비평","h":"./유사종교.html#p4a1","t":"벨하우젠 · JEDP 문서설과 성경비평"},{"l":"“문서설은 죽었는가” — 신문서설과 비평의 현주소","s":"유사종교 · 문서설과 성경비평","h":"./유사종교.html#p4a2","t":"신문서설 · Schmid 문서설과 성경비평"},{"l":"양식과 삶의 자리 — 본문은 공동체의 산물인가","s":"유사종교 · 문서설과 성경비평","h":"./유사종교.html#p4a3","t":"궁켈 · 양식비평 문서설과 성경비평"},{"l":"두 자료설 — 마가가 먼저, Q는 어디에 있는가","s":"유사종교 · 문서설과 성경비평","h":"./유사종교.html#p4a4","t":"마가우선설 · Q 문서설과 성경비평"},{"l":"신화를 벗겨 낸 예수 — 탐구의 동기와 결론","s":"유사종교 · 문서설과 성경비평","h":"./유사종교.html#p4a5","t":"라이마루스 · 케제만 문서설과 성경비평"},{"l":"닫힌 우주 — 역사비평의 숨은 전제","s":"유사종교 · 문서설과 성경비평","h":"./유사종교.html#p4a6","t":"역사비평 · 전제 문서설과 성경비평"},{"l":"정경은 교회가 만든 것인가, 교회가 받은 것인가","s":"유사종교 · 문서설과 성경비평","h":"./유사종교.html#p4a7","t":"정경 · 교회 문서설과 성경비평"},{"l":"워필드의 성경론 — 유기적 영감과 무오","s":"유사종교 · 문서설과 성경비평","h":"./유사종교.html#p4a8","t":"워필드 · 성경론 문서설과 성경비평"},{"l":"퀴어 해석학 — 경험은 렌즈인가, 기준인가","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5a8","t":"퀴어 해석학 퀴어신학"},{"l":"데이비스 — 설교로 옮겨진 퀴어 해석학","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5b1","t":"Davis · 설교 퀴어신학"},{"l":"QBC — 66권을 다시 쓴 주석","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5b2","t":"QBC · 재해석 퀴어신학"},{"l":"“남자와 여자”를 넘어 — 창세기 1~3장의 퀴어링","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5a1","t":"창 1-3 · 퀴어링 퀴어신학"},{"l":"“한 몸”의 의미 — 관계의 다양성인가, 언약의 구조인가","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5a2","t":"창 2:24 · 한 몸 퀴어신학"},{"l":"창세기 19장 — “알다”의 의미와 환대의 죄","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5a3","t":"창 19 · 소돔 퀴어신학"},{"l":"레위기 18:22와 20:13 — 몰렉 제사의 문맥인가","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5a4","t":"레 18:22 퀴어신학"},{"l":"로마서 1:26-27 — “순리대로”라는 말의 무게","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5a5","t":"롬 1:26-27 퀴어신학"},{"l":"말라코이와 아르세노코이타이 — 두 단어의 번역 논쟁","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5a6","t":"고전 6:9 · 딤전 1:10 퀴어신학"},{"l":"룻과 나오미 — 사랑인가, 언약적 전환인가","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5b4","t":"룻 · 나오미 퀴어신학"},{"l":"마태복음 25장 — “지극히 작은 자”는 누구인가","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5b5","t":"마 25 · 작은 자 퀴어신학"},{"l":"이사야서 — 젠더 역전과 고자의 자리","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5b6","t":"이사야 · 고자 퀴어신학"},{"l":"호세아서 — 낙인과 상처를 넘어 치유로","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5b11","t":"호세아 · 낙인 퀴어신학"},{"l":"우간다의 “소돔 행위” — 시와 내러티브 해석학","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5b7","t":"우간다 · 시 퀴어신학"},{"l":"《퀸 제임스 성경》이란 무엇인가 — 네 가지 편집 전략","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5a7","t":"QJB · 개요 퀴어신학"},{"l":"여덟 구절 1:1 대조표 — 개역한글 · QJB 변개 · 문법·역사적 주해","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5b8","t":"QJB · 8구절 표 퀴어신학"},{"l":"이승구의 분석 — 여섯 영역에서 갈라지는 곳","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5a9","t":"이승구 · 여섯 영역 퀴어신학"},{"l":"이종철의 QBC 비평 — 비판과 대화의 모범","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5b9","t":"이종철 · 대화 퀴어신학"},{"l":"워필드의 성경론 — 무오는 무엇을 주장하는가","s":"유사종교 · 퀴어신학","h":"./유사종교.html#p5b10","t":"워필드 · 성경론 퀴어신학"},{"l":"“신은 죽었다” — 노예도덕과 힘에의 의지","s":"유사종교 · 무신론과 사탄주의","h":"./유사종교.html#p6a1","t":"니체 · 도덕의 계보 무신론과 사탄주의"},{"l":"재림의 지연과 지옥 — 예수의 도덕성 비판","s":"유사종교 · 무신론과 사탄주의","h":"./유사종교.html#p6a2","t":"러셀 · 예수의 도덕 무신론과 사탄주의"},{"l":"신 존재 논증에 대한 비판 — “누가 하나님을 만들었는가”","s":"유사종교 · 무신론과 사탄주의","h":"./유사종교.html#p6a3","t":"러셀 · 논증 비판 무신론과 사탄주의"},{"l":"궁극의 보잉 747 — “설계자는 누가 설계했는가”","s":"유사종교 · 무신론과 사탄주의","h":"./유사종교.html#p6a4","t":"도킨스 · 747논법 무신론과 사탄주의"},{"l":"“종교는 아동 학대인가” — 종교 비판의 전제","s":"유사종교 · 무신론과 사탄주의","h":"./유사종교.html#p6a5","t":"도킨스 · 종교비판 무신론과 사탄주의"},{"l":"아홉 개의 선언 — 쾌락·복수·자기 긍정","s":"유사종교 · 무신론과 사탄주의","h":"./유사종교.html#p6a6","t":"사탄성경 · 9선언 무신론과 사탄주의"},{"l":"자기 신격화 — “나는 나의 신이다”","s":"유사종교 · 무신론과 사탄주의","h":"./유사종교.html#p6a7","t":"사탄교 · 인간관 무신론과 사탄주의"},{"l":"성경의 폭력 본문과 노예제 — 하나님은 잔인한가","s":"유사종교 · 무신론과 사탄주의","h":"./유사종교.html#p6a8","t":"성경윤리 무신론과 사탄주의"},{"l":"만능 문서뷰어","s":"유틸·도구","h":"./문서뷰어.html","t":"워드 pdf 한글 문서 보기"},{"l":"설교 그래프 — 설교 3,165편","s":"유틸·도구","h":"./설교그래프.html","t":"설교 연결 지도 원고"},{"l":"한국 전통 윷놀이","s":"유틸·도구","h":"./윷놀이.html","t":"윷 게임 놀이"}];
+  var REC_KEY = 'mokhoe_recent_v1', REC_MAX = 4;
+  var q = document.getElementById('qAll');
+  var box = document.getElementById('findRes');
+  var chips = document.getElementById('findChips');
+  var recBox = document.getElementById('recentBox');
+  if(!q || !box) return;
+
+  function norm(s){ return (s||'').toLowerCase().replace(/\s+/g,''); }
+  function tokens(s){
+    var raw = (s||'').toLowerCase().split(/\s+/).filter(Boolean);
+    var keep = raw.filter(function(t){ return !/^\d+(장|절|편|회|호|권|개)?$/.test(t); });
+    return keep.length ? keep : raw;
+  }
+  function rank(e, qq, toks){
+    var L = norm(e.l), H = norm(e.l + ' ' + e.t + ' ' + e.s);
+    for(var i=0;i<toks.length;i++){ if(H.indexOf(norm(toks[i]))<0) return -1; }
+    if(L === norm(qq)) return 0;
+    if(L.indexOf(norm(qq)) === 0) return 1;
+    if(L.indexOf(norm(qq)) > 0) return 2;
+    return 3;
+  }
+  function render(qq){
+    var toks = tokens(qq), out = [], seen = {};
+    for(var i=0;i<IDX.length;i++){
+      var sc = rank(IDX[i], qq, toks);
+      if(sc < 0) continue;
+      out.push({e:IDX[i], s:sc, i:i});
+    }
+    out.sort(function(a,b){ return a.s - b.s || a.i - b.i; });
+    if(!out.length){
+      box.innerHTML = '<div class="fnone">찾는 것이 없습니다. 위 여덟 메뉴에서 골라 주세요.</div>';
+      box.hidden = false; return;
+    }
+    var h = '';
+    for(var k=0;k<out.length && k<14;k++){
+      var e = out[k].e;
+      h += '<a class="fres" href="' + e.h + '" data-rec="' + e.l.replace(/"/g,'') + '">'
+         + '<span class="fs">' + e.s + '</span><b>' + e.l + '</b><span class="fgo">열기 →</span></a>';
+    }
+    box.innerHTML = h; box.hidden = false;
+  }
+  q.addEventListener('input', function(){
+    var v = q.value.trim();
+    if(!v){ box.hidden = true; box.innerHTML = ''; return; }
+    render(v);
+  });
+  q.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      var first = box.querySelector('a.fres');
+      if(first) window.location.href = first.getAttribute('href');
+    }
+    if(e.key === 'Escape'){ box.hidden = true; }
+  });
+  if(chips){
+    chips.addEventListener('click', function(e){
+      var b = e.target.closest ? e.target.closest('button[data-q]') : null;
+      if(!b) return;
+      q.value = b.getAttribute('data-q');
+      render(q.value); q.focus();
+    });
+  }
+  document.addEventListener('click', function(e){
+    if(!box.hidden && !box.contains(e.target) && e.target !== q) box.hidden = true;
+  });
+
+  /* 최근 열어 본 서고 */
+  function load(){ try{ return JSON.parse(localStorage.getItem(REC_KEY) || '[]') || []; }catch(e){ return []; } }
+  function save(a){ try{ localStorage.setItem(REC_KEY, JSON.stringify(a.slice(0, REC_MAX))); }catch(e){} }
+  function paintRec(){
+    var a = load();
+    if(!a.length){ recBox.hidden = true; recBox.innerHTML = ''; return; }
+    var h = '<span class="rh">최근 열어 본 서고</span>';
+    for(var i=0;i<a.length;i++){
+      h += '<a href="' + a[i].h + '" data-rec="' + String(a[i].l).replace(/"/g,'') + '">' + a[i].l + '</a>';
+    }
+    h += '<button type="button" class="rc" id="recClear" title="기록 지우기" aria-label="최근 기록 지우기">✕</button>';
+    recBox.innerHTML = h; recBox.hidden = false;
+    var c = document.getElementById('recClear');
+    if(c) c.addEventListener('click', function(ev){ ev.preventDefault(); save([]); paintRec(); });
+  }
+  function push(label, href){
+    if(!label || !href) return;
+    if(href.charAt(0) === '#' || href.indexOf('mailto:') === 0) return;
+    var a = load().filter(function(x){ return x.h !== href; });
+    a.unshift({l: label, h: href, t: Date.now()});
+    save(a); paintRec();
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href]') : null;
+    if(!a) return;
+    var href = a.getAttribute('href');
+    if(!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0) return;
+    var label = a.getAttribute('data-rec');
+    if(!label){
+      var b = a.querySelector('b');
+      label = (b ? b.textContent : a.textContent) || '';
+    }
+    label = String(label).replace(/\s+/g,' ').trim().slice(0,34);
+    push(label, href);
+  });
+  paintRec();
+})();
+</script>
+
+
+<script>
+/* 8메뉴 드롭다운 — PC는 마우스 오버, 휴대폰·태블릿은 누르면 펼침(아코디언) */
 (function(){
   var nav=document.getElementById('mainnav');
   var panels=document.getElementById('panels');
