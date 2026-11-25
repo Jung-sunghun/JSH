@@ -36,9 +36,9 @@ button{font-family:inherit}
 /* ── 상단 메뉴 1~11 — 각 2배 크기 박스 · 항목별 배경색 ──── */
 .mainnav{background:#0b1a2b;padding:14px 0 16px;border-bottom:1px solid rgba(255,255,255,.14);
   z-index:60;box-shadow:0 10px 24px rgba(8,18,32,.2)}
-.navwrap{max-width:1200px;display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
-.nv{min-width:0;grid-column:span 3}
-.nv:nth-child(9),.nv:nth-child(10),.nv:nth-child(11){grid-column:span 4}
+/* PC: 1~11번을 한 줄 11칸으로 — 왼쪽부터 오른쪽 끝까지 빈칸 없이 */
+.navwrap{max-width:1200px;display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:6px;align-items:stretch}
+.nv{min-width:0;grid-column:auto}
 .nvb{position:relative;display:flex;align-items:center;gap:12px;width:100%;height:100%;
   min-height:76px;padding:13px 15px;text-align:left;cursor:pointer;
   -webkit-appearance:none;appearance:none;border:1px solid rgba(255,255,255,.17);
@@ -252,6 +252,31 @@ main{padding:30px 0 6px}
 }
 @media (min-width:901px){
   .np[hidden]{display:none}
+}
+/* 901~1023px: 예전 네 칸씩 세 줄 배치를 그대로 둔다 */
+@media (min-width:901px) and (max-width:1023px){
+  .navwrap{grid-template-columns:repeat(12,1fr);gap:10px}
+  .nv{grid-column:span 3}
+  .nv:nth-child(9),.nv:nth-child(10),.nv:nth-child(11){grid-column:span 4}
+}
+/* 1024px 이상: 한 줄 11칸 — 번호 위·제목 아래 콤팩트 세로 배치, 가운데 정렬 */
+@media (min-width:1024px){
+  .navwrap{grid-template-columns:repeat(11,minmax(0,1fr));gap:6px}
+  .nvb{flex-direction:column;justify-content:center;align-items:center;text-align:center;
+    gap:5px;min-height:74px;padding:8px 4px 7px;border-radius:12px}
+  .nvb .num{width:24px;height:24px;font-size:11.5px}
+  .nvb .txt{align-items:center;gap:2px;text-align:center}
+  .nvb .lb{font-size:14px;line-height:1.3;letter-spacing:-.03em;text-wrap:balance}
+  .nvb .sub{display:none}
+  .nvb .car{top:4px;right:6px;font-size:11px;opacity:.85}
+}
+/* 넓은 화면: 메뉴 줄을 화면 폭에 맞춰 더 넓게 펼친다 */
+@media (min-width:1400px){
+  .navwrap{max-width:1360px}
+}
+@media (min-width:1700px){
+  .navwrap{max-width:1640px}
+  .nvb .lb{font-size:15px}
 }
 
 /* ══ 서고 공통: ↑·↓ 한 알약(캡슐) 단추 — 1.모세오경 최신 규격(15차) ══ */
