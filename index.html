@@ -3,339 +3,48 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>정성헌목사 목회 서고(書庫)</title>
-<meta name="description" content="정성헌목사(대구선교교회)의 목회 서고. 유사종교와 이단, 꾸란과 이슬람, 자유주의 신학, 문서설과 성경비평, 퀴어신학, 무신론과 사탄주의를 개혁주의·성경신학의 좌표에서 1:1로 대조한 자료.">
+<title>정성헌목사 목회 서고(書庫) · Reformed Faith Library</title>
+<meta name="description" content="정성헌 목사(대구선교교회)의 목회서고(書庫). 곧바로 목회서고 대문으로 이동합니다.">
+<meta http-equiv="refresh" content="0; url=./공유/">
+<link rel="canonical" href="./공유/">
 <style>
 :root{
-  --navy:#162d47; --navy2:#1d3a5c; --navy3:#24466c;
-  --ink:#0f172a; --muted:#46586d; --bg:#f6f8fb; --paper:#fff;
-  --line:#d5dfe9; --accent:#8c2434; --accent2:#6f1a28; --gold:#8a6a1f;
+  --navy:#162d47; --navy2:#1d3a5c; --ink:#0f172a; --muted:#46586d;
+  --bg:#f6f8fb; --paper:#fff; --line:#d5dfe9; --accent:#8c2434; --accent2:#6f1a28; --gold:#b98a2a;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--bg);color:var(--ink);padding:28px 20px 40px;text-align:center;
   font-family:'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
   font-size:17px;line-height:1.8;word-break:keep-all;overflow-wrap:break-word}
-h1,h2,h3,p,ul,li{margin:0;padding:0}
-a{color:var(--navy3);text-decoration:none}
-.wrap{max-width:880px;margin:0 auto;padding:0 20px}
-
-header{background:var(--navy);color:#fff;padding:44px 0 40px;border-bottom:4px solid var(--accent)}
-header .kicker{display:inline-block;font-size:.8em;letter-spacing:.14em;color:#b9cde3;font-weight:700}
-header h1{margin-top:12px;font-size:2.05em;line-height:1.3;letter-spacing:-.03em;font-weight:800;color:#fff}
-header .creed{margin-top:30px;padding-top:26px;border-top:1px solid rgba(255,255,255,.16)}
-header .creed .item{display:flex;align-items:baseline;gap:16px}
-header .creed .item+.item{margin-top:26px}
-header .creed .label{flex:0 0 auto;display:inline-block;white-space:nowrap;
-  font-size:1.5em;font-weight:800;letter-spacing:.06em;line-height:1.4;
-  color:#f2dfb2;background:rgba(138,106,31,.42);border:1px solid rgba(226,196,132,.5);
-  border-radius:999px;padding:3px 16px}
-header .creed .value{color:#e9f0f7;font-size:1em;font-weight:400;line-height:1.8;letter-spacing:-.005em}
-
-main{padding:36px 0 8px}
-.card{display:block;background:var(--paper);border:1px solid var(--line);border-radius:16px;
-  padding:26px 24px 24px;box-shadow:0 1px 2px rgba(15,23,42,.05),0 10px 26px rgba(15,23,42,.07);
-  transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
-.card:hover{transform:translateY(-3px);border-color:#b7c8da;
-  box-shadow:0 2px 4px rgba(15,23,42,.07),0 16px 34px rgba(15,23,42,.12)}
-.card:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.card+.card{margin-top:18px}
-.card .tag{display:inline-block;font-size:.78em;font-weight:800;letter-spacing:.06em;
-  color:var(--accent);background:#fbeef0;border:1px solid #e8c9cf;border-radius:999px;padding:3px 11px}
-.card h2{margin-top:14px;font-size:1.5em;line-height:1.35;letter-spacing:-.02em;font-weight:800;color:var(--navy)}
-.card .lead{margin-top:10px;color:var(--muted);font-size:.95em;line-height:1.8}
-.chips{list-style:none;display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
-.chips li{font-size:.82em;color:var(--navy2);background:#eff3f8;border:1px solid #dde7f1;
-  border-radius:8px;padding:5px 10px;line-height:1.4}
-.go{margin-top:22px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+.box{width:100%;max-width:560px;background:var(--paper);border:1px solid var(--line);border-radius:18px;
+  padding:38px 28px 32px;box-shadow:0 1px 2px rgba(15,23,42,.05),0 12px 30px rgba(15,23,42,.08)}
+.kicker{display:inline-block;font-size:.78em;font-weight:800;letter-spacing:.12em;color:var(--navy2)}
+h1{margin:12px 0 0;font-size:1.5em;line-height:1.4;letter-spacing:-.02em;color:var(--navy)}
+.sub{margin:8px 0 0;font-size:.86em;letter-spacing:.04em;color:var(--gold);font-weight:700}
+p.msg{margin:22px 0 0;color:var(--muted);font-size:.95em}
+.go{margin-top:24px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
   width:100%;min-height:56px;background:var(--accent);color:#fff;font-weight:800;font-size:1.02em;
-  border-radius:12px;letter-spacing:.01em;box-shadow:0 6px 16px rgba(140,36,52,.26)}
-.card:hover .go{background:var(--accent2)}
-
-.note{margin:26px 0 0;padding:18px 20px;background:#f3f6fa;border:1px solid var(--line);
-  border-left:4px solid var(--navy3);border-radius:10px;color:var(--muted);font-size:.9em;line-height:1.8}
-
-footer{margin-top:40px;padding:28px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:.86em;line-height:1.9}
-footer b{color:var(--navy2)}
-footer .row{line-height:1.9}
-footer .row span{white-space:nowrap;margin-right:14px}
-footer .support{margin-top:0;line-height:1.9}
-footer .support .acct{color:var(--navy2);font-weight:700}
-footer .support .desc{font-size:1em}
-
-@media (max-width:520px){
-  body{font-size:16px}
-  header{padding:34px 0 30px}
-  header h1{font-size:1.62em}
-  header .creed{margin-top:22px;padding-top:18px}
-  header .creed .item{display:block}
-  header .creed .item+.item{margin-top:20px}
-  header .creed .label{margin:0 0 8px;font-size:1.35em;padding:2px 14px}
-  header .creed .value{display:block;font-size:.97em;line-height:1.8;letter-spacing:-.005em}
-  .card{padding:22px 18px 20px;border-radius:14px}
-  .card h2{font-size:1.28em}
-  .wrap{padding:0 16px}
-}
+  border-radius:12px;letter-spacing:.01em;text-decoration:none;box-shadow:0 6px 16px rgba(140,36,52,.26)}
+.go:hover,.go:focus{background:var(--accent2)}
+.go:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+.foot{margin:26px 0 0;font-size:.8em;line-height:1.9;color:var(--muted)}
+.foot b{color:var(--navy2)}
+@media (max-width:420px){.box{padding:30px 20px 26px}h1{font-size:1.32em}}
 </style>
+<script>location.replace('./공유/');</script>
 </head>
 <body>
-<!-- [홈 화면 바로가기 안내] 상단 바 ───────────────────────────────────── -->
-<style>
-#hpguideBar{display:flex;grid-column:1/-1;justify-content:center;align-items:center;gap:8px;
-  padding:9px 12px;margin:0;background:#162d47;border-bottom:1px solid rgba(255,255,255,.18);
-  font-family:inherit;text-align:center;word-break:keep-all;overflow-wrap:break-word;
-  position:relative;z-index:20}
-#hpguideBar>button{display:inline-flex;align-items:center;justify-content:center;gap:6px;
-  margin:0;min-height:38px;padding:7px 18px;
-  -webkit-appearance:none;appearance:none;cursor:pointer;
-  border:1px solid rgba(255,255,255,.46);border-radius:999px;
-  background:rgba(255,255,255,.13);color:#fff;
-  font-family:inherit;font-size:.88em;font-weight:700;line-height:1.3;letter-spacing:.01em;
-  box-shadow:none;transition:background .15s ease,border-color .15s ease}
-#hpguideBar>button:hover{background:rgba(255,255,255,.24);border-color:rgba(255,255,255,.7)}
-#hpguideBar>button:focus-visible{outline:2px solid #f2dfb2;outline-offset:2px}
-@media (max-width:430px){#hpguideBar{padding:8px 10px}
-  #hpguideBar>button{font-size:.84em;padding:6px 14px;min-height:36px}}
-</style>
-<div id="hpguideBar" role="region" aria-label="홈 화면 바로가기 안내">
-  <button type="button" id="hpguideOpen" aria-haspopup="dialog" aria-controls="hpguideModal">📱 홈 화면 바로가기 안내</button>
-</div>
-
-
-<header>
-  <div class="wrap">
-    <span class="kicker">대구선교교회 · 대한예수교 장로회 재건총회</span>
-    <h1>정성헌목사 목회 서고(書庫)</h1>
-    <div class="creed">
-      <p class="item">
-        <span class="label">핵심가치</span>
-        <span class="value">하나님 나라의 보물을 캐내어 함께 나누는 공간입니다.</span>
-      </p>
-      <p class="item">
-        <span class="label">사명</span>
-        <span class="value">선조들에게 이어받은 개혁주의 신학과 구속사적 성경 해석, 그리고 신사참배 박해 속에서 믿음으로 승리한 재건총회 선배들의 순교자적 신앙 위에 서 있습니다. 이 믿음의 유산으로 건강한 교회와 예수님의 참된 제자를 세워 복음을 전하며, 오늘도 한 영혼 한 생명을 살리기 위해 달려갑니다.</span>
-      </p>
-    </div>
-  </div>
-</header>
-
-<main>
-  <div class="wrap">
-
-    <a class="card" href="./공유/">
-      <span class="tag">공유 자료실</span>
-      <h2>공유 자료실</h2>
-      <p class="lead">나누어 드릴 자료를 한 파일씩 모아 둔 자리입니다. 구약1. 모세오경부터 신약3. 일반서신·계시록까지 성경주석 8권, 신앙고백, 신학지남, 유사종교, 설교 연결 지도(그래프 뷰), 원어성경·개역개정 66권 단어 빈도 그래프, 칼빈 《기독교 강요》 4권 80장을 27개 주제로 이은 연결 지도, 그리고 정월의 한국 전통 윷놀이까지 따로따로 바로 여실 수 있습니다.</p>
-      <ul class="chips">
-        <li>성경주석 구약1~신약3 (8권)</li>
-        <li>신앙고백</li>
-        <li>신학지남</li>
-        <li>유사종교</li>
-        <li>설교 연결 지도</li>
-        <li>원어성경 단어 빈도</li>
-        <li>개역개정 단어 빈도</li>
-        <li>기독교 강요 연결 지도</li>
-        <li>한국 전통 윷놀이</li>
-      </ul>
-      <span class="go">공유 자료실 열기 →</span>
-    </a>
-
-    <a class="card" href="./JAEGUN/">
-      <span class="tag">재건총회</span>
-      <h2>재건교회헌법서고(書庫)</h2>
-      <p class="lead">대한예수교 장로회 재건총회의 신조와 교회정치·권징조례·예배와 예식, 그리고 웨스트민스터 신앙고백서·대요리문답·소요리문답에, 재건총회결의사항·헌법적 규칙(헌법적 규칙·총회규칙·장례조례)·포괄적 차별 금지법과 동성애에 대한 입장을 함께 담았습니다. 웨민(신조)을 뺀 판과 전체를 담은 판, 두 가지로 나누어 두었습니다.</p>
-      <ul class="chips">
-        <li>신조 · 교회정치 · 권징조례 · 예배와 예식</li>
-        <li>웨민 제외판 (헌법 1)</li>
-        <li>웨민 전체 포함판 (헌법 2)</li>
-        <li>재건총회결의사항 · 헌법적 규칙 · 입장 성명서</li>
-      </ul>
-      <span class="go">자료실 열기 →</span>
-    </a>
-
-    <a class="card" href="./similar-religions/">
-      <span class="tag">서고 03</span>
-      <h2>유사종교서고(書庫)</h2>
-      <p class="lead">꾸란과 이슬람, 한국의 유사종교와 이단, 자유주의 신학, 문서설과 성경비평, 퀴어신학, 무신론과 사탄주의 — 여섯 진영의 주장을 그들의 근거와 논조 그대로 왼쪽에, 개혁주의·성경신학·언약신학의 대조를 오른쪽에 두었습니다. 부록으로 꾸란 114수라 6,236절 한글 전문을 실었습니다. 한국 이단 가운데 피해가 큰 신천지와 하나님의교회(안상홍증인회)는 교주·계보·비유풀이·계시록 해석·시한부·모략 전도와 상담까지 따로 깊이 다루었습니다.</p>
-      <ul class="chips">
-        <li>꾸란과 이슬람 9항목</li>
-        <li>유사종교와 이단 31항목</li>
-        <li>자유주의 신학 8항목</li>
-        <li>문서설과 성경비평 8항목</li>
-        <li>퀴어신학 19항목</li>
-        <li>무신론과 사탄주의 8항목</li>
-        <li>부록 · 꾸란 114수라</li>
-      </ul>
-      <span class="go">서고 열기 →</span>
-    </a>
-
-    <p class="note">각 항목은 같은 순서로 놓였습니다. 왼쪽에 그들의 주장과 논조, 오른쪽에 성경의 자리에서 1:1로 대조한 분석, 그 아래 네 칸 표에 쟁점·그들의 주장·성경의 대조·핵심 성구를 한눈에 볼 수 있습니다. 상단 검색창에서 낱말로 찾을 수 있고, 휴대폰에서도 그대로 열립니다.</p>
-
+<main class="box">
+  <span class="kicker">대구선교교회 · 대한예수교 장로회 재건총회</span>
+  <h1>정성헌목사 목회 서고(書庫)</h1>
+  <div class="sub">Reformed Faith Library</div>
+  <p class="msg">목회서고 대문으로 이동합니다.<br>자동으로 열리지 않으면 아래 단추를 눌러 주십시오.</p>
+  <a class="go" href="./공유/">목회서고(書庫)로 이동 →</a>
+  <div class="foot">
+    <b>만든이</b> 정성헌 목사 · <b>문의</b> <a href="mailto:c56612@daum.net" style="color:var(--navy2)">c56612@daum.net</a>
   </div>
 </main>
-
-<footer>
-  <div class="wrap">
-    <div class="row">
-      <span><b>만든이</b>: 정성헌 목사</span>
-      <span><b>교회</b>: 대구선교교회</span>
-      <span><b>교단</b>: 대한예수교 장로회 재건총회</span>
-      <span><b>문의</b>: <a href="mailto:c56612@daum.net">c56612@daum.net</a></span>
-    </div>
-    <div class="support">
-      <p class="acct">자원후원계좌: iM뱅크 508-10-9580903 정성헌(일본선교)</p>
-      <p class="desc">후원금은 선교와 사역과 연구에 사용됩니다.</p>
-    </div>
-  </div>
-</footer>
-
-
-<!-- [홈 화면 바로가기 안내] 안내 창 ───────────────────────────────────── -->
-<style>
-#hpguideModal{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483000;
-  margin:0;padding:0;border:0}
-#hpguideModal *{box-sizing:border-box}
-#hpguideModal.hpguide-on{display:block}
-#hpguideModal .hpguide-veil{position:fixed;inset:0;z-index:0;background:rgba(8,14,24,.6);
-  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
-#hpguideModal .hpguide-scroll{position:fixed;inset:0;z-index:1;overflow-y:auto;-webkit-overflow-scrolling:touch;
-  display:flex;flex-direction:column;align-items:center;padding:26px 16px 32px}
-#hpguideModal .hpguide-box{position:relative;width:100%;max-width:540px;margin:auto 0;
-  background:#fff;color:#0f172a;border:1px solid #dbe3ec;border-radius:18px;
-  padding:26px 24px 22px;
-  box-shadow:0 26px 70px rgba(8,14,24,.45),0 2px 6px rgba(8,14,24,.16);
-  font-family:inherit;font-size:16px;line-height:1.75;text-align:left;
-  word-break:keep-all;overflow-wrap:break-word}
-#hpguideModal .hpguide-x{position:absolute;top:10px;right:10px;width:40px;height:40px;
-  display:flex;align-items:center;justify-content:center;margin:0;padding:0;
-  -webkit-appearance:none;appearance:none;cursor:pointer;
-  border:1px solid #e2e8f0;border-radius:50%;background:#f6f8fb;color:#46586d;
-  font-family:inherit;font-size:17px;line-height:1;font-weight:700}
-#hpguideModal .hpguide-x:hover{background:#eaeff6;color:#162d47}
-#hpguideModal .hpguide-x:focus-visible{outline:2px solid #8c2434;outline-offset:2px}
-#hpguideModal h2{margin:0 40px 12px 0;padding:0;font-size:1.1em;line-height:1.45;
-  font-weight:800;letter-spacing:-.02em;color:#162d47}
-#hpguideModal .hpguide-tip{margin:0 0 18px;padding:11px 13px;border-radius:10px;
-  background:#fdf6e7;border:1px solid #ecd9ac;border-left:4px solid #b8860b;
-  color:#6b5a2a;font-size:.85em;line-height:1.7;font-weight:400}
-#hpguideModal .hpguide-tip b{font-weight:700;color:#5b4a1d}
-#hpguideModal .hpguide-step{padding:14px 0 0;margin:0;border-top:1px solid #e6ecf3}
-#hpguideModal .hpguide-step+.hpguide-step{margin-top:14px}
-#hpguideModal .hpguide-step h3{display:flex;align-items:center;gap:9px;margin:0 0 7px;padding:0;
-  font-size:.98em;line-height:1.4;font-weight:800;color:#162d47;letter-spacing:-.01em}
-#hpguideModal .hpguide-step h3 .num{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
-  width:24px;height:24px;border-radius:50%;background:#8c2434;color:#fff;
-  font-size:.82em;font-weight:800;line-height:1}
-#hpguideModal .hpguide-step .path{margin:0;padding:0 0 0 33px;color:#1f2d3d;font-size:.92em;line-height:1.85}
-#hpguideModal .hpguide-step .path b{font-weight:700;color:#8c2434}
-#hpguideModal .hpguide-step .sub{margin:5px 0 0;padding:0 0 0 33px;color:#5b6b7f;font-size:.8em;line-height:1.6}
-#hpguideModal .hpguide-rec{margin:10px 0 0;padding:11px 13px;border-radius:10px;
-  background:#fff4d6;border:2px solid #d79a12;color:#6a3f00;font-size:.9em;
-  line-height:1.65;font-weight:800;letter-spacing:-.01em;
-  box-shadow:0 2px 10px rgba(180,130,10,.18)}
-#hpguideModal .hpguide-rec b{color:#8c2434;font-weight:800}
-#hpguideModal .hpguide-done{margin:18px 0 0;padding:13px 14px;border-radius:10px;
-  background:#eef4fb;border:1px solid #d3e0ee;color:#1d3a5c;font-size:.88em;line-height:1.7;font-weight:600}
-#hpguideModal .hpguide-actions{margin:16px 0 0}
-#hpguideModal .hpguide-ok{display:block;width:100%;min-height:48px;margin:0;padding:11px 16px;
-  -webkit-appearance:none;appearance:none;cursor:pointer;
-  border:0;border-radius:11px;background:#162d47;color:#fff;
-  font-family:inherit;font-size:.98em;font-weight:800;letter-spacing:.02em}
-#hpguideModal .hpguide-ok:hover{background:#24466c}
-#hpguideModal .hpguide-ok:focus-visible{outline:3px solid #8c2434;outline-offset:2px}
-@media (max-width:430px){
-  #hpguideModal .hpguide-scroll{padding:14px 12px 20px}
-  #hpguideModal .hpguide-box{font-size:15px;padding:22px 17px 18px;border-radius:16px}
-  #hpguideModal h2{font-size:1.02em;margin-right:36px}
-  #hpguideModal .hpguide-step .path{padding-left:0}
-  #hpguideModal .hpguide-step .sub{padding-left:0}
-}
-</style>
-<div id="hpguideModal" role="dialog" aria-modal="true" aria-labelledby="hpguideTitle" aria-hidden="true">
-  <div class="hpguide-veil" data-hpguide-close="1"></div>
-  <div class="hpguide-scroll">
-    <div class="hpguide-box">
-      <button type="button" class="hpguide-x" data-hpguide-close="1" aria-label="안내 창 닫기">✕</button>
-      <h2 id="hpguideTitle">📱 휴대폰 바탕화면(홈 화면)에 바로가기 만들기</h2>
-      <p class="hpguide-tip">※ 카카오톡에서 링크를 여셨다면, 먼저 <b>오른쪽 위 ⋮ → 다른 브라우저로 열기</b>(또는 <b>Chrome으로 열기</b>)를 눌러 주세요.</p>
-
-      <div class="hpguide-step">
-        <h3><span class="num">1</span>크롬(Chrome)에서 올리기</h3>
-        <p class="path">오른쪽 위 <b>⋮</b> → <b>설치 및 바로가기 만들기</b> → <b>바로가기 만들기</b> → 이름 확인 후 <b>추가</b></p>
-        <p class="sub">※ 구버전 크롬에서는 ‘홈 화면에 추가’로 보입니다.</p>
-        <p class="hpguide-rec">💡 <b>카톡 내보내기(공유)를 바로 쓰시려면 크롬을 홈 화면에 추가하는 것을 강추합니다.</b></p>
-      </div>
-
-      <div class="hpguide-step">
-        <h3><span class="num">2</span>삼성 인터넷(안드로이드 기본 브라우저)에서 올리기</h3>
-        <p class="path">오른쪽 아래 <b>≡ (줄 세 개)</b> → <b>현재 페이지 추가</b> → <b>홈 화면</b> → 이름 확인 후 <b>추가</b></p>
-      </div>
-
-      <div class="hpguide-step">
-        <h3><span class="num">3</span>아이폰(Safari)에서 올리기</h3>
-        <p class="path">화면 아래쪽(또는 주소창 옆) <b>공유 버튼(□↑)</b> → <b>홈 화면에 추가</b> → 이름 확인 후 <b>추가</b></p>
-        <p class="sub">※ 카톡에서 여셨다면 오른쪽 아래 나침반 모양 Safari 아이콘을 먼저 눌러 주세요.</p>
-      </div>
-
-      <p class="hpguide-done">이제 바탕화면에 생긴 아이콘을 누르면 앱처럼 바로 열립니다.</p>
-      <div class="hpguide-actions">
-        <button type="button" class="hpguide-ok" data-hpguide-close="1">닫기</button>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-(function(){
-  var modal=document.getElementById('hpguideModal');
-  var openBtn=document.getElementById('hpguideOpen');
-  if(!modal||!openBtn) return;
-  var box=modal.querySelector('.hpguide-box');
-  var lastFocus=null;
-  var prevHtmlOverflow='',prevBodyOverflow='';
-  function isOpen(){return modal.classList.contains('hpguide-on');}
-  function open(){
-    lastFocus=document.activeElement;
-    prevHtmlOverflow=document.documentElement.style.overflow;
-    prevBodyOverflow=document.body.style.overflow;
-    document.documentElement.style.overflow='hidden';
-    document.body.style.overflow='hidden';
-    modal.classList.add('hpguide-on');
-    modal.setAttribute('aria-hidden','false');
-    var f=modal.querySelector('.hpguide-ok')||modal.querySelector('.hpguide-x');
-    if(f&&f.focus) f.focus();
-  }
-  function close(){
-    if(!isOpen()) return;
-    modal.classList.remove('hpguide-on');
-    modal.setAttribute('aria-hidden','true');
-    document.documentElement.style.overflow=prevHtmlOverflow;
-    document.body.style.overflow=prevBodyOverflow;
-    if(lastFocus&&lastFocus.focus) lastFocus.focus();
-  }
-  openBtn.addEventListener('click',function(e){e.preventDefault();open();});
-  function onBackdrop(t){return t===modal||t===modal.querySelector('.hpguide-scroll')||(t.getAttribute&&t.getAttribute('data-hpguide-close'));}
-  modal.addEventListener('click',function(e){
-    var t=e.target;
-    if(onBackdrop(t)){ e.preventDefault(); close(); return; }
-    while(t&&t!==modal){ if(t.getAttribute&&t.getAttribute('data-hpguide-close')){e.preventDefault();close();return;} t=t.parentNode; }
-  });
-  document.addEventListener('keydown',function(e){
-    if(!isOpen()) return;
-    if(e.key==='Escape'||e.key==='Esc'||e.keyCode===27){
-      e.preventDefault(); e.stopPropagation();
-      if(e.stopImmediatePropagation) e.stopImmediatePropagation();
-      close(); return;
-    }
-    if(e.key==='Tab'){
-      var f=modal.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
-      if(!f.length) return;
-      var first=f[0],last=f[f.length-1];
-      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
-      else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
-    }
-  },true);
-  window.hpguideOpen=open; window.hpguideClose=close;
-})();
-</script>
 </body>
 </html>
