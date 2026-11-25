@@ -554,7 +554,6 @@ function start(){
   applyVis();
   if(W<760){NODES.forEach(function(o){o.y*=1.55;});}
   fitAll();
-  window.__dbg={view:view,nodes:NODES.map(function(o){return [o.id,Math.round(o.x),Math.round(o.y)];})};
   draw();
   requestAnimationFrame(loop);
   var load=document.getElementById('load');
