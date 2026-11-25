@@ -110,7 +110,10 @@ header>*{pointer-events:auto}
 <canvas id="cv"></canvas>
 <header>
  <div class="brand">
-  <a class="homebtn" href="./" title="정성헌 목사 서고(書庫) 대문으로" aria-label="정성헌 목사 서고 대문으로">HOME</a>
+  <a class="homebtn" id="homeBtn" href="https://jung-sunghun.github.io/JSH/공유/" title="정성헌 목사 서고(書庫) 대문으로" aria-label="정성헌 목사 서고 대문으로">HOME</a>
+  <script>/* HOME 단추: 웹서버에서 열면 이 파일이 놓인 자리(공유/) 기준 상대 경로로,
+     PC에서 파일로 열면(file://) 웹서버 대문으로 간다. */
+   try{ if(/^https?:$/.test(location.protocol)){ document.getElementById('homeBtn').setAttribute('href','./'); } }catch(e){}</script>
   <h1>칼빈 《기독교 강요》 연결 지도</h1>
   <span class="sub">장 칼빈(John Calvin) · 《기독교 강요》 1559년 라틴어 최종판(Institutio Christianae Religionis) · 4권 80장 · 주제 허브 27</span>
   <span class="stat" id="stat"></span>
