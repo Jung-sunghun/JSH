@@ -286,6 +286,16 @@ function draw(){
       ctx.fillStyle='rgba(198,212,228,.9)';ctx.fillText(t2,o.x,sy2);shown++;
     }
   }
+  if(selected>=0&&NODES[selected].t==='c'&&view.s<=1.15){
+    var so=NODES[selected];
+    if(!(so.x<x0||so.x>x1||so.y<y0||so.y>y1)){
+      var f3=Math.max(10/view.s,10);
+      ctx.font='700 '+f3+'px system-ui,sans-serif';
+      var t3=so.b+'권 '+so.n+'장';
+      ctx.fillStyle='rgba(255,226,156,.98)';
+      ctx.fillText(t3,so.x,so.y-so.r-f3*1.05);
+    }
+  }
   ctx.restore();
   if(selected>=0){
     ctx.setTransform(DPR,0,0,DPR,0,0);
@@ -383,12 +393,14 @@ function select(k){
     o.points.forEach(function(p){h+='<li>'+esc(p)+'</li>';});
     h+='</ul>';
     h+='<div class="sec">이 주제를 다루는 장·절</div>';
-    var seen={};
+    var seen={}, order=[], grouped={};
     o.keyrefs.forEach(function(r){
       var kk=r[0].split('.');
       var key=parseInt(kk[0])+'-'+('0'+kk[1]).slice(-2);
-      h+=btn(key,r[1]+' — '+r[2]);seen[key]=1;
+      if(!grouped[key]){grouped[key]=[];order.push(key);}
+      grouped[key].push(r[1]+' — '+r[2]);seen[key]=1;
     });
+    order.forEach(function(key){h+=btn(key,grouped[key].join(' · '));});
     var others=[];
     NODES.forEach(function(x){if(x.t==='c'&&x.hubs.indexOf(o.id)>=0&&!seen[x.id])others.push(x);});
     if(others.length){
