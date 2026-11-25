@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>유틸·도구 방 — 쓰는 프로그램과 사용 설명서 · 정성헌 목사 서고(書庫)</title>
+<meta name="description" content="그동안 만든 프로그램과 패치 파일 가운데 지금도 쓰는 것만 골라, 무엇을 하는 프로그램인지와 따라 하기 순서를 붙인 유틸·도구 방입니다.">
+<meta name="theme-color" content="#162d47">
+<style>
+:root{
+  --navy:#162d47; --navy2:#1d3a5c; --navy3:#24466c; --ink:#0f172a; --muted:#46586d;
+  --bg:#f6f8fb; --paper:#fff; --line:#d5dfe9; --line2:#e6ecf3;
+  --accent:#8c2434; --accent2:#6f1a28; --gold:#b98a2a;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  font-size:17px;line-height:1.85;word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,h4,p,ol,ul,li,figure,table{margin:0;padding:0}
+a{color:var(--navy3);text-decoration:none}
+ol,ul{list-style:none}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+
+/* 머리 */
+.hero{background:linear-gradient(160deg,#162d47 0%,#1d3a5c 58%,#24466c 100%);
+  color:#fff;padding:30px 0 28px;border-bottom:4px solid var(--accent)}
+.hero .kick{display:inline-block;font-size:.75em;letter-spacing:.2em;font-weight:800;color:#e6c98a}
+.hero h1{margin-top:7px;font-size:1.95em;line-height:1.25;letter-spacing:-.03em;font-weight:800}
+.hero .sub{margin-top:9px;color:#d4e1ee;font-size:.95em;line-height:1.75;max-width:820px}
+.hero .meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px}
+.hero .meta span{font-size:.78em;font-weight:700;color:#f3e7c8;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.26);border-radius:999px;padding:4px 12px}
+
+main{padding:26px 0 0}
+.lede{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;
+  box-shadow:0 1px 2px rgba(15,23,42,.05),0 8px 22px rgba(15,23,42,.05)}
+.lede h2{font-size:1.08em;color:var(--navy);font-weight:800;letter-spacing:-.02em}
+.lede ol{margin-top:10px;display:grid;gap:7px}
+.lede li{position:relative;padding-left:26px;font-size:.92em;color:#26354a;line-height:1.75}
+.lede li b{color:var(--accent)}
+.lede li::before{content:'✓';position:absolute;left:4px;top:0;color:var(--gold);font-weight:800}
+
+/* 이 방의 차례 */
+.toc{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;
+  box-shadow:0 1px 2px rgba(15,23,42,.05),0 8px 22px rgba(15,23,42,.05)}
+.toc h2{font-size:1.05em;color:var(--navy);font-weight:800}
+.toc .hint{margin-top:4px;font-size:.84em;color:var(--muted)}
+.jump{margin-top:14px;display:grid;gap:7px}
+.jump a{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;
+  border:1px solid var(--line2);border-radius:11px;padding:11px 14px;background:#fbfcfe;
+  transition:border-color .12s,background .12s}
+.jump a:hover{border-color:#a9c0d8;background:#f3f7fc}
+.jump .jn{font-size:.78em;font-weight:800;letter-spacing:.06em;color:#fff;background:var(--navy3);
+  border-radius:7px;padding:3px 0;text-align:center}
+.jump .jt{font-size:.95em;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+.jump .jt small{display:block;font-size:.76em;font-weight:600;color:var(--muted);letter-spacing:0;margin-top:2px}
+.jump .jk{font-size:.74em;font-weight:800;color:var(--accent);background:#fbeef0;border:1px solid #e8c9cf;
+  border-radius:999px;padding:2px 9px;white-space:nowrap}
+
+/* 어떤 도구를 쓸까 */
+.guide{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;
+  box-shadow:0 1px 2px rgba(15,23,42,.05),0 8px 22px rgba(15,23,42,.05)}
+.guide h2{font-size:1.05em;color:var(--navy);font-weight:800}
+.guide table{margin-top:12px;width:100%;border-collapse:collapse}
+.guide th,.guide td{text-align:left;font-size:.88em;padding:10px 8px;border-bottom:1px solid var(--line2);
+  vertical-align:top;line-height:1.7}
+.guide th{font-size:.76em;letter-spacing:.06em;color:var(--muted);font-weight:800;border-bottom:1px solid var(--line)}
+.guide td:first-child{font-weight:700;color:#26354a}
+.guide td b{color:var(--accent);font-weight:800}
+
+/* 부 제목 */
+.part{margin:34px 0 12px;display:flex;align-items:baseline;gap:11px;flex-wrap:wrap}
+.part h2{font-size:1.28em;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.part span{font-size:.82em;color:var(--muted)}
+
+/* 공통 안내 */
+.note{margin-top:12px;background:#fdf6e7;border:1px solid #ecd9ac;border-left:4px solid var(--gold);
+  border-radius:12px;padding:14px 17px;font-size:.88em;line-height:1.8;color:#6b5a2a}
+.note b{color:#5b4a1d}
+
+/* 도구 카드 */
+.tool{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:16px;
+  padding:22px 24px 22px;box-shadow:0 1px 2px rgba(15,23,42,.05),0 10px 26px rgba(15,23,42,.06);
+  scroll-margin-top:18px}
+.tool+.tool{margin-top:14px}
+.thead{display:flex;gap:13px;align-items:flex-start}
+.thead .n{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+  min-width:56px;height:34px;border-radius:9px;background:var(--navy3);color:#fff;
+  font-size:.82em;font-weight:800;letter-spacing:.04em}
+.thead h3{font-size:1.24em;line-height:1.4;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.thead .fname{margin-top:4px;font-size:.82em;color:var(--muted);font-family:Consolas,'D2Coding',monospace;
+  word-break:break-all}
+.thead .fname b{font-family:'Malgun Gothic','맑은 고딕',sans-serif;color:#33465c}
+.thead .kinds{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.thead .kinds span{font-size:.74em;font-weight:800;color:var(--accent);background:#fbeef0;
+  border:1px solid #e8c9cf;border-radius:999px;padding:2px 10px}
+.thead .kinds span.gray{color:#44526a;background:#eef2f7;border-color:#dbe4ee}
+
+.tool .one{margin-top:12px;font-size:.96em;font-weight:700;color:#1f2d3d;line-height:1.7}
+.blk{margin-top:16px}
+.blk>h4{display:flex;align-items:center;gap:8px;font-size:.82em;font-weight:800;letter-spacing:.06em;
+  color:var(--accent);margin-bottom:8px}
+.blk>h4::before{content:'';display:block;width:4px;height:15px;border-radius:2px;background:var(--accent)}
+.blk p{font-size:.92em;color:#26354a;line-height:1.85}
+.blk p+p{margin-top:6px}
+
+ol.steps{counter-reset:s;display:grid;gap:11px}
+ol.steps>li{counter-increment:s;position:relative;padding-left:44px;font-size:.94em;line-height:1.8;color:#1f2d3d}
+ol.steps>li::before{content:counter(s);position:absolute;left:0;top:2px;display:flex;
+  align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;
+  background:var(--navy);color:#fff;font-size:.82em;font-weight:800;line-height:1}
+ol.steps>li b{font-weight:800;color:#101a2b}
+ol.steps>li .sd{display:block;margin-top:3px;font-size:.85em;color:var(--muted);line-height:1.7}
+
+ul.warn{display:grid;gap:7px}
+ul.warn>li{position:relative;padding-left:24px;font-size:.89em;line-height:1.8;color:#3b4a5f}
+ul.warn>li::before{content:'※';position:absolute;left:2px;top:0;color:var(--accent);font-weight:800}
+
+.ready{display:flex;flex-wrap:wrap;gap:7px}
+.ready li{font-size:.84em;font-weight:700;color:var(--navy2);background:#eff3f8;border:1px solid #dde7f1;
+  border-radius:8px;padding:5px 11px;line-height:1.5}
+
+.path{background:#eef4fb;border:1px solid #d3e0ee;border-radius:12px;padding:13px 16px;
+  font-size:.9em;line-height:1.8;color:#1d3a5c}
+.path b{color:var(--accent);font-weight:800}
+
+.tip{margin-top:14px;font-size:.85em;color:#4a5a70;background:#f4f7fb;border:1px dashed #c9d7e6;
+  border-radius:11px;padding:11px 14px;line-height:1.75}
+
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;
+  padding:10px 22px;border-radius:12px;font-size:.96em;font-weight:800;letter-spacing:-.01em;
+  background:var(--accent);color:#fff;box-shadow:0 6px 16px rgba(140,36,52,.22)}
+.btn:hover{background:var(--accent2)}
+.btn.alt{background:var(--navy3);box-shadow:0 6px 16px rgba(36,70,108,.22)}
+.btn.alt:hover{background:var(--navy2)}
+.btn .s{font-weight:600;opacity:.9;font-size:.86em}
+
+/* 지난 버전 */
+details.old{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:0}
+details.old>summary{cursor:pointer;list-style:none;padding:16px 20px;font-size:.95em;font-weight:800;color:var(--navy);
+  display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.old>summary::-webkit-details-marker{display:none}
+details.old>summary::marker{content:''}
+details.old>summary em{font-style:normal;font-size:.8em;font-weight:700;color:var(--accent);
+  border:1px solid #e3c7cc;border-radius:999px;padding:2px 10px;background:#fbeef0;white-space:nowrap}
+details.old[open]>summary{border-bottom:1px solid var(--line2)}
+.oldbody{padding:8px 20px 18px}
+.oldbody dl{display:grid;gap:10px;margin-top:8px}
+.oldbody dt{font-size:.86em;font-weight:800;color:#33465c;font-family:Consolas,'D2Coding',monospace;word-break:break-all}
+.oldbody dd{margin:3px 0 0;font-size:.86em;color:var(--muted);line-height:1.75}
+
+/* 꼬리말 */
+.jh-foot{margin:38px 0 0;padding:26px 0 60px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:.86em;line-height:1.9}
+.jh-foot b{color:var(--navy3)}
+.jh-foot .jh-row span{white-space:nowrap;margin-right:14px}
+.jh-foot .jh-acct{color:var(--navy3);font-weight:700;margin-top:6px}
+.jh-foot .jh-note{margin-top:10px;font-size:.95em;color:#5b6b7f}
+
+/* 좁은 화면 */
+@media (max-width:760px){
+  .wrap{padding:0 15px}
+  .hero{padding:24px 0 22px}
+  .hero h1{font-size:1.6em}
+  .hero .sub{font-size:.9em}
+  .tool{padding:18px 15px 18px;border-radius:14px}
+  .thead{flex-direction:column;gap:8px}
+  .thead h3{font-size:1.1em}
+  .jump a{grid-template-columns:52px 1fr;row-gap:4px}
+  .jump .jk{grid-column:2;justify-self:start}
+  .guide table,.guide tbody,.guide tr,.guide td,.guide th{display:block;width:100%}
+  .guide thead{display:none}
+  .guide tr{border-bottom:1px solid var(--line2);padding:8px 0}
+  .guide td{border:0;padding:2px 0}
+  .guide td:first-child{color:var(--accent);font-size:.84em;font-weight:800}
+  .btn{width:100%}
+}
+
+
+/* ══ 서고 공통: ↑·↓ 한 알약(캡슐) 단추 — 1.모세오경 최신 규격(15차) ══ */
+.gopair{position:fixed;right:26px;bottom:26px;z-index:150;display:flex;flex-direction:column;width:50px;
+  margin:0;padding:0;overflow:hidden;border-radius:26px;
+  border:1.5px solid #6ec28e;background:#c8ebd4;
+  box-shadow:0 10px 26px rgba(22,101,52,.26);transition:opacity .16s ease,box-shadow .18s ease}
+.gopair.left{left:26px;right:auto}
+#goMain .gobtn,#goSide .gobtn{display:flex;align-items:center;justify-content:center;width:100%;height:50px;padding:0;
+  border:0;border-radius:0;background:transparent;color:#166534;cursor:pointer;
+  font-family:inherit;font-size:0;line-height:0;transition:background .18s ease}
+/* 두 화살표 사이 얇은 구분선 — 한 캡슐 안의 위 칸/아래 칸 */
+#goMain .gobtn.up,#goSide .gobtn.up{border-bottom:1px solid #6ec28e}
+#goMain .gobtn:hover,#goSide .gobtn:hover{background:#b7e4c7}
+#goMain .gobtn:active,#goSide .gobtn:active{background:#a9dcbd}
+#goMain .gobtn:focus-visible,#goSide .gobtn:focus-visible{outline:3px solid #ffe08a;outline-offset:-3px}
+.gopair .ticon{display:block;width:24px;height:24px;overflow:visible;transition:transform .18s ease}
+.gopair .ticon path{fill:none;stroke:currentColor;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.gopair .up:hover .ticon{transform:translateY(-2px)}
+.gopair .dn:hover .ticon{transform:translateY(2px)}
+html[data-theme="dark"] .gopair{background:#2a6b4a;border-color:#7dd3a6}
+html[data-theme="dark"] #goMain .gobtn,html[data-theme="dark"] #goSide .gobtn{color:#e8fff1}
+html[data-theme="dark"] #goMain .gobtn.up,html[data-theme="dark"] #goSide .gobtn.up{border-bottom-color:#7dd3a6}
+html[data-theme="dark"] #goMain .gobtn:hover,html[data-theme="dark"] #goSide .gobtn:hover{background:#348057}
+html.drawer-open .gopair{opacity:0;pointer-events:none}
+/* 캡슐에 본문·목차 마지막 줄이 영영 가리지 않도록 아래 여백을 준다 */
+main{padding-bottom:150px}
+@media (min-width:1025px){ aside,aside.side{padding-bottom:190px} }
+/* ── 휴대폰·태블릿: 목차 캡슐은 숨기고, 본문 캡슐은 다음(Daum) 앱 자체 ↑ 단추를 피해 위로 ──
+   앱이 오른쪽 맨 아래(bottom 16~24px, 지름 ~44px)에 흰 원형 ↑를 띄우므로 그 위 90px에 둔다. */
+@media (max-width:1024px){
+  .gopair.left{display:none!important}
+  /* 휴대폰·태블릿: 캡슐을 PC(50px×102px)의 2/3 크기로 — 너비 34px · 칸 높이 34px(합 69px) · 모서리 18px · 아이콘 16px */
+  #goMain{right:14px;bottom:calc(90px + env(safe-area-inset-bottom,0px));width:34px;border-radius:18px}
+  #goMain .gobtn{height:34px}
+  #goMain .ticon{width:16px;height:16px}
+  main{padding-bottom:240px}
+}
+/* ══════════════════════════════════════════════════════════════════════
+   15차 ⑫: 휴대폰 목차 서랍(☰) 안 ↑·↓ 캡슐
+   — 서랍을 열면 목차 캡슐이 서랍 안 오른쪽 아래에 PC의 2/3 크기
+     (34px×34px 두 칸 = 약 69px, 모서리 18px, 아이콘 16px)로 나타나고,
+     닫으면 본문 캡슐만 남는다. 캡슐은 서랍이 닫히지 않게 서랍 밖에 있다.
+   ══════════════════════════════════════════════════════════════════════ */
+@media (max-width:1024px){
+  html.drawer-open .gopair.left{display:flex!important;visibility:visible;
+    opacity:1;pointer-events:auto;right:auto;
+    bottom:calc(22px + env(safe-area-inset-bottom,0px));width:34px;border-radius:18px;
+    box-shadow:0 6px 16px rgba(22,101,52,.28);z-index:151}
+  html.drawer-open #toTopLeft{display:flex!important;visibility:visible}
+  #drawerFade{display:none}
+  /* 캡슐 자리(bottom 0~132px)로 흘러든 목차 글자를 서랍 바탕색으로 부드럽게 지운다 */
+  html.drawer-open #drawerFade{display:block;position:fixed;left:0;bottom:0;width:0;height:132px;
+    z-index:149;pointer-events:none;
+    background:linear-gradient(180deg,transparent 0%,#dfe8f3 58%,#dfe8f3 100%);
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 46%);mask-image:linear-gradient(180deg,transparent 0%,#000 46%)}
+  html.drawer-open #goSide .gobtn{height:34px}
+  html.drawer-open #goSide .ticon{width:16px;height:16px}
+  /* 캡슐이 목차 마지막 줄을 가리지 않도록 서랍 아래를 캡슐 높이만큼 비운다 */
+  html.drawer-open aside.side,html.drawer-open aside{padding-bottom:132px}
+}
+@media print{ .gopair{display:none!important} }
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kick">UTILITIES · 도구방</span>
+    <h1>유틸·도구 방</h1>
+    <p class="sub">그동안 만들어 드린 프로그램과 패치 파일 가운데 <b>지금도 쓰는 것만</b> 골라 두었습니다. 프로그램마다 무엇을 하는지, 무엇을 준비하는지, 어떤 순서로 누르는지를 차례대로 적었으니 위에서부터 그대로 따라 하시면 됩니다.</p>
+    <p class="meta"><span>브라우저 프로그램 2</span><span>PC 도구 7</span><span>지난 버전 6종 정리</span><span>정리한 날 2026-11-26</span></p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section class="lede">
+      <h2>이 방을 쓰는 법 — 세 가지만 기억하십시오</h2>
+      <ol>
+        <li><b>브라우저 프로그램(A)은 바로 여십시오.</b> 깔 것도 없고, 「바로 열기」를 누르면 새 창에서 바로 씁니다.</li>
+        <li><b>PC 도구(B)는 내려받아 두 번 누르십시오.</b> 지창고 「유틸」 폴더에서 받아 바탕화면에 두고, 실행한 뒤 화면에 나오는 차례대로 고르면 됩니다.</li>
+        <li><b>설명서의 「따라 하기」는 누르는 순서 그대로입니다.</b> 막히면 그 화면을 사진으로 찍어 보내 주십시오. 바로 짚어 드립니다.</li>
+      </ol>
+    </section>
+
+    <section class="toc" id="toc">
+      <h2>이 방의 차례</h2>
+      <p class="hint">번호를 누르면 그 프로그램 설명으로 바로 내려갑니다.</p>
+      <div class="jump">
+        <a href="#w1"><span class="jn">A-1</span><span class="jt">만능 문서뷰어<small>문서뷰어.html</small></span><span class="jk">브라우저</span></a><a href="#w2"><span class="jn">A-2</span><span class="jt">한국 전통 윷놀이<small>윷놀이.html</small></span><span class="jk">브라우저 · 쉼</span></a><a href="#p1"><span class="jn">B-1</span><span class="jt">만능 변환기 — 문서를 옵시디언 글로<small>All_to_MD_v3.bat</small></span><span class="jk">PC · 변환</span></a><a href="#p2"><span class="jn">B-2</span><span class="jt">PDF 나누기 — 45MB 넘는 PDF 쪼개기<small>PDF_Split_Safe_45MB.bat</small></span><span class="jk">PC · PDF</span></a><a href="#p3"><span class="jn">B-3</span><span class="jt">파일 이름 앞머리 정리<small>Clean_Filename_Prefix.bat</small></span><span class="jk">PC · 정리</span></a><a href="#p4"><span class="jn">B-4</span><span class="jt">PDF 글자 뽑기 — 폴더 속 PDF 전부<small>PDF_OCR_to_TXT.bat</small></span><span class="jk">PC · 글자 인식</span></a><a href="#p5"><span class="jn">B-5</span><span class="jt">PDF 글자 뽑기 — 한 파일만<small>PDF_Single_OCR_to_TXT.bat</small></span><span class="jk">PC · 글자 인식</span></a><a href="#p6"><span class="jn">B-6</span><span class="jt">사진 글자 뽑기 — 폴더 속 사진 전부<small>IMG_OCR_to_MD.bat</small></span><span class="jk">PC · 글자 인식</span></a><a href="#p7"><span class="jn">B-7</span><span class="jt">사진 글자 뽑기 — 한 장만<small>IMG_Single_OCR_to_MD.bat</small></span><span class="jk">PC · 글자 인식</span></a>
+      </div>
+    </section>
+
+    <section class="guide">
+      <h2>어떤 프로그램을 써야 하나요?</h2>
+      <table>
+        <thead><tr><th>하고 싶은 일</th><th>쓸 프로그램</th><th>한 줄 설명</th></tr></thead>
+        <tbody><tr><td>문서를 그냥 읽고 싶다</td><td><b>A-1 만능 문서뷰어</b></td><td>PDF · 한글 · 워드 · 엑셀 · 그림까지 한 화면에서</td></tr><tr><td>여러 문서를 옵시디언 글로 바꾸고 싶다</td><td><b>B-1 All_to_MD_v3</b></td><td>한글 · PDF · 워드 · 그림 → .md</td></tr><tr><td>PDF가 커서 지창고에 올릴 수 없다</td><td><b>B-2 PDF_Split_Safe_45MB</b></td><td>45MB 이하 조각으로 나눔</td></tr><tr><td>파일 이름 앞이 지저분하다</td><td><b>B-3 Clean_Filename_Prefix</b></td><td>빈칸 · "- " 지우기</td></tr><tr><td>스캔한 PDF에서 글자를 뽑고 싶다</td><td><b>B-4 · B-5 PDF 글자 뽑기</b></td><td>폴더 전부 / 한 파일만</td></tr><tr><td>사진 속 글자를 뽑고 싶다</td><td><b>B-6 · B-7 사진 글자 뽑기</b></td><td>폴더 전부 / 한 장만</td></tr><tr><td>잠깐 쉬고 싶다</td><td><b>A-2 한국 전통 윷놀이</b></td><td>파랑이와 한 판</td></tr></tbody>
+      </table>
+    </section>
+
+    <div class="part"><h2>A. 브라우저에서 바로 쓰는 프로그램</h2><span>설치 없음 · 이용코드 없음 · 파일은 내 컴퓨터 안에서만</span></div>
+    <article class="tool" id="w1"><div class="thead"><span class="n">A-1</span><div><h3>만능 문서뷰어</h3><p class="fname"><b>파일</b> · 문서뷰어.html</p><p class="kinds"><span>브라우저</span><span class="gray">웹 주소로 열기</span></p></div></div><p class="one">PDF · 한글 · 워드 · 엑셀 · 파워포인트 · 그림 · 글을 내려받지 않고 브라우저에서 바로 펼쳐 읽습니다.</p><div class="blk"><h4>무엇을 하는 프로그램인가요</h4><p>문서를 열기 위해 프로그램을 깔거나 파일을 바꿀 필요가 없습니다. 이 화면 하나에 읽는 기능이 모두 들어 있어, 연 파일은 성헌님 컴퓨터 안에서만 열리고 어디로도 올라가지 않습니다. 이용코드도 광고도 없습니다.</p></div><div class="blk"><h4>준비물</h4><ul class="ready"><li>크롬(Chrome)이나 엣지(Edge) 같은 브라우저</li><li>읽고 싶은 문서 파일 (PC에 있는 그대로)</li></ul></div><div class="blk"><h4>따라 하기</h4><ol class="steps"><li><b>「바로 열기」를 누릅니다.</b><span class="sd">새 창이 열립니다. 폰에서도 같은 주소로 열립니다.</span></li><li><b>왼쪽 위 「📂 문서 열기」를 누르고 읽을 파일을 고릅니다.</b><span class="sd">여러 개를 한꺼번에 골라도 됩니다. (Ctrl + O)</span></li><li><b>폴더째 담으려면 「🗂️ 폴더 열기」를 누릅니다.</b><span class="sd">파일이나 폴더를 창 아무 곳에나 끌어다 놓아도 열립니다.</span></li><li><b>왼쪽 목록에서 문서를 누릅니다.</b><span class="sd">이름 칸에 글자를 넣으면 그 글자가 든 문서만 남습니다.</span></li><li><b>글자 크기는 A− / A+, 줄간격은 ↕, 밤 모드는 🌙 밤 모드로 바꿉니다.</b><span class="sd">문서마다 보던 자리를 기억해, 다시 누르면 그 자리에서 이어집니다.</span></li><li><b>인쇄는 🖨 또는 Ctrl + P를 누릅니다.</b><span class="sd">화면 꾸밈은 빠지고 문서만 인쇄됩니다.</span></li></ol></div><div class="blk"><h4>결과가 생기는 곳</h4><div class="path">왼쪽 목록 아래 「최근에 본 문서」에 최근에 연 문서가 남습니다. 다음에 열면 목록에서 눌러 바로 이어 봅니다. 지우고 싶으면 「목록 모두 비우기」를 누릅니다.</div></div><div class="blk"><h4>주의할 점</h4><ul class="warn"><li>한글(HWP) 문서는 글자만 뽑아 보여 드립니다. 표·그림 모양까지 그대로 보려면 한글(HWPX)로 저장한 파일을 여십시오.</li><li>스캔한 PDF는 종이를 사진처럼 담은 것이라 글자가 없어 찾기가 되지 않습니다. 그때는 B-4나 B-5로 글자를 먼저 뽑아 두십시오.</li><li>글 고치기는 MD · TXT · CSV에서만 됩니다. ✏️ 편집 → 👁 보기 → 💾 저장(Ctrl + S) 순서이고, 「문서 열기」로 연 파일은 원본에 바로 저장되고, 끌어다 놓은 파일은 내려받기 폴더에 저장됩니다.</li><li>파일은 이 컴퓨터 밖으로 나가지 않습니다. 서버도 계정도 필요 없습니다.</li></ul></div><p class="tip">💡 바탕화면에 두고 앱처럼 쓰려면: PC는 「문서뷰어.html」을 바탕화면에 저장한 뒤 오른쪽 클릭 → 바로 가기 만들기, 폰은 이 주소를 홈 화면에 추가하십시오.</p><div class="actions"><a class="btn" href="./문서뷰어.html" target="_blank" rel="noopener noreferrer">바로 열기 →</a></div></article><article class="tool" id="w2"><div class="thead"><span class="n">A-2</span><div><h3>한국 전통 윷놀이</h3><p class="fname"><b>파일</b> · 윷놀이.html</p><p class="kinds"><span>브라우저 · 쉼</span><span class="gray">웹 주소로 열기</span></p></div></div><p class="one">정월의 스물아홉 칸 윷판 — 파랑이와 1:1로 겨루거나 가족이 한 기기를 돌려 가며 즐깁니다.</p><div class="blk"><h4>무엇을 하는 프로그램인가요</h4><p>빽도 · 낙 · 잡기 · 업기에 지름길(모 · 뒷모 · 찌모)까지 갖춘 정통 윷판입니다. 말씀 연구하다 잠깐 쉬어 가시라고 만든 놀이로, 손주·가족과 한 판 두기 좋습니다.</p></div><div class="blk"><h4>준비물</h4><ul class="ready"><li>브라우저</li><li>함께할 사람이 있으면 그 자리에</li></ul></div><div class="blk"><h4>따라 하기</h4><ol class="steps"><li><b>「바로 열기」를 누릅니다.</b><span class="sd">윷판이 펼쳐지기 전에 놀이 방법을 그림으로 볼 수 있습니다(📖 게임 방법).</span></li><li><b>「혼자 · 파랑이와 대결」 또는 「가족 대전」을 고릅니다.</b><span class="sd">가족 대전은 2 · 3 · 4명이고, 이름과 말 색을 눌러 고칩니다.</span></li><li><b>파랑이와 겨룰 때는 파랑이 실력을 1(입문) ~ 5(고수)에서 고릅니다.</b><span class="sd">집안 규칙(빽도 · 낙 · 잡으면 한 번 더 · 업기)과 말 개수도 그 자리에서 정합니다.</span></li><li><b>「윷판 펼치기」를 누르고, 자기 차례에 윷을 던집니다.</b><span class="sd">윷이나 모가 나오거나 상대 말을 잡으면 한 번 더 던집니다.</span></li><li><b>내 말(또는 새 말)을 누르고, 반짝이는 칸 가운데 갈 곳을 누릅니다.</b><span class="sd">모서리나 방에 딱 서면 다음 차례에 지름길로 꺾입니다.</span></li><li><b>말이 모두 한 바퀴 돌아 참먹이를 지나면 이깁니다.</b><span class="sd">「↺ 새 판」으로 처음부터 다시 시작합니다.</span></li></ol></div><div class="blk"><h4>결과가 생기는 곳</h4><div class="path">판은 화면 안에서만 움직이고, 점수나 기록이 어디로 전송되지 않습니다.</div></div><div class="blk"><h4>주의할 점</h4><ul class="warn"><li>소리 단추(🔊)로 효과음을 끄고 켤 수 있습니다.</li><li>규칙이 궁금하면 화면 위 「게임 방법」과 맨 아래 「자세한 규칙 보기」에 차례대로 적어 두었습니다.</li></ul></div><div class="actions"><a class="btn" href="./윷놀이.html" target="_blank" rel="noopener noreferrer">바로 열기 →</a></div></article>
+
+    <div class="part"><h2>B. PC에서 내려받아 쓰는 프로그램</h2><span>윈도우 PC · 배치 파일(.bat) · 원본은 그대로</span></div>
+
+    <div class="note">
+      <b>PC 도구에 공통인 점</b><br>
+      · 처음 한 번은 인터넷에서 엔진과 글자 읽기 자료를 받습니다. 그 뒤로는 이 PC의 <b>PickleOCR</b> 폴더에 보관되어 다시 받지 않습니다.<br>
+      · 관리자 권한은 필요 없고, 원본 파일을 지우거나 바꾸지 않습니다.<br>
+      · 실행은 파일을 <b>두 번 누르면</b> 됩니다. 윈도우가 “이 파일을 열까요?” 하고 물으면 <b>실행</b>을 누르십시오.<br>
+      · 폰에서는 .bat을 실행할 수 없습니다. PC에서만 쓰는 도구입니다.<br>
+      · 받는 곳 — 지창고(구글 드라이브) <a href="https://drive.google.com/drive/folders/1mKV1jdvcRCKivS8K9QSV_afvDs0U_XwK" target="_blank" rel="noopener noreferrer">유틸 폴더</a>. 각 프로그램 아래 「내려받기」 단추를 눌러도 됩니다.
+    </div>
+
+    <article class="tool" id="p1"><div class="thead"><span class="n">B-1</span><div><h3>만능 변환기 — 문서를 옵시디언 글로</h3><p class="fname"><b>파일</b> · All_to_MD_v3.bat</p><p class="kinds"><span>PC · 변환</span><span class="gray">65,247바이트 · 2026-11-23</span></p></div></div><p class="one">한글 · PDF · 워드 · 글 · 그림을 옵시디언에서 읽는 마크다운(.md)으로 한꺼번에 바꿉니다.</p><div class="blk"><h4>무엇을 하는 프로그램인가요</h4><p>한글(HWP · HWPX), PDF, 워드(DOCX), 글(TXT · CSV · HTML), 그림(JPG · PNG · BMP · TIF · WEBP)을 .md로 바꿉니다. 폴더를 고르면 그 안 하위 폴더까지 한 번에 바꾸고, 그림이나 스캔한 PDF는 글자를 읽어(OCR) 한국어 · 영어 · 헬라어 · 히브리어까지 뽑습니다.</p></div><div class="blk"><h4>준비물</h4><ul class="ready"><li>윈도우 10 또는 11 PC (64비트)</li><li>인터넷 — 처음 한 번만 (엔진과 글자 읽기 자료를 받습니다)</li><li>바꿀 문서가 든 폴더</li></ul></div><div class="blk"><h4>따라 하기</h4><ol class="steps"><li><b>내려받은 All_to_MD_v3.bat을 바탕화면이나 문서 폴더에 둡니다.</b><span class="sd">압축은 없고 파일 하나입니다.</span></li><li><b>그 파일을 두 번 눌러 실행합니다.</b><span class="sd">검은 창이 열리고 영어 안내가 나옵니다. 처음에는 엔진을 받느라 몇 분 걸리니 창을 닫지 말고 기다리십시오.</span></li><li><b>폴더째 바꾸려면 Enter(또는 1), 파일 하나만 바꾸려면 F(또는 2)를 누릅니다.</b><span class="sd">바꿀 파일이나 폴더를 이 .bat 위로 끌어다 놓아도 바로 시작합니다.</span></li><li><b>열린 창에서 바꿀 폴더나 파일을 고르고 「확인」을 누릅니다.</b></li><li><b>화면에 [1/4] … [4/4] converting … 이 지나가고, 끝나면 다시 메뉴로 돌아옵니다.</b><span class="sd">바뀐 파일마다 [OK] 표시가 올라갑니다.</span></li><li><b>이어서 다른 폴더를 바꾸려면 다시 Enter를 누릅니다.</b><span class="sd">직전 폴더의 위 폴더가 열려 골라 가기 쉽습니다. 그만두려면 Esc.</span></li></ol></div><div class="blk"><h4>결과가 생기는 곳</h4><div class="path">폴더째 바꾼 경우 — 고른 폴더 안에 새로 생긴 <b>md_output</b> 폴더에 문서마다 같은 이름의 .md가 생깁니다.<br>파일 하나를 바꾼 경우 — 그 파일 바로 옆에 같은 이름의 .md가 생깁니다.</div></div><div class="blk"><h4>주의할 점</h4><ul class="warn"><li>원본 문서는 그대로 두고 새 .md만 만듭니다. 원본이 지워질 걱정은 없습니다.</li><li>처음 실행은 오래 걸립니다(두 번째부터는 빠릅니다). 내려받은 엔진은 이 PC의 PickleOCR 폴더에 보관되어 다시 받지 않습니다.</li><li>오류가 나면 검은 창의 글을 사진으로 찍어 보내 주십시오. 화면에 적힌 그대로가 원인을 가리킵니다.</li><li>v3는 파일 이름에 한자(예: 神祕)가 들어가면 멈추던 v2의 오류를 고친 판입니다. 지난 v2 · One · Greek_Hebrew 판은 쓰지 마십시오.</li><li>바뀐 .md를 옵시디언에서 보려면 그 파일을 옵시디언 보관함 폴더로 옮겨 두십시오.</li></ul></div><div class="actions"><a class="btn" href="https://drive.google.com/uc?export=download&id=174d7w4i8IoDa1pjWIXnd8-RslD9M5HSL" target="_blank" rel="noopener noreferrer">내려받기 <span class="s">지창고 유틸 폴더</span></a></div></article><article class="tool" id="p2"><div class="thead"><span class="n">B-2</span><div><h3>PDF 나누기 — 45MB 넘는 PDF 쪼개기</h3><p class="fname"><b>파일</b> · PDF_Split_Safe_45MB.bat</p><p class="kinds"><span>PC · PDF</span><span class="gray">8,130바이트 · 2026-11-19</span></p></div></div><p class="one">45MB를 넘는 PDF를 45MB 이하 조각으로 나눠, 지창고와 채팅의 64MB 제한을 넘지 않게 합니다.</p><div class="blk"><h4>무엇을 하는 프로그램인가요</h4><p>큰 PDF를 쪽 단위로 잘라 여러 조각으로 나눕니다. 조각마다 45MB를 넘지 않게 하고, 깨진 PDF나 너무 큰 한 쪽은 그림으로 바꿔 담아 열리게 살립니다.</p></div><div class="blk"><h4>준비물</h4><ul class="ready"><li>윈도우 PC</li><li>인터넷 — 처음 한 번만</li><li>나눌 PDF 파일</li></ul></div><div class="blk"><h4>따라 하기</h4><ol class="steps"><li><b>내려받은 PDF_Split_Safe_45MB.bat을 두 번 눌러 실행합니다.</b></li><li><b>열린 창에서 나눌 PDF를 고르고 「확인」을 누릅니다.</b><span class="sd">PDF를 .bat 위로 끌어다 놓아도 됩니다.</span></li><li><b>기다립니다.</b><span class="sd">쪽 수와 크기를 재어 조각 수를 정하고, 조각마다 몇 쪽인지 화면에 적어 줍니다.</span></li><li><b>「Done」이 나오면 조각 폴더를 확인합니다.</b></li><li><b>다른 PDF를 나누려면 Enter, 그만두려면 Esc를 누릅니다.</b><span class="sd">직전 PDF가 있던 폴더가 다시 열립니다.</span></li></ol></div><div class="blk"><h4>결과가 생기는 곳</h4><div class="path">PDF가 있던 자리에 <b>원본이름_split</b> 폴더가 생기고, 그 안에 <b>원본이름_part01.pdf</b>, <b>part02.pdf</b> … 로 나뉩니다.</div></div><div class="blk"><h4>주의할 점</h4><ul class="warn"><li>쪽이 잘리지 않고 쪽과 쪽 사이에서 나뉩니다. 나눈 조각을 이어 붙이면 원래 책이 됩니다.</li><li>이미 45MB보다 작은 PDF는 통째로 한 조각(part01)만 만들어집니다.</li><li>화면에 [repaired/compressed]가 붙은 조각은 원본이 깨졌거나 한 쪽이 너무 커서 그림으로 바꾼 것이라, 그 부분은 글자가 약간 흐려질 수 있습니다.</li></ul></div><div class="actions"><a class="btn" href="https://drive.google.com/uc?export=download&id=1jVlfMfxhnhkIPVMnp_s4B5Qqu3qnTbj8" target="_blank" rel="noopener noreferrer">내려받기 <span class="s">지창고 유틸 폴더</span></a></div></article><article class="tool" id="p3"><div class="thead"><span class="n">B-3</span><div><h3>파일 이름 앞머리 정리</h3><p class="fname"><b>파일</b> · Clean_Filename_Prefix.bat</p><p class="kinds"><span>PC · 정리</span><span class="gray">26,442바이트 · 2026-11-22</span></p></div></div><p class="one">이름 앞에 붙은 빈칸 · 전각 빈칸 · 탭 · "- "를 지워, 파일 이름을 깨끗하게 만듭니다.</p><div class="blk"><h4>무엇을 하는 프로그램인가요</h4><p>신학지남 파일 262개처럼 이름이 "- 저, 시편강해.md"로 시작해 목록에서 어지럽던 것을 한 번에 정리할 때 만든 도구입니다. 앞머리만 지우고 이름의 나머지 글자는 한 글자도 건드리지 않습니다.</p></div><div class="blk"><h4>준비물</h4><ul class="ready"><li>윈도우 PC</li><li>이름을 정리할 폴더</li></ul></div><div class="blk"><h4>따라 하기</h4><ol class="steps"><li><b>내려받은 Clean_Filename_Prefix.bat을 두 번 눌러 실행합니다.</b><span class="sd">한국어 안내가 나옵니다.</span></li><li><b>폴더 선택 창에서 정리할 폴더를 고릅니다.</b></li><li><b>「하위 폴더까지 함께 처리할까요?」에 [Y] 예 · [N] 이 폴더만 으로 답합니다.</b><span class="sd">그냥 Enter를 누르면 예(하위 폴더까지)입니다.</span></li><li><b>「이름을 어떻게 바꿀까요?」에서 [1] 맨 앞 빈칸만, [2] 빈칸과 뒤의 "- "까지(추천) 중 하나를 누릅니다.</b><span class="sd">예: " - 저, 시편강해.md" → "저, 시편강해.md"</span></li><li><b>찾은 파일 수와 바뀔 이름 미리보기(최대 10개)를 읽고 [Y] 예를 누릅니다.</b><span class="sd">여기서 [N]이나 Enter를 누르면 아무것도 바뀌지 않습니다.</span></li><li><b>결과(이름 변경 · 건너뜀 · 실패 개수)를 확인합니다.</b><span class="sd">Enter를 누르면 상위 폴더에서 이어서 하고, Esc로 끝냅니다.</span></li></ol></div><div class="blk"><h4>결과가 생기는 곳</h4><div class="path">고른 폴더 안 파일 이름만 바뀝니다. 파일 내용과 폴더 구조는 그대로입니다.</div></div><div class="blk"><h4>주의할 점</h4><ul class="warn"><li>미리보기에서 [Y]를 눌러야 이름이 바뀝니다. 먼저 확인하고 누르도록 만들었습니다.</li><li>같은 이름의 파일이 이미 있으면 덮어쓰지 않고 건너뜁니다.</li><li>숨김 · 시스템 항목(.obsidian, .git 같은 것)은 건드리지 않습니다.</li><li>"-저"처럼 하이픈 뒤에 빈칸이 없는 이름은 그대로 둡니다.</li><li>이름을 바꾼 뒤 마음이 바뀌면 되돌리기 어렵습니다. 처음에는 하위 폴더를 넣지 않고 한 폴더에서 먼저 해 보십시오.</li></ul></div><div class="actions"><a class="btn" href="https://drive.google.com/uc?export=download&id=1-cH4PtTTAjTvGbBONqJOyyB7MFOhvrr7" target="_blank" rel="noopener noreferrer">내려받기 <span class="s">지창고 유틸 폴더</span></a></div></article><article class="tool" id="p4"><div class="thead"><span class="n">B-4</span><div><h3>PDF 글자 뽑기 — 폴더 속 PDF 전부</h3><p class="fname"><b>파일</b> · PDF_OCR_to_TXT.bat</p><p class="kinds"><span>PC · 글자 인식</span><span class="gray">4,360바이트 · 2026-11-15</span></p></div></div><p class="one">폴더 안 PDF 전부에서 글자를 뽑아 .txt로 만듭니다. 스캔한 PDF도 글자로 읽습니다.</p><div class="blk"><h4>무엇을 하는 프로그램인가요</h4><p>글자가 들어 있는 PDF는 그 글자를 그대로 옮기고, 그림으로만 된 쪽(스캔한 책)은 글자 인식(OCR, 한국어)으로 읽어 냅니다. 신학지남·주석처럼 스캔한 자료를 글자로 만들 때 씁니다.</p></div><div class="blk"><h4>준비물</h4><ul class="ready"><li>윈도우 PC</li><li>인터넷 — 처음 한 번만</li><li>PDF가 든 폴더</li></ul></div><div class="blk"><h4>따라 하기</h4><ol class="steps"><li><b>내려받은 PDF_OCR_to_TXT.bat을 두 번 눌러 실행합니다.</b></li><li><b>폴더 선택 창에서 PDF가 든 폴더를 고릅니다.</b></li><li><b>기다립니다.</b><span class="sd">쪽마다 「Page 3/210…」처럼 진행이 보입니다. 처음 한 번은 엔진을 받느라 오래 걸립니다.</span></li><li><b>「Done! Success: 12 / Failed: 0」과 「Output folder: …」를 확인합니다.</b><span class="sd">끝나면 아무 키나 누르면 창이 닫힙니다.</span></li></ol></div><div class="blk"><h4>결과가 생기는 곳</h4><div class="path">고른 폴더 안에 <b>txt_output</b> 폴더가 생기고, PDF마다 같은 이름의 .txt가 만들어집니다. 쪽과 쪽 사이에는 「--- Page Break ---」가 들어갑니다.</div></div><div class="blk"><h4>주의할 점</h4><ul class="warn"><li>표나 그림 속 글자는 줄 순서가 흐트러질 수 있습니다. 꼭 원본과 대조해 주십시오.</li><li>글씨가 흐리거나 기울었거나 손으로 쓴 것은 잘못 읽을 수 있습니다.</li><li>Failed가 나오면 그 PDF는 암호가 걸렸거나 파일이 깨진 것입니다.</li></ul></div><div class="actions"><a class="btn" href="https://drive.google.com/uc?export=download&id=1PUsM-j1AeTgLXwH5K7iaC67W9EiCzKKy" target="_blank" rel="noopener noreferrer">내려받기 <span class="s">지창고 유틸 폴더</span></a></div></article><article class="tool" id="p5"><div class="thead"><span class="n">B-5</span><div><h3>PDF 글자 뽑기 — 한 파일만</h3><p class="fname"><b>파일</b> · PDF_Single_OCR_to_TXT.bat</p><p class="kinds"><span>PC · 글자 인식</span><span class="gray">3,619바이트 · 2026-11-15</span></p></div></div><p class="one">PDF 한 개만 골라 글자를 뽑아 그 옆에 .txt로 둡니다.</p><div class="blk"><h4>무엇을 하는 프로그램인가요</h4><p>B-4와 같은 일을 파일 하나에만 합니다. 폴더를 통째로 할 필요 없이 한 편만 확인하고 싶을 때 빠릅니다.</p></div><div class="blk"><h4>준비물</h4><ul class="ready"><li>윈도우 PC</li><li>인터넷 — 처음 한 번만</li><li>PDF 파일 하나</li></ul></div><div class="blk"><h4>따라 하기</h4><ol class="steps"><li><b>내려받은 PDF_Single_OCR_to_TXT.bat을 두 번 눌러 실행합니다.</b></li><li><b>열린 창에서 PDF 하나를 고르고 「확인」을 누릅니다.</b><span class="sd">PDF를 .bat 위로 끌어다 놓아도 됩니다.</span></li><li><b>쪽마다 진행이 지나가고 「Done」이 나오면 끝입니다.</b><span class="sd">아무 키나 누르면 창이 닫힙니다.</span></li></ol></div><div class="blk"><h4>결과가 생기는 곳</h4><div class="path">고른 PDF 바로 옆에 같은 이름의 .txt가 생깁니다.</div></div><div class="blk"><h4>주의할 점</h4><ul class="warn"><li>B-4와 같은 주의가 그대로 적용됩니다 — 표는 순서가 흐트러질 수 있고, 손글씨는 잘 못 읽습니다.</li></ul></div><div class="actions"><a class="btn" href="https://drive.google.com/uc?export=download&id=1Dsm3BvYXfRobNUkbWECc5F6_L3lXV4ms" target="_blank" rel="noopener noreferrer">내려받기 <span class="s">지창고 유틸 폴더</span></a></div></article><article class="tool" id="p6"><div class="thead"><span class="n">B-6</span><div><h3>사진 글자 뽑기 — 폴더 속 사진 전부</h3><p class="fname"><b>파일</b> · IMG_OCR_to_MD.bat</p><p class="kinds"><span>PC · 글자 인식</span><span class="gray">6,093바이트 · 2026-11-16</span></p></div></div><p class="one">폴더 안 JPG · PNG · BMP 사진에서 글자를 읽어 .md로 만듭니다.</p><div class="blk"><h4>무엇을 하는 프로그램인가요</h4><p>책장을 폰으로 찍어 둔 사진, 문서를 찍은 사진에서 글자를 뽑아 옵시디언에 넣을 .md로 만들어 줍니다.</p></div><div class="blk"><h4>준비물</h4><ul class="ready"><li>윈도우 PC</li><li>인터넷 — 처음 한 번만</li><li>사진이 든 폴더</li></ul></div><div class="blk"><h4>따라 하기</h4><ol class="steps"><li><b>내려받은 IMG_OCR_to_MD.bat을 두 번 눌러 실행합니다.</b></li><li><b>폴더 선택 창에서 사진이 든 폴더를 고릅니다.</b></li><li><b>기다립니다.</b><span class="sd">사진마다 [3/28] Processing … 처럼 진행이 보입니다. 첫 실행은 엔진을 받느라 오래 걸립니다.</span></li><li><b>「Done! Success … / Failed …」와 「Output folder: …」를 확인합니다.</b></li></ol></div><div class="blk"><h4>결과가 생기는 곳</h4><div class="path">고른 폴더 안에 <b>md_output</b> 폴더가 생기고, 사진마다 같은 이름의 .md가 만들어집니다. 첫 줄에 사진 이름을 적고 그 아래에 읽은 글을 담습니다.</div></div><div class="blk"><h4>주의할 점</h4><ul class="warn"><li>사진은 바르게 세워 찍은 것일수록 잘 읽습니다. 비뚤거나 어두우면 잘못 읽습니다.</li><li>인쇄된 글자에 맞춘 인식이라 손글씨는 거의 읽지 못합니다.</li><li>표는 줄 순서가 흐트러질 수 있으니 원본 사진과 대조해 주십시오.</li></ul></div><div class="actions"><a class="btn" href="https://drive.google.com/uc?export=download&id=1WnyrfRngVi9J6R9E95X5BmavMuJXpuHf" target="_blank" rel="noopener noreferrer">내려받기 <span class="s">지창고 유틸 폴더</span></a></div></article><article class="tool" id="p7"><div class="thead"><span class="n">B-7</span><div><h3>사진 글자 뽑기 — 한 장만</h3><p class="fname"><b>파일</b> · IMG_Single_OCR_to_MD.bat</p><p class="kinds"><span>PC · 글자 인식</span><span class="gray">5,417바이트 · 2026-11-16</span></p></div></div><p class="one">사진 한 장만 골라 글자를 뽑아 그 옆에 .md로 둡니다.</p><div class="blk"><h4>무엇을 하는 프로그램인가요</h4><p>B-6과 같은 일을 사진 한 장에만 합니다. 한 장만 확인할 때 폴더를 만들 필요가 없습니다.</p></div><div class="blk"><h4>준비물</h4><ul class="ready"><li>윈도우 PC</li><li>인터넷 — 처음 한 번만</li><li>사진 파일 하나 (JPG · PNG · BMP)</li></ul></div><div class="blk"><h4>따라 하기</h4><ol class="steps"><li><b>내려받은 IMG_Single_OCR_to_MD.bat을 두 번 눌러 실행합니다.</b></li><li><b>열린 창에서 사진 하나를 고르고 「확인」을 누릅니다.</b><span class="sd">사진을 .bat 위로 끌어다 놓아도 됩니다.</span></li><li><b>「Done」이 나오면 끝입니다.</b><span class="sd">아무 키나 누르면 창이 닫힙니다.</span></li></ol></div><div class="blk"><h4>결과가 생기는 곳</h4><div class="path">고른 사진 바로 옆에 같은 이름의 .md가 생깁니다.</div></div><div class="blk"><h4>주의할 점</h4><ul class="warn"><li>B-6과 같은 주의가 그대로 적용됩니다 — 손글씨는 거의 읽지 못하고, 표는 순서가 흐트러질 수 있습니다.</li></ul></div><div class="actions"><a class="btn" href="https://drive.google.com/uc?export=download&id=1-WpJS48MLwI-4NRjtYGNvqGfdlP4TFb-" target="_blank" rel="noopener noreferrer">내려받기 <span class="s">지창고 유틸 폴더</span></a></div></article>
+
+    <div class="part"><h2>C. 지난 버전 — 지금은 쓰지 않는 파일</h2><span>새 판으로 바뀌었거나, 쓰지 않기로 한 것</span></div>
+    <details class="old">
+      <summary>지난 버전 6종과 그 이유 보기 <em>펼치기</em></summary>
+      <div class="oldbody">
+        <p>새 판이 나온 뒤에도 헷갈리지 않도록, 지난 파일은 지우지 않고 여기에만 적어 둡니다. 새로 받으실 때는 위 A · B의 파일만 받으시면 됩니다.</p>
+        <dl><dt>All_to_MD.bat · All_to_MD_Greek_Hebrew.bat · All_to_MD_One.bat · All_to_MD_v2.bat</dt><dd>B-1(All_to_MD_v3)로 대체되었습니다. v2는 파일 이름에 한자가 있으면 멈추던 오류가 있었습니다.</dd><dt>PDF_Split_50MB.bat</dt><dd>B-2(PDF_Split_Safe_45MB)로 대체되었습니다. 45MB를 넘는 한 쪽과 깨진 PDF에서 빈 파일이 생기던 문제를 고친 판입니다.</dd><dt>Trim_Leading_Spaces.bat</dt><dd>B-3(Clean_Filename_Prefix)로 대체되었습니다. 이 판은 보통 빈칸만 지워, 전각 빈칸이나 "- "로 시작한 이름을 0개로 보고했습니다.</dd><dt>HWP_to_MD.bat</dt><dd>ahwp.exe라는 별도 파일이 함께 있어야 했고, 그 기능이 B-1에 모두 들어갔습니다.</dd><dt>Shinhak_Obsidian_Link.bat</dt><dd>지창고에서 바이러스로 잘못 잡혀 지워졌고, 지금은 쓰지 않습니다. 같은 일은 B-1로 합니다.</dd><dt>PDF_OCR_to_TXT.txt · PDF_OCR_to_TXT_이전버전_20261115.txt</dt><dd>메일로 .bat을 보낼 때 확장자를 숨기려고 쓰던 글자 파일입니다. 지금은 지창고에서 바로 받습니다.</dd></dl>
+      </div>
+    </details>
+
+    <footer class="jh-foot">
+      <div class="jh-row">
+        <span><b>만든이</b>: 정성헌 목사</span>
+        <span><b>교회</b>: 대구선교교회</span>
+        <span><b>교단</b>: 대한예수교 장로회 재건총회</span>
+        <span><b>문의</b>: <a href="mailto:c56612@daum.net">c56612@daum.net</a></span>
+      </div>
+      <p class="jh-acct">자원후원계좌: iM뱅크 508-10-9580903 정성헌(일본선교)</p>
+      <p class="jh-note">이 방은 2026-11-26에 프로그램을 하나씩 열어 확인하고 정리했습니다. 새 프로그램을 만들면 이 방에 더하고, 지난 파일은 아래 C로 내립니다.</p>
+    </footer>
+  </div>
+</main>
+
+<nav class="gopair" id="goMain" aria-label="본문 위아래 이동"><button type="button" class="gobtn up" id="toTop" aria-label="본문 맨 위로" title="본문 맨 위로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.6V5.4"/><path d="M5.2 12.2 12 5.4l6.8 6.8"/></svg></button><button type="button" class="gobtn dn" id="toBot" aria-label="본문 맨 아래로" title="본문 맨 아래로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.4v13.6"/><path d="M5.2 11.2 12 18l6.8-6.8"/></svg></button></nav>
+
+<script id="gopairJS">
+/* ---------- 15차 ①: ↑·↓ 한 캡슐 단추 — PC는 목차창·본문 양쪽, 휴대폰은 본문 하나 ---------- */
+(function(){
+  function wire(){
+    var side = document.querySelector('aside.side') || document.querySelector('aside') || document.getElementById('toc');
+    var main = document.querySelector('main');
+    var docH = function(){ return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight); };
+    var go = function(el, top, fb){ try{ el.scrollTo({top: top, behavior:'smooth'}); }catch(e){ fb(); } };
+    var click = function(sel, fn){
+      var el = document.querySelector(sel);
+      if(el) el.addEventListener('click', function(ev){ ev.preventDefault(); fn(); });
+    };
+    click('#goMain .up', function(){
+      go(window, 0, function(){ window.scrollTo(0, 0); });
+      if(main) go(main, 0, function(){ main.scrollTop = 0; });
+    });
+    click('#goMain .dn', function(){
+      var y = docH();
+      go(window, y, function(){ window.scrollTo(0, y); });
+      if(main) go(main, main.scrollHeight, function(){ main.scrollTop = main.scrollHeight; });
+    });
+    click('#goSide .up', function(){ if(side) go(side, 0, function(){ side.scrollTop = 0; }); });
+    click('#goSide .dn', function(){ if(side) go(side, side.scrollHeight, function(){ side.scrollTop = side.scrollHeight; }); });
+    /* 15차 ⑫: 서랍이 열리면 목차 캡슐이 서랍 안 오른쪽 아래로 들어온다 */
+    function placeDrawerGo(){
+      var g = document.getElementById('goSide');
+      if(!g) return;
+      var f = document.getElementById('drawerFade');
+      if(!f){ f = document.createElement('div'); f.id = 'drawerFade';
+        f.setAttribute('aria-hidden','true'); document.body.appendChild(f); }
+      if(window.innerWidth > 1024){ g.style.left = ''; g.style.right = ''; return; }
+      var a = side || document.querySelector('aside.side') || document.querySelector('aside');
+      var w = a ? a.getBoundingClientRect().width : 0;
+      if(!w) return;
+      g.style.right = 'auto';
+      g.style.left = Math.max(6, Math.round(w - 48)) + 'px';
+      f.style.width = Math.round(w) + 'px';
+    }
+    window.placeDrawerGo = placeDrawerGo;
+    window.addEventListener('resize', placeDrawerGo);
+    window.addEventListener('orientationchange', function(){ setTimeout(placeDrawerGo, 220); });
+    placeDrawerGo();
+
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire); else wire();
+})();
+</script>
+</body>
+</html>
