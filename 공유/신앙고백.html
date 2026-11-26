@@ -2728,9 +2728,9 @@ function sermonHTML(tk,dk,solo){
   h.push('</section>');
   return h.join('');
 }
-/* 읽을 말씀 단추를 붙이는 부서 — 부모용·어린이·중고등부 */
+/* 읽을 말씀 단추를 붙이는 부서 — 장년·청년·중고등부·부모용·어린이(2026-11-26 장년·청년에도 붙임) */
 function chipOK(dk){
-  return dk==='mid'||dk==='elem_parent'||dk==='elem_kid'||dk==='kinder_parent'||dk==='kinder_kid'||dk==='child'||dk==='child_kid';
+  return dk==='adult'||dk==='youth'||dk==='mid'||dk==='elem_parent'||dk==='elem_kid'||dk==='kinder_parent'||dk==='kinder_kid'||dk==='child'||dk==='child_kid';
 }
 
 /* ── 소년부·어린이 판 — 아이가 직접 읽는 동화책 화면 (?sermon=N&age=junior_kid) ──

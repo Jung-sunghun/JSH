@@ -101,7 +101,7 @@
   /* ── 5) 팝업 창 ──────────────────────────────────────────────────────── */
   var CSS = '' +
     '.krv-l{color:inherit;text-decoration:none;border-bottom:1px dotted #8a9dd9;cursor:pointer;' +
-    'padding:0 1px;border-radius:2px}' +
+    'padding:0 1px;border-radius:2px;white-space:nowrap}' +
     '.krv-l:hover,.krv-l:focus-visible{background:#e8edfc;border-bottom-color:#1c2e82}' +
     '.krv-l:focus-visible{outline:2px solid #f0c33c;outline-offset:1px}' +
     '.krv-modal{position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147482000;display:none}' +
