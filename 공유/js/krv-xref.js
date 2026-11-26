@@ -110,9 +110,8 @@
       var b = m[4] ? parseInt(m[4], 10) : a;
       if (b < a) { var t = a; a = b; b = t; }
       if (!num || b - a > 200) continue;
-      if (hasHangul(num, ch, a, b)) continue;       /* 이미 열리는 관주는 그대로 둔다 */
-      if (!covered(num, ch, a, b)) continue;
-      out.push({ at: at, len: m[0].length, text: m[0] });
+      if (!hasHangul(num, ch, a, b) && !covered(num, ch, a, b)) continue;
+      out.push({ at: at, len: m[0].length, text: m[0], gae: !hasHangul(num, ch, a, b) });
     }
     return out;
   }
@@ -141,7 +140,7 @@
         a.href = '#';
         a.className = 'vlink';
         a.setAttribute('data-r', h.text);
-        a.setAttribute('title', h.text + ' — 개역개정 본문 열기');
+        a.setAttribute('title', h.text + (h.gae ? ' — 개역개정 본문 열기' : ' — 본문 열기'));
         a.textContent = h.text;
         frag.appendChild(a);
         pos = h.at + h.len;
