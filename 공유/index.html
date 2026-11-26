@@ -619,6 +619,8 @@ main{padding-bottom:150px}
     var keep = raw.filter(function(t){ return !/^\d+(장|절|편|회|호|권|개)?$/.test(t); });
     return keep.length ? keep : raw;
   }
+  /* 유사종교서고·유사종교 비교 항목인가 — 어떤 검색어에서도 맨 아래로 보낸다 */
+  function isSim(e){ return String(e && e.s || '').indexOf('유사종교') === 0; }
   function rank(e, qq, toks){
     var L = norm(e.l), H = norm(e.l + ' ' + e.t + ' ' + e.s);
     for(var i=0;i<toks.length;i++){ if(H.indexOf(norm(toks[i]))<0) return -1; }
@@ -635,6 +637,12 @@ main{padding-bottom:150px}
       out.push({e:IDX[i], s:sc, i:i});
     }
     out.sort(function(a,b){ return a.s - b.s || a.i - b.i; });
+    /* 정통 서고 결과를 먼저, 유사종교서고 항목은 항상 맨 끝에 */
+    (function(){
+      var orth = [], sim = [];
+      for(var m=0;m<out.length;m++){ (isSim(out[m].e) ? sim : orth).push(out[m]); }
+      out = orth.concat(sim);
+    })();
     if(!out.length){
       box.innerHTML = '<div class="fnone">찾는 것이 없습니다. 위 열한 메뉴에서 골라 주세요.</div>';
       box.hidden = false; return;
