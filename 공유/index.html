@@ -809,6 +809,7 @@ main{padding-bottom:150px}
     nmSlot.innerHTML='';
     var cl=src.cloneNode(true);
     cl.removeAttribute('hidden');
+    cl.id='nm-'+key;   /* 원래 드롭다운과 같은 id가 둘 생기지 않게 */
     cl.style.left=''; cl.style.maxHeight='';
     nmSlot.appendChild(cl);
     nm.setAttribute('data-key',key);
