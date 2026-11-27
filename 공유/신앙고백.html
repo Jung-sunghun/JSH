@@ -2322,7 +2322,7 @@ html.solo .jh-foot,html.solo-pre .jh-foot{display:none!important}
 
 /* 인쇄(PDF) — 설교문만 깨끗하게 */
 @media print{
-  #hpguideBar,#sideNav,.drawer-veil,.topbar,#toTop,#toTopLeft,#hpguideModal,
+  #hpguideBar,#sideNav,.drawer-veil,.topbar,#toTop,#toTopLeft,#hpguideModal,#noticeModal,
   .sm-tools,.sm-endtools,.totop,.cover-search{display:none!important}
   html,body{background:#fff!important;color:#000!important;font-size:11.5pt!important}
   body{display:block!important}
@@ -4086,6 +4086,171 @@ document.addEventListener('DOMContentLoaded', init);
   });
   JHNav.hook(['showEntry','showCover','showStory','showSermon']);
   JHNav.start();
+})();
+</script>
+
+<!-- [대문 안내] 교리설교 안내 창 ─────────────────────────────────────────
+     대문(첫 화면)으로 들어올 때만 띄운다. 공유받은 단독 설교·항목 직행 링크
+     (?sermon= · ?topic= · ?age= · ?dept= · ?view=, #sermon/… · #story · #항목)로
+     들어오면 띄우지 않는다. 닫기: ✕ · 확인 · 오늘 하루 보지 않기 · 바깥 어두운 배경 · Esc -->
+<style>
+#noticeModal{display:none;position:fixed;inset:0;z-index:2147482500;margin:0;padding:0;border:0}
+#noticeModal.cn-on{display:block}
+#noticeModal *{box-sizing:border-box}
+#noticeModal .cn-veil{position:fixed;inset:0;z-index:0;background:rgba(24,18,10,.58);
+  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+#noticeModal .cn-scroll{position:fixed;inset:0;z-index:1;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px 16px calc(24px + env(safe-area-inset-bottom,0px))}
+#noticeModal .cn-box{position:relative;width:100%;max-width:560px;overflow:hidden;
+  padding:32px 28px 22px;border:1px solid var(--line);border-radius:18px;
+  background:var(--panel);color:var(--ink);box-shadow:0 26px 70px rgba(0,0,0,.36),0 2px 6px rgba(0,0,0,.12);
+  font-family:inherit;font-size:1.06em;line-height:1.94;
+  word-break:keep-all;overflow-wrap:break-word;text-align:left}
+#noticeModal .cn-box::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;
+  background:linear-gradient(90deg,var(--accent),var(--gold))}
+#noticeModal .cn-x{position:absolute;top:12px;right:12px;width:44px;height:44px;margin:0;padding:0;
+  display:flex;align-items:center;justify-content:center;-webkit-appearance:none;appearance:none;
+  border:1px solid var(--line);border-radius:50%;background:var(--chip);color:var(--muted);
+  font-family:inherit;font-size:17px;line-height:1;font-weight:700;cursor:pointer}
+#noticeModal .cn-x:hover{background:var(--panel);border-color:var(--gold);color:var(--accent)}
+#noticeModal .cn-body p{margin:0 0 .6em}
+#noticeModal .cn-body p:last-child{margin-bottom:0}
+#noticeModal .cn-lead{padding-right:46px;font-size:1.07em;font-weight:700;color:var(--accent);line-height:1.75}
+#noticeModal .cn-shalom{margin-top:.85em!important;color:var(--accent2);font-weight:700;letter-spacing:.06em}
+#noticeModal .cn-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:10px;
+  margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+#noticeModal .cn-actions button{flex:0 0 auto;min-height:48px;margin:0;padding:0 1.15em;
+  border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);
+  font-family:inherit;font-size:.94em;line-height:1.3;cursor:pointer}
+#noticeModal .cn-skip{background:var(--chip);color:var(--muted)}
+#noticeModal .cn-skip:hover{border-color:var(--gold);color:var(--gold)}
+#noticeModal .cn-ok{background:var(--accent);border-color:var(--accent);color:var(--panel);font-weight:700;padding:0 1.6em}
+#noticeModal .cn-ok:hover{filter:brightness(1.08)}
+#noticeModal .cn-x:focus-visible,#noticeModal .cn-actions button:focus-visible{
+  outline:2px solid var(--gold);outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){
+  #noticeModal.cn-on .cn-box{animation:cnIn .22s ease-out}
+  @keyframes cnIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+}
+@media (max-width:430px){
+  #noticeModal .cn-scroll{padding:14px 12px calc(18px + env(safe-area-inset-bottom,0px))}
+  #noticeModal .cn-box{font-size:1em;line-height:1.88;padding:28px 18px 18px;border-radius:16px}
+  #noticeModal .cn-lead{padding-right:42px;font-size:1.06em}
+  #noticeModal .cn-actions{gap:8px;margin-top:18px;padding-top:16px}
+  #noticeModal .cn-actions button{flex:1 1 46%;min-height:50px;font-size:.93em;padding:0 .5em}
+}
+</style>
+<div id="noticeModal" role="dialog" aria-modal="true" aria-label="교리설교 안내" aria-hidden="true">
+  <div class="cn-veil"></div>
+  <div class="cn-scroll">
+    <div class="cn-box">
+      <button type="button" class="cn-x" aria-label="안내 창 닫기">✕</button>
+      <div class="cn-body">
+        <p class="cn-lead">교리설교 창에 유치부~장년부 대상 27개의 교리 주제설교가 있습니다.</p>
+        <p>유치부~유년부~중.고등부 설교는 부모가 자녀들에게, 만든 할아버지가 여섯명 손주를 사랑하는 마음으로 만들었습니다.</p>
+        <p>부서를 클릭하면 링크복사, 내보내기로 개인 휴대폰으로 메시지, 카톡 전송을 할 수 있습니다.</p>
+        <p>교리설교를 사랑하는 자녀, 손주들에게 보내 하나님을 배워가게 할 수 있습니다.</p>
+        <p class="cn-shalom">샬롬~</p>
+      </div>
+      <div class="cn-actions">
+        <button type="button" class="cn-skip">오늘 하루 보지 않기</button>
+        <button type="button" class="cn-ok">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+/* 대문 안내 창 — 첫 화면(대문)에만. 단독 공유 링크로 들어오면 띄우지 않는다.
+   '오늘 하루 보지 않기'는 오늘 날짜를 localStorage 에 적어 두고 그날만 건너뛴다. */
+(function(){
+  var modal=document.getElementById('noticeModal');
+  if(!modal) return;
+  var SKIP_KEY='conf-cover-notice-skip';
+  var box=modal.querySelector('.cn-box');
+  var isOpen=false,lastFocus=null;
+  var prevHtmlOverflow='',prevBodyOverflow='',prevHtmlPad='',prevBodyPad='';
+
+  function pad2(n){ return (n<10?'0':'')+n; }
+  function todayKey(){ var d=new Date(); return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate()); }
+  function skippedToday(){ try{ return localStorage.getItem(SKIP_KEY)===todayKey(); }catch(e){ return false; } }
+  function markSkip(){ try{ localStorage.setItem(SKIP_KEY,todayKey()); }catch(e){} }
+
+  /* 공유받은 설교·항목 직행 링크인가 — 파라미터가 하나라도 있거나 해시가 대문이 아니면 직행으로 본다 */
+  function isDirectLink(){
+    var q=(location.search||'').replace(/^\?/,'');
+    if(q) return true;
+    var h=(location.hash||'').replace(/^#/,'').replace(/\/$/,'');
+    if(!h||h==='home') return false;
+    return true;
+  }
+
+  function open(){
+    if(isOpen) return;
+    isOpen=true;
+    lastFocus=document.activeElement;
+    /* 스크롤바가 사라지며 화면이 흔들리지 않게 그 폭만큼 채운다 */
+    var gap=window.innerWidth-(document.documentElement.clientWidth||window.innerWidth);
+    prevHtmlOverflow=document.documentElement.style.overflow;
+    prevBodyOverflow=document.body.style.overflow;
+    prevHtmlPad=document.documentElement.style.paddingRight;
+    prevBodyPad=document.body.style.paddingRight;
+    document.documentElement.style.overflow='hidden';
+    document.body.style.overflow='hidden';
+    if(gap>0){ document.documentElement.style.paddingRight=gap+'px'; }
+    modal.classList.add('cn-on');
+    modal.setAttribute('aria-hidden','false');
+    var f=modal.querySelector('.cn-ok')||modal.querySelector('.cn-x');
+    if(f&&f.focus){ try{ f.focus({preventScroll:true}); }catch(e){ f.focus(); } }
+  }
+  function close(){
+    if(!isOpen) return;
+    isOpen=false;
+    modal.classList.remove('cn-on');
+    modal.setAttribute('aria-hidden','true');
+    document.documentElement.style.overflow=prevHtmlOverflow;
+    document.body.style.overflow=prevBodyOverflow;
+    document.documentElement.style.paddingRight=prevHtmlPad;
+    document.body.style.paddingRight=prevBodyPad;
+    if(lastFocus&&lastFocus.focus){ try{ lastFocus.focus({preventScroll:true}); }catch(e){} }
+  }
+
+  modal.addEventListener('click',function(e){
+    var t=e.target;
+    var fn=(t&&t.closest)?t.closest('button,a[href],input,select,textarea,label,summary'):null;
+    if(fn){
+      if(fn.classList.contains('cn-x')||fn.classList.contains('cn-ok')){ e.preventDefault(); close(); return; }
+      if(fn.classList.contains('cn-skip')){ e.preventDefault(); markSkip(); close(); return; }
+      return;
+    }
+    var out=!t||t===modal||(t.classList&&(t.classList.contains('cn-veil')||t.classList.contains('cn-scroll')));
+    /* PC는 안쪽 글자를 눌러도 창이 남는다(글자 선택·드래그). 닫는 길은 바깥 배경·✕·확인·Esc */
+    if(window.innerWidth>1024&&!out) return;
+    e.preventDefault(); close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(!isOpen) return;
+    if(e.key==='Escape'||e.key==='Esc'||e.keyCode===27){
+      e.preventDefault(); e.stopPropagation();
+      if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+      close(); return;
+    }
+    if(e.key==='Tab'&&box){
+      var fl=modal.querySelectorAll('button,a[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+      if(!fl.length) return;
+      var first=fl[0],last=fl[fl.length-1];
+      if(e.shiftKey&&document.activeElement===first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey&&document.activeElement===last){ e.preventDefault(); first.focus(); }
+    }
+  },true);
+
+  if(isDirectLink()||skippedToday()) return;
+  function arm(){
+    /* 대문이 먼저 그려진 뒤에 살며시 올린다 */
+    setTimeout(function(){ if(!isOpen&&!skippedToday()) open(); },260);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',arm);
+  else arm();
 })();
 </script>
 
