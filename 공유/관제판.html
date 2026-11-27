@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>목회서고 작업 관제판 — 서고 11영역과 최근 작업의 실제 연결 현황</title>
+<meta name="description" content="목회서고(書庫) 11대 영역과 최근 산출물이 실제로 어떻게 이어져 있는지 보여 주는 작업 현황판입니다. 실시간 중계가 아니라 주요 작업 단계마다 갱신되는 관제판입니다.">
+<meta name="theme-color" content="#050914">
+<style>
+:root{
+  --bg:#050914; --panel:#08101f; --panel2:#060b16; --line:#17233b; --line2:#101a2d;
+  --blue:#1e66ff; --blue2:#2c6dff; --cyan:#3fd0ff; --green:#4ade80; --amber:#f5b942;
+  --red:#f87272; --text:#e8effa; --muted:#93a6c4; --dim:#6f86a6;
+  --mono:Consolas,'D2Coding','Cascadia Mono',ui-monospace,monospace;
+  --sans:'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;
+  word-break:keep-all;overflow-wrap:break-word;
+  background:
+    radial-gradient(1000px 560px at 74% 10%, rgba(30,102,255,.13), transparent 62%),
+    radial-gradient(760px 460px at 12% 88%, rgba(63,208,255,.07), transparent 66%),
+    #050914;
+  -webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul,li,time{margin:0;padding:0}
+ul{list-style:none}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+
+/* ── 상단 상태 줄 ───────────────────────────────────────── */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;height:36px;
+  padding:0 150px 0 16px;background:#04080f;border-bottom:1px solid var(--line);
+  font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--dim);overflow:hidden}
+.tb-left,.tb-right{display:flex;align-items:center;gap:10px;white-space:nowrap;min-width:0}
+.tb-left{flex:1 1 auto;overflow:hidden}
+.tb-brand{color:var(--cyan);font-weight:700;letter-spacing:.14em}
+.tb-item{position:relative;flex:0 0 auto}
+.tb-item+.tb-item{padding-left:11px}
+.tb-item+.tb-item::before{content:'│';position:absolute;left:0;color:#22314a}
+.tb-item b{color:var(--text);font-weight:700}
+.tb-live{display:inline-flex;align-items:center;gap:5px;color:var(--green);font-weight:700}
+.tb-live i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);
+  animation:blink 2.4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ── 머리 ──────────────────────────────────────────────── */
+.hd{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;padding:12px 150px 6px 18px}
+.hd h1{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.2;color:#f4f8ff}
+.hd h1 .en{display:block;margin-top:4px;font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.3em;color:#4f86ff}
+.hd .sub{margin-top:5px;font-size:13.5px;color:#a3b6d2}
+.hd-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;flex:0 0 auto}
+.badge{min-width:112px;padding:5px 11px;border:1px solid #1d2c46;border-radius:9px;
+  background:linear-gradient(180deg,rgba(14,25,45,.9),rgba(8,15,28,.9))}
+.badge span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--dim)}
+.badge b{display:block;margin-top:2px;font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.01em}
+.badge b em{font-style:normal;color:var(--cyan)}
+
+/* ── 정직 고지 ─────────────────────────────────────────── */
+.notice{display:flex;gap:10px;align-items:flex-start;margin:7px 16px 0;padding:8px 12px;
+  border:1px solid rgba(245,185,66,.3);border-left:3px solid var(--amber);border-radius:8px;
+  background:rgba(245,185,66,.06);font-size:13px;line-height:1.55;color:#e4d2a8}
+.notice b{color:#ffd479;font-weight:800}
+.notice code{font-family:var(--mono);font-size:12px;color:#ffe6b0;background:rgba(245,185,66,.12);
+  border-radius:4px;padding:1px 5px}
+
+/* ── 판(패널) 공통 ──────────────────────────────────────── */
+.panel{position:relative;display:flex;flex-direction:column;min-height:0;overflow:hidden;
+  border:1px solid var(--line);border-radius:10px;
+  background:linear-gradient(180deg,#081120 0%,#060b16 100%);
+  box-shadow:0 12px 34px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.03)}
+.panel::after{content:'';position:absolute;inset:4px;border:1px solid rgba(120,170,255,.05);
+  border-radius:7px;pointer-events:none}
+.p-h{position:relative;display:flex;align-items:center;justify-content:space-between;gap:8px;
+  flex:0 0 auto;height:27px;padding:0 10px;z-index:2;
+  background:linear-gradient(180deg,#2f72ff 0%,#1a51cc 100%);
+  color:#f2f7ff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.13em;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28)}
+.p-h .r{font-weight:600;font-size:10.5px;letter-spacing:.05em;opacity:.88;white-space:nowrap}
+.p-b{position:relative;flex:1;min-height:0;padding:9px 10px;z-index:1}
+
+/* ── 배치 ──────────────────────────────────────────────── */
+.board{display:grid;grid-template-columns:306px minmax(0,1fr) 318px;gap:10px;
+  height:434px;padding:10px 16px 0}
+.col{display:flex;flex-direction:column;gap:10px;min-width:0;min-height:0}
+.board>.panel{min-width:0}
+
+/* 최근 작업 */
+.recent{display:flex;flex-direction:column;height:100%}
+.recent ul{display:flex;flex-direction:column;gap:0;flex:1;min-height:0}
+.recent li{border-bottom:1px dashed #142034;padding:7px 2px 7px 0}
+.recent li:last-child{border-bottom:0}
+.recent .row{display:flex;align-items:center;gap:7px;margin-bottom:2px}
+.recent time{font-family:var(--mono);font-size:11.5px;color:#7f95b6;letter-spacing:.02em}
+.recent .tag{font-size:10.5px;font-weight:800;color:#bfe0ff;background:rgba(30,102,255,.16);
+  border:1px solid rgba(80,150,255,.3);border-radius:4px;padding:0 5px;line-height:1.55}
+.recent li:nth-child(2n) .tag{color:#c6f6dc;background:rgba(74,222,128,.12);border-color:rgba(74,222,128,.28)}
+.recent .tx{font-size:13px;color:#c9d7ea;line-height:1.5;display:block}
+.recent a .tx{color:#d8e6fb}
+.recent a:hover .tx{color:#fff;text-decoration:underline;text-underline-offset:2px}
+.recent .rfoot{flex:0 0 auto;margin-top:6px;border-top:1px solid var(--line2);padding-top:6px;
+  font-family:var(--mono);font-size:11px;color:var(--dim);line-height:1.5}
+.recent .rfoot b{color:#9fd2ff;font-weight:600}
+
+/* 오른쪽 카드 */
+.col-right{display:grid;grid-template-rows:repeat(4,minmax(0,1fr));gap:8px}
+.card{display:block;border:1px solid var(--line);border-radius:9px;overflow:hidden;
+  background:linear-gradient(180deg,#0a1424,#070d19);transition:border-color .15s,transform .15s}
+.card:hover{border-color:#35558a;transform:translateY(-1px)}
+.card .c-h{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:5px 9px 0;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:#8aa1c1}
+.card .c-h i{width:6px;height:6px;border-radius:50%;display:inline-block}
+.card .c-b{display:flex;align-items:baseline;gap:5px;padding:0 9px}
+.card .big{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.15;color:#fff}
+.card .unit{font-size:12px;font-weight:700;color:#9db0cc}
+.card .c-s{padding:1px 9px 6px;font-size:12px;color:#8ea3c2;line-height:1.45}
+.card .c-bar{height:3px;margin:0 9px 7px;border-radius:2px;background:#122039;overflow:hidden}
+.card .c-bar i{display:block;height:100%;background:linear-gradient(90deg,#1e66ff,#3fd0ff)}
+.minis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.mini{border:1px solid var(--line);border-radius:9px;background:linear-gradient(180deg,#0a1424,#070d19);
+  padding:6px 8px;transition:border-color .15s}
+.mini:hover{border-color:#35558a}
+.mini span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:#8aa1c1}
+.mini b{display:block;margin-top:1px;font-size:18px;font-weight:800;color:#fff;letter-spacing:-.02em}
+.mini em{display:block;font-style:normal;font-size:10.5px;color:#8ea3c2;line-height:1.35}
+
+/* ── 연결 그래프 ───────────────────────────────────────── */
+.graph{min-height:0}
+.g-wrap{position:relative;flex:1;min-height:0;background:
+  radial-gradient(600px 320px at 50% 48%, rgba(30,102,255,.1), transparent 70%)}
+#graph{display:block;width:100%;height:100%;touch-action:manipulation}
+.g-legend{display:flex;flex-wrap:wrap;gap:4px 5px;padding:7px 10px 0;flex:0 0 auto}
+.lg{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border:1px solid #1b2a44;
+  border-radius:999px;background:#0a1424;font-size:11.5px;color:#a9bcd8;transition:.15s}
+.lg i{width:7px;height:7px;border-radius:50%;flex:0 0 auto}
+.lg:hover{border-color:#3a5c92;color:#fff}
+.lg.on{border-color:var(--cyan);color:#fff;background:#0d1e36;box-shadow:0 0 0 1px rgba(63,208,255,.25)}
+.g-detail{flex:0 0 auto;min-height:82px;padding:8px 11px 9px;border-top:1px solid #142034;
+  background:linear-gradient(180deg,rgba(7,13,25,.95),rgba(5,9,20,.98))}
+.gd-t{font-size:14.5px;font-weight:800;color:#eef5ff;letter-spacing:-.01em}
+.gd-t small{margin-left:7px;font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.08em;color:#5f9dff}
+.gd-hint{font-size:12.5px;color:#9fb2cd;line-height:1.55;margin-top:3px}
+.gd-f{display:flex;flex-wrap:wrap;gap:1px 16px;margin-top:3px;font-size:12.5px;color:#a9bcd8;line-height:1.5}
+.gd-f li{position:relative;padding-left:10px}
+.gd-f li::before{content:'';position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:#3fd0ff}
+.gd-link{display:inline-block;margin-top:4px;font-size:12.5px;font-weight:700;color:#7fb3ff}
+.gd-link:hover{color:#a9ccff;text-decoration:underline;text-underline-offset:2px}
+.g-tip{position:absolute;z-index:5;pointer-events:none;opacity:0;transform:translate(-50%,-128%);
+  padding:4px 9px;border:1px solid #2a4a7a;border-radius:6px;background:rgba(5,10,22,.95);
+  font-size:12px;color:#e8f2ff;white-space:nowrap;transition:opacity .1s}
+.g-tip b{color:var(--cyan);font-family:var(--mono);font-size:11.5px;margin-left:6px}
+.g-tip.show{opacity:1}
+.g-reset{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:#dbe8ff;
+  border:1px solid rgba(255,255,255,.35);border-radius:4px;padding:0 6px;line-height:1.6}
+.g-reset:hover{background:rgba(255,255,255,.16)}
+
+/* ── 아래 세 판 ────────────────────────────────────────── */
+.bottom{display:grid;grid-template-columns:1.12fr 1fr 1fr;gap:10px;height:198px;padding:10px 16px 0}
+.log{font-family:var(--mono);font-size:12px;line-height:1.62;color:#b9c9e2}
+.log div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.log .h{color:#5fe0ff}
+.log .d{color:#6f86a6}
+.log .m{color:#d7e2f2}
+.log .head .m{color:#8ef0b4}
+.log .cur{color:#7fe6a8}
+.log .cur::after{content:'▍';animation:blink 1.1s step-end infinite}
+.log .pfx{color:#59f0a0}
+
+/* 매트릭스 */
+.mx{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+.mx button{display:flex;align-items:center;gap:6px;padding:4px 6px;border:1px solid #1a2942;
+  border-radius:6px;background:#0a1424;text-align:left;transition:.13s;min-width:0}
+.mx button:hover{border-color:#3a5c92;background:#0c1a30}
+.mx button.on{border-color:var(--cyan);background:#0d2038;box-shadow:0 0 0 1px rgba(63,208,255,.2)}
+.mx .no{flex:0 0 auto;width:17px;height:17px;border-radius:4px;display:flex;align-items:center;
+  justify-content:center;font-family:var(--mono);font-size:9.5px;font-weight:700;color:#02101f}
+.mx .nm{font-size:11.5px;color:#cfdcee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mx .ct{margin-left:auto;flex:0 0 auto;font-family:var(--mono);font-size:10px;color:#7f95b6}
+.mx-foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px;
+  font-family:var(--mono);font-size:10.5px;color:var(--dim)}
+.mx-foot b{color:#8ef0b4}
+
+/* 카운터 */
+.cnt-top{display:flex;gap:14px;align-items:flex-end}
+.cnt-top div{flex:1;min-width:0}
+.cnt-top span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--dim)}
+.cnt-top b{display:block;font-size:26px;font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.15}
+.cnt-top b em{font-style:normal;color:#5f9dff}
+.dots{display:flex;gap:4px;margin-top:6px}
+.dots i{width:100%;height:4px;border-radius:2px;background:#16233a}
+.dots i.on{background:linear-gradient(90deg,#1e66ff,#3fd0ff);box-shadow:0 0 6px rgba(63,157,255,.55)}
+.bars{margin-top:7px;display:flex;flex-direction:column;gap:3px}
+.bars .br{display:grid;grid-template-columns:64px 1fr 46px;align-items:center;gap:6px;
+  font-size:10.5px;color:#9fb2cd}
+.bars .br span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bars .tr{height:5px;border-radius:3px;background:#101d31;overflow:hidden}
+.bars .tr i{display:block;height:100%;background:linear-gradient(90deg,#1a51cc,#3fd0ff);border-radius:3px}
+.bars .mb{font-family:var(--mono);font-size:10px;color:#8ea3c2;text-align:right}
+.cnt-foot{display:flex;justify-content:space-between;margin-top:6px;padding-top:5px;
+  border-top:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--dim)}
+.cnt-foot b{color:#cfdcee;font-weight:600}
+
+/* ── 꼬리말 ────────────────────────────────────────────── */
+.foot{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:space-between;
+  padding:10px 18px 14px;font-size:11.5px;color:#7d92b0;line-height:1.6}
+.foot b{color:#b9cdea;font-weight:600}
+.foot a{color:#8fb8ff}
+.foot a:hover{text-decoration:underline;text-underline-offset:2px}
+.foot .acct{color:#9db0cc}
+
+/* ── 좁은 화면 ─────────────────────────────────────────── */
+@media (max-width:1180px){
+  .board{grid-template-columns:262px minmax(0,1fr) 280px}
+  .hd h1{font-size:23px}
+  .card .big{font-size:25px}
+}
+@media (max-width:1024px){
+  body{font-size:15.5px}
+  .topbar{height:auto;flex-wrap:wrap;gap:4px 10px;padding:7px 108px 7px 12px;font-size:11.5px}
+  .tb-right{display:none}
+  .tb-item.tb-nodes,.tb-item.tb-links,.tb-item.tb-vol{display:none}
+  .hd{flex-direction:column;align-items:flex-start;gap:8px;padding:11px 132px 4px 14px}
+  .hd h1{font-size:22px}
+  .hd h1 .en{font-size:9.5px;letter-spacing:.24em}
+  .hd .sub{font-size:13px}
+  .hd-badges{justify-content:flex-start;gap:6px}
+  .badge{min-width:0;padding:4px 9px}
+  .badge b{font-size:13px}
+  .notice{margin:7px 12px 0;font-size:12.5px}
+  .board{grid-template-columns:1fr;height:auto;padding:10px 12px 0;gap:10px}
+  .col{display:contents}
+  .graph{order:1;height:452px}
+  .recent-panel{order:3;height:auto}
+  .col-right{order:2;grid-template-rows:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .minis{grid-column:1 / -1}
+  .card .big{font-size:26px}
+  .bottom{grid-template-columns:1fr;height:auto;padding:10px 12px 0;gap:10px}
+  .log{font-size:11.5px}
+  .mx{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mx .nm{font-size:12px}
+  .foot{flex-direction:column;align-items:flex-start;padding:12px 14px 20px}
+}
+@media (max-width:430px){
+  .hd h1{font-size:20px}
+  .hd-badges .badge:nth-child(3){display:none}
+  .hb-hide{display:none}
+  .graph{height:430px}
+  .g-legend{padding:6px 8px 0;gap:4px}
+  .lg{font-size:11px;padding:2px 7px}
+  .g-detail{padding:7px 9px 8px}
+  .g-detail .gd-f{font-size:12px;gap:1px 12px}
+  .card .big{font-size:24px}
+  .mx{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media print{.topbar,.notice{display:none}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="tb-left">
+    <span class="tb-brand">MOKHOE / WORKSHOP</span>
+    <span class="sep">│</span>
+    <span class="tb-item">영역 <b id="tbAreas">–</b></span>
+    <span class="tb-item">파일 <b id="tbFiles">–</b></span>
+    <span class="tb-item tb-nodes">노드 <b id="tbNodes">–</b></span>
+    <span class="tb-item tb-links">연결 <b id="tbLinks">–</b></span>
+    <span class="tb-item tb-vol">용량 <b id="tbVol">–</b></span>
+  </div>
+  <div class="tb-right">
+    <span class="tb-item">GIT <b id="tbGit">–</b></span>
+    <span class="tb-live"><i></i>단계별 갱신</span>
+    <span class="tb-item">갱신 <b id="tbSync">–</b> KST</span>
+  </div>
+</div>
+
+<header class="hd">
+  <div>
+    <h1>목회서고 작업 관제판<span class="en">WORK CONTROL BOARD · 11 AREAS</span></h1>
+    <p class="sub">11대 영역과 최근 산출물이 실제 파일로 어떻게 이어져 있는지 한 화면에서 봅니다.</p>
+  </div>
+  <div class="hd-badges">
+    <div class="badge"><span>마지막 갱신</span><b id="bdSync">–</b></div>
+    <div class="badge"><span>서고 영역</span><b><em id="bdAreas">–</em> / 11</b></div>
+    <div class="badge"><span>실제 파일</span><b><em id="bdFiles">–</em> 개</b></div>
+    <div class="badge"><span>웹서버</span><b id="bdGit">–</b></div>
+  </div>
+</header>
+
+<p class="notice">
+  <span>⚠</span>
+  <span><b>정직 고지</b> — 이 관제판은 <b>실시간 1초 중계가 아닙니다.</b> 서고·책·지창고 작업의
+  <b>주요 단계를 마칠 때마다</b> 파랑이가 <code>update_dashboard.py</code>로 실제 파일을 다시 읽어 갱신하는
+  현황판입니다. 화면의 수치·용량·시각은 모두 웹서버에 있는 실제 파일에서 읽은 값이고,
+  마지막 갱신 시각은 위 오른쪽에 있습니다.</span>
+</p>
+
+<main class="board">
+
+  <section class="col col-left">
+    <article class="panel recent-panel">
+      <div class="p-h"><span>최근 작업 · RECENT WORK</span><span class="r">끝난 일만</span></div>
+      <div class="p-b recent">
+        <ul id="recentList"></ul>
+        <p class="rfoot">갱신은 <b>작업 단계마다</b> · <b>파랑이가 새로 읽어 갱신</b></p>
+      </div>
+    </article>
+  </section>
+
+  <section class="panel graph">
+    <div class="p-h">
+      <span>연결 지도 · WORK GRAPH</span>
+      <button type="button" class="g-reset" id="gReset" title="선택을 지우고 전체 보기">전체 보기 ✕</button>
+    </div>
+    <div class="g-legend" id="legend" aria-label="영역 범례"></div>
+    <div class="g-wrap">
+      <canvas id="graph" role="img" aria-label="목회서고 11대 영역과 최근 산출물의 연결 지도. 영역 동그라미 11개와 파일·작업 동그라미가 선으로 이어져 있습니다."></canvas>
+      <div class="g-tip" id="gTip"></div>
+    </div>
+    <div class="g-detail" id="gDetail"></div>
+  </section>
+
+  <aside class="col col-right" id="cards"></aside>
+</main>
+
+<section class="bottom">
+  <article class="panel">
+    <div class="p-h"><span>웹서버 커밋 기록 · GIT LOG</span><span class="r" id="logBranch">main</span></div>
+    <div class="p-b log" id="gitLog"></div>
+  </article>
+
+  <article class="panel">
+    <div class="p-h"><span>영역 점검 · AREA MATRIX</span><span class="r" id="mxSum">–</span></div>
+    <div class="p-b">
+      <div class="mx" id="matrix"></div>
+      <div class="mx-foot"><span>누르면 지도에서 그 영역이 켜집니다</span><b>파일 확인 <span id="mxFiles">–</span></b></div>
+    </div>
+  </article>
+
+  <article class="panel">
+    <div class="p-h"><span>현황 계수 · LIVE COUNTS</span><span class="r">실측</span></div>
+    <div class="p-b">
+      <div class="cnt-top">
+        <div><span>영역</span><b><em id="cntAreas">–</em> / 11</b></div>
+        <div><span>파일</span><b><em id="cntFiles">–</em> / <span id="cntFilesAll">–</span></b></div>
+        <div><span>작업</span><b><em id="cntWorks">–</em></b></div>
+      </div>
+      <div class="dots" id="cntDots"></div>
+      <div class="bars" id="cntBars"></div>
+      <div class="cnt-foot"><span>총 <b id="cntVol">–</b></span><span>Pages 한도 <b>1 GB</b></span></div>
+    </div>
+  </article>
+</section>
+
+<footer class="foot">
+  <div>
+    <b>만든이</b> 정성헌 목사 · <b>교회</b> 대구선교교회 · <b>교단</b> 대한예수교 장로회 재건총회 ·
+    <b>문의</b> c56612@daum.net
+  </div>
+  <div>
+    <span class="acct">자원후원계좌 iM뱅크 508-10-9580903 정성헌(일본선교)</span> ·
+    <a href="./유틸.html">유틸·도구 방</a>
+  </div>
+</footer>
+
+<script id="dashData" type="application/json">
+<!--DATA-START-->
+{"generated_at":"2026-11-27 15:02","generated_day":"2026-11-27 (금)","generated_iso":"2026-11-27T15:02:37+09:00","git":{"head":"266796f","head_at":"11-27 10:57","branch":"main","log":[{"hash":"266796f","at":"11-27 10:57","msg":"문서뷰어: 기준 쪽을 내지로 잡아 쪽 번호 어긋남 수정, 보이는 쪽 범위를 실제 위치로 계산"},{"hash":"c57ff91","at":"11-27 10:54","msg":"유틸 안내: 문서뷰어 PDF 직접 그리기·쪽 넘김·열어 둔 문서 기억 설명 추가"},{"hash":"c91d980","at":"11-27 10:52","msg":"문서뷰어: PDF를 브라우저 보기 대신 PDF.js로 뷰어 안에서 직접 그리기(쪽 넘김·확대·폭 맞춤·지연 렌더링) + 열어 둔 문서 IndexedDB 기억·복원"},{"hash":"a6e7665","at":"11-26 12:55","msg":"성경구절 팝업 스크립트에 판 번호(?v=20261126)를 붙여 바뀐 판이 바로 반영되게 함"},{"hash":"9d9fc8a","at":"11-26 12:53","msg":"신앙고백서고 PC에도 📤 보내기 단추 표시 · 성경주석 관주 링크 범위 넓힘"},{"hash":"1db5141","at":"11-26 12:51","msg":"성경주석 8권: 관주 창에서 개역한글 색인 밖 구절도 개역개정 본문으로 펼침"},{"hash":"cf6203b","at":"11-26 12:47","msg":"신앙고백서고: 장년부·청년부 「함께 읽을 말씀」도 눌러서 개역개정 본문을 열게 함"},{"hash":"99d1ae1","at":"11-26 12:43","msg":"기독교강요·유사종교·재건총회 헌법: 본문 속 성경구절을 누르면 개역개정 본문 팝업"},{"hash":"6adc336","at":"11-26 12:26","msg":"목회서고 대문 길잡이 검색: 어떤 낱말을 찾아도 유사종교서고 항목은 정통 서고 결과 뒤 맨 끝에 배치"}]},"guestbook":{"interval":"3h","last":"11-27 12:12","next":"11-27 15:12","ok":true},"totals":{"areas":11,"files":24,"works":10,"nodes":46,"links":58,"volume_mb":125.9,"chapters":1189,"verses":31115,"conf_sermons":189,"sermons":3165,"programs":10},"areas":[{"no":1,"key":"bib","color":"#3d7cc0","name":"성경주석","title":"성경주석서고(書庫)","en":"BIBLE COMMENTARY","stat":"8서고 · 66권","facts":["구약 1 모세오경 ~ 신약 3 일반서신·계시록, 여덟 서고","1,189장 · 31,115절을 장마다 한 단락으로","개혁주의 다섯 층 주해 · 원문 · 설교문 · 인명·지명 팝업","2026-11-23 66권 완간"],"files":[{"name":"1.모세오경.html","label":"창·출·레·민·신","mb":12.19,"bytes":12779185,"at":"11-26 12:55","href":"1.모세오경.html"},{"name":"2.역사서.html","label":"수~에스더","mb":10.34,"bytes":10846745,"at":"11-26 12:55","href":"2.역사서.html"},{"name":"3.시가서.html","label":"욥~아가","mb":6.64,"bytes":6959706,"at":"11-26 12:55","href":"3.시가서.html"},{"name":"4.대선지서.html","label":"사~단","mb":7.81,"bytes":8192867,"at":"11-26 12:55","href":"4.대선지서.html"},{"name":"5.소선지서.html","label":"호~말","mb":3.14,"bytes":3296793,"at":"11-26 12:55","href":"5.소선지서.html"},{"name":"6.복음서·사도행전.html","label":"마~행","mb":5.47,"bytes":5740572,"at":"11-26 12:55","href":"6.복음서·사도행전.html"},{"name":"7.바울서신.html","label":"롬~몬","mb":3.01,"bytes":3153286,"at":"11-26 12:55","href":"7.바울서신.html"},{"name":"8.일반서신·계시록.html","label":"히~계","mb":2.53,"bytes":2653683,"at":"11-26 12:55","href":"8.일반서신·계시록.html"},{"name":"성경주석.html","label":"66권 색인·길잡이","mb":2.86,"bytes":2998897,"at":"11-26 04:49","href":"성경주석.html"}],"href":"1.모세오경.html","file_count":9},{"no":2,"key":"conf","color":"#22a89b","name":"신앙고백","title":"신앙고백서고(書庫)","en":"CONFESSIONS","stat":"23종 · 27주제","facts":["사도신경(2세기) ~ 바르멘 선언(1934), 23종","조항·문답 921개","교리설교 189편 — 27주제 × 일곱 편(5부서)","장년·청년·중고등·유년·유치부 설교문과 🎰 카운터"],"files":[{"name":"신앙고백.html","label":"23종 · 27주제 · 189편","mb":5.97,"bytes":6254985,"at":"11-26 12:53","href":"신앙고백.html"}],"href":"신앙고백.html","file_count":1},{"no":3,"key":"calvin","color":"#7a55b0","name":"칼빈 강요","title":"칼빈 기독교강요","en":"INSTITUTES","stat":"1536 초판 · 1559 최종판","facts":["1559년 최종판 4권 80장 전문","1536년 초판 6장","27개 신학 주제 색인 지도","장별 요지 375 · 성경 구절 414"],"files":[{"name":"기독교강요.html","label":"초판·최종판 전문","mb":0.08,"bytes":80021,"at":"11-26 12:55","href":"기독교강요.html"},{"name":"기독교강요그래프.html","label":"4권 80장 연결 지도","mb":0.34,"bytes":352772,"at":"11-26 04:42","href":"기독교강요그래프.html"}],"href":"기독교강요.html","file_count":2},{"no":4,"key":"orig","color":"#2b93ad","name":"원어성경","title":"원어성경 용어매핑","en":"BIBLICAL LANGUAGES","stat":"원전 31,140절","facts":["히브리어 · 아람어 · 헬라어 원전 31,140절","핵심어 300개 · 원어 14,060개","한글 뜻·음역·원어·스트롱 번호로 찾기","찾은 원어를 개역개정 본문에 같은 색으로 표시"],"files":[{"name":"원어성경그래프.html","label":"66권 원어 용어 지도","mb":14.34,"bytes":15033737,"at":"11-26 09:37","href":"원어성경그래프.html"}],"href":"원어성경그래프.html","file_count":1},{"no":5,"key":"kor","color":"#43a05e","name":"한글성경","title":"한글성경 용어매핑","en":"KOREAN BIBLE","stat":"66권 1,189장","facts":["개역개정 66권 1,189장 31,096절","조사가 붙은 형태(은혜를·은혜가)까지 같은 낱말로","핵심어 300개 · 여러 낱말 비교 · 66권 막대그래프"],"files":[{"name":"개역개정그래프.html","label":"개역개정 용어 지도","mb":4.76,"bytes":4986381,"at":"11-26 09:37","href":"개역개정그래프.html"}],"href":"개역개정그래프.html","file_count":1},{"no":6,"key":"jae","color":"#b8912b","name":"재건총회","title":"재건총회 자료실","en":"CHURCH CONSTITUTION","stat":"헌법 두 판 · 규칙 · 결의","facts":["헌법 1 (웨민 제외) · 헌법 2 (웨민 전체 포함)","헌법적 규칙 13장 79개 조항","총회 결의 제72~108회 144항목","대한예수교 장로회 재건총회"],"files":[{"name":"재건총회헌법1.html","label":"헌법 1 · 웨민 제외","mb":0.69,"bytes":728352,"at":"11-26 12:55","href":"../JAEGUN/재건총회헌법1.html"},{"name":"재건총회헌법2.html","label":"헌법 2 · 웨민 포함","mb":1.21,"bytes":1264013,"at":"11-26 12:55","href":"../JAEGUN/재건총회헌법2.html"}],"href":"../JAEGUN/재건총회헌법1.html","file_count":2},{"no":7,"key":"shin","color":"#b44559","name":"신학지남","title":"신학지남서고(書庫)","en":"SHINHAKJINAM","stat":"4,916편 · 711명","facts":["1918–2011 · 통권 제1–309호","4,916편 · 저자 711명","주제 12갈래 · 연대 6구간 색인","34.1MB 단일 파일 (오프라인)"],"files":[{"name":"신학지남.html","label":"통권 1~309호 전체","mb":34.12,"bytes":35780776,"at":"11-26 04:49","href":"신학지남.html"}],"href":"신학지남.html","file_count":1},{"no":8,"key":"pers","color":"#5566c4","name":"개인서고","title":"개인서고","en":"PRIVATE LIBRARY","stat":"설교 3,165편","facts":["설교 원고 3,165편을 시리즈·본문·주제로 이은 그래프","본문·주제를 누르면 그 자리에 모인 설교가 드러남","여는 데 6자리 비밀번호"],"files":[{"name":"설교그래프.html","label":"설교 연결 지도 · 잠금","mb":5.97,"bytes":6260250,"at":"11-26 04:52","href":"설교그래프.html"}],"href":"설교그래프.html","file_count":1},{"no":9,"key":"util","color":"#9c3d78","name":"유틸·도구","title":"유틸·도구 방","en":"UTILITIES","stat":"프로그램 10가지","facts":["브라우저 프로그램 3 · PC 도구 7","프로그램마다 준비물·따라 하기·주의할 점","만능 문서뷰어 · 윷놀이 · 작업 관제판","PC 도구는 웹서버에서 로그인 없이 내려받기"],"files":[{"name":"유틸.html","label":"프로그램 설명서","mb":0.05,"bytes":50962,"at":"11-27 10:54","href":"유틸.html"},{"name":"문서뷰어.html","label":"PDF.js · IndexedDB","mb":1.55,"bytes":1621841,"at":"11-27 10:56","href":"문서뷰어.html"},{"name":"관제판.html","label":"지금 이 화면","mb":0.06,"bytes":58138,"at":"11-27 15:02","href":"관제판.html"}],"href":"유틸.html","file_count":3},{"no":10,"key":"her","color":"#6b7d96","name":"유사종교","title":"유사종교서고(書庫)","en":"COMPARATIVE","stat":"83항목 · 꾸란 114수라","facts":["꾸란과 이슬람 9항목 · 꾸란 114수라 전문","유사종교와 이단 31항목 (신천지·하나님의교회 등)","자유주의·문서설·퀴어신학·무신론","그들 논조로 읽고 개혁주의 좌표에서 1:1 대조"],"files":[{"name":"유사종교.html","label":"83항목 · 114수라","mb":2.52,"bytes":2641016,"at":"11-26 12:55","href":"유사종교.html"}],"href":"유사종교.html","file_count":1},{"no":11,"key":"hut","color":"#a9714b","name":"그늘진 오두막","title":"그늘진 오두막","en":"REST","stat":"잠시 쉬었다 가는 곳","facts":["한국 전통 윷놀이 · 스물아홉 칸 윷판","파랑이와 1:1 (1~5단계) · 가족 대전","빽도·낙·잡기·업기·지름길"],"files":[{"name":"윷놀이.html","label":"정월 윷판","mb":0.09,"bytes":89472,"at":"11-26 04:49","href":"윷놀이.html"}],"href":"윷놀이.html","file_count":1}],"hub":{"id":"home","label":"대문","title":"목회서고(書庫) 대문","href":"index.html","mb":0.16,"at":"11-26 12:25","facts":["11개 서고를 여는 첫 화면 · 길잡이 검색","1~11번 메뉴를 누르면 바로 열기/고르기 팝업","오른쪽 위 ✍️ 글쓰기(방명록) 단추"]},"works":[{"id":"lev1","label":"레위기 1권","area":"bib","stat":"380쪽","facts":["새판본 완본·POD 내지 PDF 380쪽 (38.5MB)","2026-11-27 10:12 조판 · 61컷 모두 다른 삽화","원고 보존율 2.3% → 26.8%"],"color":"#3d7cc0","area_no":1,"area_name":"성경주석"},{"id":"lev3","label":"레위기 3권","area":"bib","stat":"252쪽","facts":["새판본 완본·POD 내지 PDF 252쪽 (13.0MB)","2026-11-27 10:12 조판 · fig53 원본 유지","원고 보존율 0.8% → 39.3%"],"color":"#3d7cc0","area_no":1,"area_name":"성경주석"},{"id":"up8","label":"지창고 8파일","area":"bib","stat":"8개","facts":["1·3권 PDF·DOCX·MD 각 4개","00_출판_단행본 > 1권·3권 폴더","재다운로드 SHA-256 일치 확인 (11-27 10:20)"],"color":"#3d7cc0","area_no":1,"area_name":"성경주석"},{"id":"report","label":"표절·인용 점검","area":"bib","stat":"0건","facts":["레위기 1·3권, 11개 지침 원문 대조","타인 문장 그대로 베낌 0건","AI 새 문장 비중 1권 97.7% · 3권 99.2% (수정 전)","보고서 PDF 334KB · 11-26 20:56"],"color":"#3d7cc0","area_no":1,"area_name":"성경주석"},{"id":"kiazm","label":"키아즘 자료","area":"bib","stat":"77파일","facts":["지창고 '키아즘' 폴더, 국내·국외 구분","유튜브·블로그·공개 논문·설교문","2026-11-26 업로드"],"color":"#3d7cc0","area_no":1,"area_name":"성경주석"},{"id":"docview","label":"문서뷰어","area":"util","stat":"10:56","facts":["PDF를 PDF.js로 뷰어 안에서 직접 그리기","쪽 넘김·확대·폭 맞춤·지연 렌더링","IndexedDB에 열어 둔 문서·보던 쪽 기억 (50MB)","엣지·크롬 PDF 설정과 무관하게 열림"],"color":"#9c3d78","area_no":9,"area_name":"유틸·도구"},{"id":"board","label":"방명록·카운터","area":"conf","stat":"3시간","facts":["구글 시트 '목회서고_방명록_및_카운터'","방명록 새 글 3시간마다 확인","글쓴이·이메일·시각·제목·내용 보고","교리설교 27주제 🎰 합산 카운터"],"color":"#22a89b","area_no":2,"area_name":"신앙고백"},{"id":"util9","label":"유틸방 정리","area":"util","stat":"9종","facts":["유효한 프로그램 9종만 선별 (11-26)","브라우저 2 · PC 배치파일 7","프로그램마다 따라 하기 문서",".bat 7개 웹서버 직접 배포로 로그인 없이 내려받기"],"color":"#9c3d78","area_no":9,"area_name":"유틸·도구"},{"id":"dash","label":"관제판","area":"util","stat":"신규","facts":["11대 영역과 실제 파일 24개의 연결 지도","주요 작업 단계마다 update_dashboard.py로 갱신","실시간 1초 중계가 아닌 단계별 현황판","지금 이 화면"],"color":"#9c3d78","area_no":9,"area_name":"유틸·도구"},{"id":"term","label":"용어매핑 개칭","area":"orig","stat":"11-26","facts":["4·5번 이름을 '원어성경 용어매핑'·'한글성경 용어매핑'으로","표시 이름만 바꾸고 주소는 그대로","11-26 09:37 게시"],"color":"#2b93ad","area_no":4,"area_name":"원어성경"}],"cross":[["bib","orig"],["bib","kor"],["bib","pers"],["bib","shin"],["conf","calvin"],["conf","jae"],["conf","her"],["pers","shin"],["util","hut"],["util","orig"],["lev1","docview"],["up8","lev1"],["report","lev1"],["board","conf"]],"cards":[{"label":"성경주석서고","big":"66","unit":"권","area":"bib","sub":"8서고 · 1,189장 · 31,115절","href":"성경주석.html"},{"label":"교리설교","big":"189","unit":"편","area":"conf","sub":"27주제 × 7편 · 23종 고백","href":"신앙고백.html"},{"label":"신학지남","big":"4,916","unit":"편","area":"shin","sub":"통권 1–309호 · 저자 711명","href":"신학지남.html"},{"label":"설교 그래프","big":"3,165","unit":"편","area":"pers","sub":"본문·주제 연결 지도 · 6자리 잠금","href":"설교그래프.html"}],"minis":[{"label":"유사종교","value":"83","note":"항목 + 꾸란 114수라","href":"유사종교.html"},{"label":"유틸·도구","value":"10","note":"브라우저 3 · PC 7","href":"유틸.html"},{"label":"방명록","value":"3h","note":"새 글 확인 주기","href":"index.html"}],"recent":[{"at":"11-27 10:56","tag":"문서뷰어","text":"PDF.js 직접 그리기 · IndexedDB 열어 둔 문서 기억","href":"문서뷰어.html"},{"at":"11-27 10:20","tag":"지창고","text":"레위기 1·3권 새판본 8개 파일 업로드 (해시 일치)","href":null},{"at":"11-27 10:12","tag":"레위기","text":"1권 380쪽 · 3권 252쪽 재조판, 원고 살려 다시 씀","href":null},{"at":"11-27 03:12","tag":"방명록","text":"새 글 3시간 감시 등록 · 새 글 있을 때만 보고","href":"index.html"},{"at":"11-26 12:55","tag":"서고","text":"성경주석 8서고 · 신앙고백 · 유사종교 최신판 게시","href":"성경주석.html"},{"at":"11-26 09:37","tag":"용어매핑","text":"원어성경·한글성경 용어매핑으로 이름·그래프 정리","href":"원어성경그래프.html"}],"bars":[{"name":"신학지남.html","label":"통권 1~309호 전체","mb":34.12},{"name":"원어성경그래프.html","label":"66권 원어 용어 지도","mb":14.34},{"name":"1.모세오경.html","label":"창·출·레·민·신","mb":12.19},{"name":"2.역사서.html","label":"수~에스더","mb":10.34},{"name":"4.대선지서.html","label":"사~단","mb":7.81}],"missing":[]}
+<!--DATA-END-->
+</script>
+
+<script>
+(function(){
+  'use strict';
+  var D = JSON.parse(document.getElementById('dashData').textContent
+    .replace(/<!--\s*DATA-(START|END)\s*-->/g, ''));
+  var $ = function(s){ return document.querySelector(s); };
+  var fmt = function(n){ return Number(n || 0).toLocaleString('ko-KR'); };
+
+  /* ── 상단 수치 ─────────────────────────────────────── */
+  var T = D.totals || {};
+  $('#tbAreas').textContent = T.areas;
+  $('#tbFiles').textContent = T.files;
+  $('#tbNodes').textContent = T.nodes;
+  $('#tbLinks').textContent = T.links;
+  $('#tbVol').textContent = (T.volume_mb || 0) + 'MB';
+  $('#tbGit').textContent = (D.git && D.git.head) || '—';
+  $('#tbSync').textContent = D.generated_at || '—';
+  $('#bdSync').textContent = D.generated_at || '—';
+  $('#bdAreas').textContent = T.areas;
+  $('#bdFiles').textContent = T.files;
+  $('#bdGit').textContent = (D.git && D.git.head) || '—';
+  $('#logBranch').textContent = (D.git && D.git.branch) || 'main';
+
+  /* ── 최근 작업 ─────────────────────────────────────── */
+  var rl = $('#recentList');
+  (D.recent || []).forEach(function(r){
+    var li = document.createElement('li');
+    var body = '<span class="tx">' + esc(r.text) + '</span>';
+    li.innerHTML = '<div class="row"><time>' + esc(r.at) + '</time><span class="tag">' + esc(r.tag) + '</span></div>' +
+      (r.href ? '<a href="' + esc(r.href) + '">' + body + '</a>' : body);
+    rl.appendChild(li);
+  });
+
+  /* ── 오른쪽 카드 ───────────────────────────────────── */
+  var cards = $('#cards');
+  var maxMb = Math.max.apply(null, (D.areas || []).map(function(a){
+    return a.files.reduce(function(s, f){ return s + (f.mb || 0); }, 0);
+  }).concat([1]));
+  (D.cards || []).forEach(function(c){
+    var area = (D.areas || []).filter(function(a){ return a.key === c.area; })[0] || {files: [], color: '#2c6dff'};
+    var mb = area.files.reduce(function(s, f){ return s + (f.mb || 0); }, 0);
+    var pct = Math.max(6, Math.round(mb / maxMb * 100));
+    var a = document.createElement('a');
+    a.className = 'card';
+    a.href = c.href;
+    a.innerHTML =
+      '<div class="c-h"><span>' + esc(c.label) + '</span><i style="background:' + area.color + '"></i></div>' +
+      '<div class="c-b"><span class="big">' + esc(c.big) + '</span><span class="unit">' + esc(c.unit) + '</span></div>' +
+      '<div class="c-s">' + esc(c.sub) + '</div>' +
+      '<div class="c-bar"><i style="width:' + pct + '%"></i></div>';
+    cards.appendChild(a);
+  });
+  var miniWrap = document.createElement('div');
+  miniWrap.className = 'minis';
+  (D.minis || []).forEach(function(m){
+    var a = document.createElement('a');
+    a.className = 'mini';
+    a.href = m.href;
+    a.innerHTML = '<span>' + esc(m.label) + '</span><b>' + esc(m.value) + '</b><em>' + esc(m.note) + '</em>';
+    miniWrap.appendChild(a);
+  });
+  cards.appendChild(miniWrap);
+
+  /* ── 웹서버 커밋 기록 ──────────────────────────────── */
+  var gl = $('#gitLog');
+  var lines = ['<div class="pfx">PS C:\\workspace\\work\\gh-pages&gt; git log --oneline -9</div>'];
+  (D.git.log || []).forEach(function(c, i){
+    lines.push('<div class="' + (i === 0 ? 'head' : '') + '"><span class="h">' + esc(c.hash) + '</span> ' +
+      '<span class="d">' + esc(c.at) + '</span> <span class="m">' + esc(c.msg) + '</span></div>');
+  });
+  lines.push('<div class="cur">PS C:\\workspace\\work\\gh-pages&gt; </div>');
+  gl.innerHTML = lines.join('');
+
+  /* ── 영역 매트릭스 ─────────────────────────────────── */
+  var mx = $('#matrix');
+  var mxFiles = 0;
+  (D.areas || []).forEach(function(a){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.dataset.id = a.key;
+    b.title = a.title + ' — ' + a.stat;
+    b.innerHTML = '<span class="no" style="background:' + a.color + '">' + pad2(a.no) + '</span>' +
+      '<span class="nm">' + esc(a.name) + '</span><span class="ct">' + a.file_count + '개</span>';
+    b.addEventListener('click', function(){
+      select(NodeById(a.key), true);
+      if (window.innerWidth <= 1024) {
+        var g = document.querySelector('.graph');
+        if (g) g.scrollIntoView({behavior: 'smooth', block: 'center'});
+      }
+    });
+    mx.appendChild(b);
+    mxFiles += a.file_count;
+  });
+  $('#mxSum').textContent = '11 / 11';
+  $('#mxFiles').textContent = mxFiles + '개';
+
+  /* ── 현황 계수 ─────────────────────────────────────── */
+  $('#cntAreas').textContent = T.areas;
+  $('#cntFiles').textContent = T.files;
+  $('#cntFilesAll').textContent = T.files;
+  $('#cntWorks').textContent = T.works;
+  var dots = $('#cntDots');
+  for (var i = 0; i < (T.areas || 0); i++) {
+    var d = document.createElement('i');
+    d.className = 'on';
+    dots.appendChild(d);
+  }
+  var bars = $('#cntBars');
+  var maxBar = ((D.bars || [])[0] || {mb: 1}).mb || 1;
+  (D.bars || []).forEach(function(b){
+    var row = document.createElement('div');
+    row.className = 'br';
+    row.innerHTML = '<span title="' + esc(b.name) + '">' + esc(b.name) + '</span>' +
+      '<span class="tr"><i style="width:' + Math.max(4, Math.round(b.mb / maxBar * 100)) + '%"></i></span>' +
+      '<span class="mb">' + b.mb + 'MB</span>';
+    bars.appendChild(row);
+  });
+  $('#cntVol').textContent = (T.volume_mb || 0) + ' MB';
+
+  /* ──────────────────────────────────────────────────
+     연결 지도 (Canvas)
+     ────────────────────────────────────────────────── */
+  var canvas = document.getElementById('graph');
+  var ctx = canvas.getContext('2d');
+  var tip = document.getElementById('gTip');
+  var detailBox = document.getElementById('gDetail');
+  var wrap = canvas.parentNode;
+  var W = 0, H = 0, dpr = 1;
+  var nodes = [], edges = [], byId = {};
+  var hover = null, selected = null;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var start = performance.now();
+
+  function pad2(n){ return (n < 10 ? '0' : '') + n; }
+  function esc(s){
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function NodeById(id){ return byId[id] || null; }
+
+  function build(){
+    nodes = []; edges = []; byId = {};
+    (D.areas || []).forEach(function(a){
+      var n = {id: a.key, kind: 'area', label: a.name, title: a.title, color: a.color,
+        stat: a.stat, facts: a.facts, href: a.href, no: a.no, count: a.file_count,
+        r: 8.5, ring: 0};
+      nodes.push(n);
+    });
+    (D.works || []).forEach(function(w, i){
+      nodes.push({id: w.id, kind: 'work', label: w.label, title: w.label, color: w.color,
+        stat: w.stat, facts: w.facts, href: w.href, area: w.area, r: 4.6, ring: 1});
+    });
+    (D.areas || []).forEach(function(a){
+      a.files.forEach(function(f, i){
+        nodes.push({id: a.key + ':' + i, kind: 'file', label: f.name.replace(/\.html$/i, ''),
+          title: f.name, color: a.color, stat: (f.mb != null ? f.mb + 'MB' : '—'),
+          facts: [f.label, '수정 ' + f.at], href: f.href, area: a.key, r: 2.7, ring: 2});
+      });
+    });
+    nodes.push({id: 'home', kind: 'hub', label: '대문', title: D.hub ? D.hub.title : '목회서고(書庫) 대문',
+      color: '#3fd0ff', stat: '11개 서고', facts: (D.hub && D.hub.facts) || ['11개 서고를 여는 첫 화면'],
+      href: (D.hub && D.hub.href) || 'index.html', r: 10, ring: 0});
+    nodes.forEach(function(n){ byId[n.id] = n; n.ph = Math.random() * 6.283; });
+
+    (D.areas || []).forEach(function(a){
+      a.files.forEach(function(_, i){ edges.push({s: a.key, t: a.key + ':' + i, kind: 'file'}); });
+    });
+    (D.works || []).forEach(function(w){ edges.push({s: w.area, t: w.id, kind: 'work'}); });
+    (D.cross || []).forEach(function(p){
+      if (byId[p[0]] && byId[p[1]]) edges.push({s: p[0], t: p[1], kind: 'cross'});
+    });
+    (D.areas || []).forEach(function(a){ edges.push({s: 'home', t: a.key, kind: 'hub'}); });
+  }
+
+  function resize(){
+    var rect = wrap.getBoundingClientRect();
+    W = Math.max(240, Math.round(rect.width));
+    H = Math.max(200, Math.round(rect.height));
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    layout();
+  }
+
+  function layout(){
+    var cx = W / 2, cy = H / 2;
+    var areas = nodes.filter(function(n){ return n.kind === 'area'; });
+    var rx = Math.min(W * 0.33, 300), ry = Math.min(H * 0.36, 140);
+    areas.forEach(function(n, i){
+      var a = -Math.PI / 2 + i * Math.PI * 2 / areas.length;
+      n.a = a;
+      n.x = cx + Math.cos(a) * rx;
+      n.y = cy + Math.sin(a) * ry;
+    });
+    var home = byId['home'];
+    home.x = cx; home.y = cy;
+
+    function place(kind, base, spread, stepR){
+      var groups = {};
+      nodes.filter(function(n){ return n.kind === kind; }).forEach(function(n){
+        (groups[n.area] = groups[n.area] || []).push(n);
+      });
+      Object.keys(groups).forEach(function(key){
+        var p = byId[key]; if (!p) return;
+        var arr = groups[key];
+        var dir = Math.atan2(p.y - cy, p.x - cx);
+        arr.forEach(function(n, i){
+          var t = arr.length === 1 ? 0 : (i / (arr.length - 1) - 0.5);
+          var a = dir + t * spread + Math.sin(n.ph) * 0.05;
+          var rr = base + (i % 3) * stepR;
+          n.x = p.x + Math.cos(a) * rr;
+          n.y = p.y + Math.sin(a) * rr;
+        });
+      });
+    }
+    place('work', 66, 1.15, 16);
+    place('file', 104, 1.9, 26);
+
+    // 화면 밖으로 나간 동그라미를 안으로 당기고, 서로 겹치지 않게 조금씩 밀어 낸다
+    for (var it = 0; it < 60; it++) {
+      nodes.forEach(function(n){
+        var pad = n.kind === 'area' ? 30 : 12;
+        n.x = Math.max(pad + 6, Math.min(W - pad - 6, n.x));
+        n.y = Math.max(pad, Math.min(H - pad, n.y));
+      });
+      for (var i = 0; i < nodes.length; i++) {
+        for (var j = i + 1; j < nodes.length; j++) {
+          var a = nodes[i], b = nodes[j];
+          if (a.kind === 'hub' || b.kind === 'hub') continue;
+          var dx = b.x - a.x, dy = b.y - a.y;
+          var d = Math.sqrt(dx * dx + dy * dy) || 0.01;
+          var min = (a.kind === 'area' || b.kind === 'area') ? 46 : 20;
+          if (d < min) {
+            var push = (min - d) / d * 0.5;
+            var ux = dx * push, uy = dy * push;
+            a.x -= ux; a.y -= uy; b.x += ux; b.y += uy;
+          }
+        }
+      }
+    }
+  }
+
+  function neighbors(id){
+    var set = {};
+    set[id] = true;
+    edges.forEach(function(e){
+      if (e.s === id) set[e.t] = true;
+      if (e.t === id) set[e.s] = true;
+    });
+    return set;
+  }
+
+  function draw(now){
+    if (!W || !H) { requestAnimationFrame(draw); return; }
+    var t = reduce ? 0 : (now - start) / 1000;
+    ctx.clearRect(0, 0, W, H);
+
+    // 바탕 별
+    ctx.save();
+    for (var k = 0; k < 46; k++) {
+      var sx = (Math.sin(k * 12.9898) * 43758.5453) % 1;
+      var sy = (Math.sin(k * 78.233) * 12345.6789) % 1;
+      sx = Math.abs(sx) * W; sy = Math.abs(sy) * H;
+      ctx.fillStyle = 'rgba(150,190,255,' + (0.05 + (k % 3) * 0.035) + ')';
+      ctx.fillRect(sx, sy, 1.4, 1.4);
+    }
+    ctx.restore();
+
+    var focus = hover || selected;
+    var near = focus ? neighbors(focus.id) : null;
+    var cx = W / 2, cy = H / 2;
+
+    // 테두리 원(장식)
+    ctx.save();
+    ctx.strokeStyle = 'rgba(60,110,190,.13)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, Math.min(W * 0.33, 300), Math.min(H * 0.36, 140), 0, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, Math.min(W * 0.44, 400), Math.min(H * 0.46, 180), 0, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(60,110,190,.07)';
+    ctx.stroke();
+    ctx.restore();
+
+    // 연결선
+    edges.forEach(function(e){
+      var a = byId[e.s], b = byId[e.t];
+      if (!a || !b) return;
+      var active = focus && (e.s === focus.id || e.t === focus.id);
+      var dim = focus && !active;
+      var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+      var dx = b.x - a.x, dy = b.y - a.y;
+      var len = Math.sqrt(dx * dx + dy * dy) || 1;
+      var bend = e.kind === 'cross' ? 0.16 : e.kind === 'hub' ? 0.05 : 0.05;
+      var ctrlX = mx - dy / len * len * bend * 0.5;
+      var ctrlY = my + dx / len * len * bend * 0.5;
+
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.quadraticCurveTo(ctrlX, ctrlY, b.x, b.y);
+      if (active) {
+        ctx.strokeStyle = hexA(a.color, 0.62);
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([]);
+      } else if (e.kind === 'cross') {
+        ctx.strokeStyle = 'rgba(150,190,255,' + (dim ? 0.035 : 0.13) + ')';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([3, 4]);
+      } else if (e.kind === 'hub') {
+        ctx.strokeStyle = 'rgba(120,170,255,' + (dim ? 0.02 : 0.07) + ')';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([2, 5]);
+      } else {
+        ctx.strokeStyle = 'rgba(170,205,255,' + (dim ? 0.035 : (e.kind === 'work' ? 0.2 : 0.12)) + ')';
+        ctx.lineWidth = e.kind === 'work' ? 1.1 : 0.9;
+        ctx.setLineDash([]);
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // 선택한 노드의 선 위를 흐르는 점
+      if (active && !reduce) {
+        var p = ((t * 0.32 + (e.s.length % 7) * 0.11) % 1);
+        var px = (1 - p) * (1 - p) * a.x + 2 * (1 - p) * p * ctrlX + p * p * b.x;
+        var py = (1 - p) * (1 - p) * a.y + 2 * (1 - p) * p * ctrlY + p * p * b.y;
+        ctx.beginPath();
+        ctx.arc(px, py, 1.9, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(160,230,255,.95)';
+        ctx.fill();
+      }
+    });
+
+    // 동그라미
+    nodes.forEach(function(n){
+      var isFocus = focus && focus.id === n.id;
+      var dimmed = focus && near && !near[n.id];
+      var alpha = dimmed ? 0.28 : 1;
+      var bob = reduce ? 0 : Math.sin(t * 0.9 + n.ph) * 1.2;
+      var x = n.x, y = n.y + bob;
+      n._dx = x; n._dy = y;
+
+      if (n.kind === 'area' || n.kind === 'hub') {
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        ctx.shadowColor = n.color;
+        ctx.shadowBlur = isFocus ? 22 : 12 + Math.sin(t * 1.6 + n.ph) * 3;
+        ctx.beginPath();
+        ctx.arc(x, y, n.r, 0, Math.PI * 2);
+        ctx.fillStyle = n.color;
+        ctx.fill();
+        ctx.restore();
+
+        ctx.beginPath();
+        ctx.arc(x, y, n.r, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(255,255,255,' + (dimmed ? 0.25 : 0.8) + ')';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(x, y, n.r * 0.34, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,' + (dimmed ? 0.4 : 0.95) + ')';
+        ctx.fill();
+
+        if (isFocus) {
+          ctx.beginPath();
+          ctx.arc(x, y, n.r + 6 + Math.sin(t * 3) * 1.5, 0, Math.PI * 2);
+          ctx.strokeStyle = hexA('#ffffff', 0.55);
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+        // 이름표
+        var lx = x, ly = y - n.r - 8;
+        if (n.kind === 'hub') { ly = y + n.r + 15; }
+        ctx.font = '800 12.5px ' + FONT;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'alphabetic';
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = 'rgba(5,9,20,.92)';
+        ctx.strokeText(n.label, lx, ly);
+        ctx.fillStyle = dimmed ? 'rgba(220,232,250,.3)' : '#e6eefc';
+        ctx.fillText(n.label, lx, ly);
+      } else if (n.kind === 'work') {
+        ctx.beginPath();
+        ctx.arc(x, y, n.r + 1.6, 0, Math.PI * 2);
+        ctx.fillStyle = hexA(n.color, dimmed ? 0.18 : 0.35);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(x, y, n.r, 0, Math.PI * 2);
+        ctx.fillStyle = dimmed ? hexA(n.color, 0.3) : n.color;
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,' + (dimmed ? 0.2 : 0.55) + ')';
+        ctx.lineWidth = 0.9;
+        ctx.stroke();
+
+        if (!dimmed && (isFocus || n.id === 'dash' || n.id === 'lev1' || n.id === 'docview')) {
+          ctx.font = '700 11px ' + FONT;
+          ctx.textAlign = 'center';
+          ctx.lineWidth = 3.4;
+          ctx.strokeStyle = 'rgba(5,9,20,.9)';
+          ctx.strokeText(n.label, x, y + n.r + 12);
+          ctx.fillStyle = 'rgba(206,222,244,.92)';
+          ctx.fillText(n.label, x, y + n.r + 12);
+        }
+      } else {
+        ctx.beginPath();
+        ctx.arc(x, y, n.r, 0, Math.PI * 2);
+        ctx.fillStyle = dimmed ? hexA(n.color, 0.22) : hexA(n.color, 0.9);
+        ctx.fill();
+        if (isFocus) {
+          ctx.beginPath();
+          ctx.arc(x, y, n.r + 4, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(255,255,255,.6)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+    });
+
+    requestAnimationFrame(draw);
+  }
+  var FONT = "'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR',sans-serif";
+
+  function hexA(hex, a){
+    if (!hex) return 'rgba(150,190,255,' + a + ')';
+    if (hex.charAt(0) !== '#') return hex;
+    var h = hex.slice(1);
+    if (h.length === 3) h = h.charAt(0) + h.charAt(0) + h.charAt(1) + h.charAt(1) + h.charAt(2) + h.charAt(2);
+    var r = parseInt(h.slice(0, 2), 16), g = parseInt(h.slice(2, 4), 16), b = parseInt(h.slice(4, 6), 16);
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+  }
+
+  function findNode(mx, my){
+    var best = null, bestD = 1e9;
+    nodes.forEach(function(n){
+      var x = n._dx != null ? n._dx : n.x, y = n._dy != null ? n._dy : n.y;
+      var d = Math.hypot(mx - x, my - y);
+      var hit = n.kind === 'file' ? 7 : n.kind === 'work' ? 10 : 16;
+      if (d < hit && d < bestD) { best = n; bestD = d; }
+    });
+    return best;
+  }
+
+  function showDetail(n){
+    if (!n) {
+      detailBox.innerHTML = '<div class="gd-t">연결 지도 <small>노드 ' + T.nodes + ' · 연결 ' + T.links + '</small></div>' +
+        '<div class="gd-hint">동그라미에 마우스를 올리면 이어진 선이 밝아지고, 누르면 이 자리에 그 서고의 실제 수치와 파일이 열립니다. ' +
+        '<b>11개 큰 동그라미</b>가 대문 1~11번 영역, 작은 동그라미가 그 안의 파일과 최근 작업입니다.</div>';
+      return;
+    }
+    var kind = n.kind === 'area' ? '영역 ' + pad2(n.no) : n.kind === 'work' ? '최근 작업' : n.kind === 'hub' ? '대문' : '파일';
+    var extra = n.kind === 'area' ? ' · 파일 ' + n.count + '개' : '';
+    var html = '<div class="gd-t">' + esc(n.title || n.label) + '<small>' + kind + extra + '</small></div>';
+    if (n.facts && n.facts.length) {
+      html += '<ul class="gd-f">' + n.facts.map(function(f){ return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>';
+    }
+    if (n.href) {
+      html += '<a class="gd-link" href="' + esc(n.href) + '" target="_blank" rel="noopener noreferrer">' +
+        esc(n.label) + ' 열기 →</a>';
+    } else {
+      html += '<span class="gd-link" style="color:#7f95b6">이 작업은 지창고(구글 드라이브)에 있습니다</span>';
+    }
+    detailBox.innerHTML = html;
+  }
+
+  function select(n, fromMatrix){
+    selected = n;
+    document.querySelectorAll('.mx button').forEach(function(b){
+      b.classList.toggle('on', !!(n && b.dataset.id === n.id));
+    });
+    document.querySelectorAll('.lg').forEach(function(b){
+      b.classList.toggle('on', !!(n && b.dataset.id === n.id));
+    });
+    showDetail(n);
+    if (fromMatrix && n) {
+      // 매트릭스에서 골랐을 때 지도에서도 그 자리를 가운데로
+      tip.classList.remove('show');
+    }
+  }
+
+  // 마우스
+  canvas.addEventListener('mousemove', function(ev){
+    var r = canvas.getBoundingClientRect();
+    var mx = ev.clientX - r.left, my = ev.clientY - r.top;
+    var n = findNode(mx, my);
+    hover = n;
+    if (n) {
+      tip.innerHTML = esc(n.label) + '<b>' + esc(n.stat || '') + '</b>';
+      tip.style.left = (n._dx || n.x) + 'px';
+      tip.style.top = (n._dy || n.y) + 'px';
+      tip.classList.add('show');
+      canvas.style.cursor = 'pointer';
+    } else {
+      tip.classList.remove('show');
+      canvas.style.cursor = 'default';
+    }
+  });
+  canvas.addEventListener('mouseleave', function(){
+    hover = null;
+    tip.classList.remove('show');
+  });
+  canvas.addEventListener('click', function(ev){
+    var r = canvas.getBoundingClientRect();
+    var n = findNode(ev.clientX - r.left, ev.clientY - r.top);
+    select(n || null);
+  });
+  document.addEventListener('keydown', function(ev){
+    if (ev.key === 'Escape') { select(null); }
+  });
+  $('#gReset').addEventListener('click', function(){ select(null); });
+
+  // 범례
+  var legend = $('#legend');
+  (D.areas || []).forEach(function(a){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'lg';
+    b.dataset.id = a.key;
+    b.innerHTML = '<i style="background:' + a.color + '"></i>' + esc(a.name.replace('그늘진 ', ''));
+    b.addEventListener('click', function(){ select(NodeById(a.key)); });
+    legend.appendChild(b);
+  });
+
+  window.addEventListener('resize', function(){ clearTimeout(window.__gT); window.__gT = setTimeout(resize, 150); });
+  if (window.ResizeObserver) { new ResizeObserver(function(){ resize(); }).observe(wrap); }
+
+  build();
+  resize();
+  select(null);
+  requestAnimationFrame(draw);
+})();
+</script>
+<script src="./js/mokhoe-board.js" defer></script>
+</body>
+</html>
