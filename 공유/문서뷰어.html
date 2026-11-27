@@ -3558,10 +3558,18 @@ function renderHwp(bytes){
     v.numPages = doc.numPages;
     if(v.totalEl) v.totalEl.textContent = v.numPages;
     const p1 = await doc.getPage(1);
-    const vp1 = p1.getViewport({ scale: 1 });
+    let vp1 = p1.getViewport({ scale: 1 });
+    try{ p1.cleanup(); }catch(e){}
+    if(doc.numPages > 1){
+      try{
+        const p2 = await doc.getPage(2);
+        const vp2 = p2.getViewport({ scale: 1 });
+        try{ p2.cleanup(); }catch(e){}
+        if(vp2 && vp2.width > 0 && vp2.height > 0){ vp1 = vp2; }
+      }catch(e){}
+    }
     v.ratio = vp1.height / vp1.width;
     v.firstW = vp1.width;
-    try{ p1.cleanup(); }catch(e){}
     if(v.dead) return;
     buildPages(v);
     if(restorePagePending){
@@ -3675,27 +3683,42 @@ function renderHwp(bytes){
     const bottom = top + vh;
     const margin = vh * 0.85;
     const want = new Set();
+    const probe = top + Math.min(vh * 0.4, 260);
+
+    /* 시작점은 잰 위치에서 찾고, 쪽 번호는 실제 요소 위치로 다시 확인합니다 */
+    let cur = v.current;
+    const tops = v.tops;
+    if(tops.length){
+      let lo = 0, hi = tops.length - 1, cand = 0;
+      while(lo <= hi){
+        const mid = (lo + hi) >> 1;
+        if(tops[mid] <= probe){ cand = mid; lo = mid + 1; } else hi = mid - 1;
+      }
+      cur = Math.max(1, Math.min(v.numPages, cand + 1));
+    }
+    for(let k = Math.max(0, cur - 3); k <= Math.min(v.numPages - 1, cur + 2); k++){
+      const el = v.pageEls[k];
+      if(!el) continue;
+      const y = el.offsetTop;
+      if(y <= probe && y + el.offsetHeight > probe) cur = k + 1;
+    }
 
     /* 지금 보이는 쪽 ± 한 쪽만 그립니다(380쪽 같은 큰 책에서도 메모리를 아낍니다) */
-    let start = 0;
-    for(let i = 0; i < v.tops.length; i++){
-      if(v.tops[i] <= top - margin) start = i; else break;
+    let k = cur - 1;
+    while(k >= 0 && k < v.numPages){
+      const el = v.pageEls[k];
+      if(el.offsetTop + el.offsetHeight >= top - margin) want.add(k + 1); else break;
+      if(want.size > 10) break;
+      k--;
     }
-    start = Math.max(0, start - 1);
-    for(let i = start; i < v.tops.length; i++){
-      const el = v.pageEls[i];
-      const y = (i === start) ? el.offsetTop : v.tops[i];
-      if(y > bottom + margin && i > start) break;
-      if(y + el.offsetHeight >= top - margin) want.add(i + 1);
+    k = cur - 1;
+    while(k >= 0 && k < v.numPages){
+      const el = v.pageEls[k];
+      if(el.offsetTop <= bottom + margin) want.add(k + 1); else break;
       if(want.size > 12) break;
+      k++;
     }
-    if(!want.size) want.add(Math.max(1, Math.min(v.numPages, v.current)));
-
-    let cur = v.current;
-    const probe = top + Math.min(vh * 0.4, 260);
-    for(let i = 0; i < v.tops.length; i++){
-      if(v.tops[i] <= probe) cur = i + 1; else break;
-    }
+    if(!want.size) want.add(Math.max(1, Math.min(v.numPages, cur)));
     if(cur !== v.current){
       v.current = cur;
       if(v.pageInput) v.pageInput.value = cur;
