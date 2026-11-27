@@ -4176,11 +4176,12 @@ document.addEventListener('DOMContentLoaded', init);
   function skippedToday(){ try{ return localStorage.getItem(SKIP_KEY)===todayKey(); }catch(e){ return false; } }
   function markSkip(){ try{ localStorage.setItem(SKIP_KEY,todayKey()); }catch(e){} }
 
-  /* 공유받은 설교·항목 직행 링크인가 — 파라미터가 하나라도 있거나 해시가 대문이 아니면 직행으로 본다 */
+  /* 공유받은 설교·항목 직행 링크인가 — 이 서고의 직행 파라미터가 있거나 해시가 대문이 아니면 직행으로 본다.
+     (단독 설교 ?sermon=·?topic=·?age=·?dept=·?view=, 항목 직행 ?id=·?p= 등 / 해시 #sermon/… · #story · #항목)
+     ?utm_source= 처럼 대문을 여는 데 영향이 없는 파라미터만 붙었으면 그대로 대문으로 본다. */
   function isDirectLink(){
-    var q=(location.search||'').replace(/^\?/,'');
-    if(q) return true;
-    var h=(location.hash||'').replace(/^#/,'').replace(/\/$/,'');
+    if(/[?&](sermon|topic|age|dept|view|id|p|doc|entry|no)=/i.test(location.search||'')) return true;
+    var h=(location.hash||'').replace(/^#/,'').replace(/\/+$/,'');
     if(!h||h==='home') return false;
     return true;
   }
