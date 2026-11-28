@@ -1297,11 +1297,11 @@ function resetDrawerTop(){
       '</div></div>' +
       '<section class="story-sec"><h2 id="principle">자료와 신학 — 지킨 기준</h2><ul class="principles">' +
       '<li><b>원문 그대로</b> — 드라이브 <code>신학지남</code> 폴더의 <code>.md</code> 원문 글자를 고치지 않고 그대로 옮겼습니다. 옛 표기·오탈자·OCR 흔적도 손대지 않았습니다.</li>' +
-      '<li><b>추측 없음</b> — 없는 내용을 채우거나 서지를 지어내지 않았습니다. 연도·통권·저자는 원본 파일 이름에 적힌 것만 씁니다.</li>' +
+      '<li><b>추측 없음</b> — 연도·통권·저자는 원본 파일 이름에 적힌 것만 씁니다.</li>' +
       '<li><b>해석의 기준</b> — 안내와 해설은 개혁주의 신학·성경신학·언약신학·구속사적 해석을 바탕으로 한 장로교 전통을 따릅니다. 근본주의·문자주의·율법주의·알레고리 해석은 넣지 않습니다.</li>' +
       '<li><b>이단·사이비</b> — 개혁주의 신학과 한국 정통장로교에서 이단·사이비로 판단했거나 의혹을 받는 개인 및 단체의 주장과 가르침은 소개하거나 권하지 않습니다. 다만 1918–2011년 잡지 원문 자체는 역사 자료로서 손대지 않고 실었습니다.</li>' +
-      '<li><b>인명</b> — 저자 이름은 원본 서지에 적힌 그대로만 표기합니다. 살아 있는 인물에 대한 평가나 추천은 넣지 않았습니다.</li>' +
-      '<li><b>그림</b> — 원본 스캔 그림은 넣지 않고 본문에 <span class="pg">p.12</span>처럼 쪽 표시만 남겼습니다(그림이 있는 글은 서지에 점수로 적었습니다).</li>' +
+      '<li><b>인명</b> — 저자 이름은 원본 서지에 적힌 그대로만 표기합니다.</li>' +
+      '<li><b>그림</b> — 본문에 <span class="pg">p.12</span>처럼 원본 쪽 표시를 두었습니다(그림이 있는 글은 서지에 점수로 적었습니다).</li>' +
       '</ul></section>' +
       '<section class="story-sec"><h2 id="numbers">숫자로 보는 서고</h2><table class="facttable">' +
       '<tr><th>수록</th><td>4,916편 (1918–2011)</td></tr>' +
@@ -1486,7 +1486,7 @@ function resetDrawerTop(){
       '<span class="row"><span class="k">연대</span><a href="' + eraHref(r[6]) + '">' + esc(eraLabel(r[6]).replace('신학지남 ', '')) + '</a>' +
       '<span class="sep">·</span><span class="k">주제</span><a href="#/idx/topics~t-' + r[7] + '">' + esc(topicLabel(r[7])) + '</a>' +
       '<span class="sep">·</span><span class="k">번호</span>' + n.toLocaleString() + ' / 4,916편</span>' +
-      (mt.figs ? '<span class="row"><span class="k">원본 그림</span>' + mt.figs + '점 <span class="tiny">(오프라인 판에는 넣지 않고 p.N 표시로 두었습니다)</span></span>' : '') +
+      (mt.figs ? '<span class="row"><span class="k">원본 그림</span>' + mt.figs + '점 <span class="tiny">(p.N 표시)</span></span>' : '') +
       '</div></div>' +
       '<div class="findbar"><input id="findQ" type="search" autocomplete="off" placeholder="이 글에서 낱말 찾기" aria-label="이 글에서 찾기">' +
       '<button type="button" id="findPrev" title="이전 일치">↑</button><button type="button" id="findNext" title="다음 일치">↓</button>' +

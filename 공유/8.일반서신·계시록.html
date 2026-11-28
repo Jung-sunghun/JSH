@@ -2104,8 +2104,7 @@ a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
       <li><b>알레고리(풍유) 해석</b> — 본문의 저자 의도를 지나쳐 세부 하나하나에 임의의 상징을 붙이는 읽기</li>
       <li><b>이단 및 사이비</b> — 개혁주의 신학과 한국 정통장로교에서 이단과 사이비로 판단했거나 의혹을 받고 있는 개인 및 단체가 주장하고, 가르치는 내용은 절대 금지하고 있습니다.</li>
     </ul>
-    <div class="pt" style="margin-top:.6em">대신 <b>언약신학적·구속사적 관점</b>에서, 본문이 실제로 말한 것만 말하고 그 위에서 그리스도를 읽습니다.
-    확인되지 않은 구조나 예화는 넣지 않았습니다.</div>
+    <div class="pt" style="margin-top:.6em">대신 <b>언약신학적·구속사적 관점</b>에서, 본문이 실제로 말한 것만 말하고 그 위에서 그리스도를 읽습니다.</div>
   </div>
 
   <div class="newbox">
@@ -2180,7 +2179,7 @@ a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
           <ul>
             <li>단락의 대지와 절 범위가 한 줄씩 놓이고, 순서가 곧 논증의 흐름입니다.</li>
             <li>창 너비를 바꾸면 도표가 다시 그려져 줄이 어긋나지 않습니다.</li>
-            <li>도표는 학계에 공개된 분석과 본문에서 직접 확인되는 형태만 실었고, 확인되지 않은 구조는 짓지 않았습니다.</li>
+            <li>도표는 학계에 공개된 분석과 본문에서 직접 확인되는 형태로 세웠습니다.</li>
           </ul>
         </div>
       </li>
@@ -2233,7 +2232,7 @@ a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
             <li><b>지명</b> — 고대·현대의 자리와 좌표 신뢰도 · 지리적 특징 · <b>좌표 핀이 찍힌 벡터 지도</b>(확대·축소·끌어 옮기기, 출애굽·광야·족장의 동선 점선) · <b>기준점(예루살렘·고센·시내 산)에서의 거리</b> · <b>이 땅의 연대기</b> · 구글 지도 좌표 링크.</li>
             <li>장 바로가기 단추를 누르면 창이 닫히고 그 장이 바로 열립니다. 그때 화면 아래에 <b>↩ [항목명] 팝업으로 돌아가기</b> 알약이 떠서, 누르면 <b>보던 스크롤 위치와 전체 화면 상태 그대로</b> 팝업이 다시 열립니다(알약의 ✕로 닫을 수 있습니다).</li>
             <li><b>헤더의 전체 화면 단추</b>로 창을 화면 가득 키우고(지도도 함께 커집니다) <b>원래 크기</b>로 되돌릴 수 있습니다. 창 오른쪽 아래 작은 <b>↑·↓</b> 캡슐은 창 안을 맨 위·맨 아래로 옮깁니다.</li>
-            <li><b>주요 구절</b>의 구절 표기(<code>출 3:14</code> 같은 단추)를 누르면 그 자리에 <b>개역한글 본문만</b> 펼쳐집니다 — 히브리어 원문은 넣지 않았습니다. 다시 누르면 접힙니다.</li>
+            <li><b>주요 구절</b>의 구절 표기(<code>출 3:14</code> 같은 단추)를 누르면 그 자리에 <b>개역한글 본문만</b> 펼쳐집니다. 다시 누르면 접힙니다.</li>
             <li>닫는 법 — PC에서는 <b>바깥</b>·<b>닫기 ✕</b>·<b>Esc</b>로 닫고 안쪽 클릭으로는 닫히지 않으며, 휴대폰·태블릿에서는 아무 데나 탭해도 닫힙니다. 지도 확대·축소·끌기는 그대로 동작합니다.</li>
           </ul>
         </div>
@@ -3200,55 +3199,49 @@ function hebwrap(t){
 function emphBlock(e){
   const sig = e.sig || [], rep = e.rep || [], vb = e.verb || {};
   const kr = vb.kr || {};
-  let h = '<div class="emphwrap">';
-  h += '<div class="emph-top">하나님의 세 가지 강조 <span class="small">— 주어이신 하나님이 본문에서 강조하신 것</span></div>';
-
+  let rows = ''; let nBadge = 0;
   // ① 반복
-  h += '<div class="emph-row"><div class="emph-n">①</div><div class="emph-b"><div class="emph-t">반복 — 같은 말을 두 번, 세 번</div>';
   if(rep.length){
-    h += '<ul class="emph-ul">' + rep.map(r => '<li>' + hebwrap(esc(r.he)) + ' '
+    rows += '<div class="emph-row"><div class="emph-n">' + (++nBadge) + '</div><div class="emph-b"><div class="emph-t">반복 — 같은 말을 두 번, 세 번</div>';
+    rows += '<ul class="emph-ul">' + rep.map(r => '<li>' + hebwrap(esc(r.he)) + ' '
       + '<b>' + r.n + '번</b> (' + r.vs.map(v=>v+'절').join(' · ') + ')'
       + '<div class="emph-q">' + esc(r.kr || '') + '</div></li>').join('') + '</ul>';
-    h += '<div class="emph-note">같은 말이 되풀이되는 자리는 그 장에서 저자가 가장 놓치기 싫어한 자리입니다.</div>';
-  } else {
-    h += '<p>이 장에는 세 번 이상 되풀이되는 낱말이 없습니다. 반복 대신 논증의 밀도로 말하는 장입니다.</p>';
+    rows += '<div class="emph-note">같은 말이 되풀이되는 자리는 그 장에서 저자가 가장 놓치기 싫어한 자리입니다.</div>';
+    rows += '</div></div>';
   }
-  h += '</div></div>';
-
   // ② 사인
-  h += '<div class="emph-row"><div class="emph-n">②</div><div class="emph-b"><div class="emph-t">강조 표지 — 되풀이되는 어구</div>';
   if(sig.length){
-    h += '<div class="emph-note">이 장에서 하나님이 자기 이름으로 사인하신 자리 <b>' + sig.length + '곳</b></div>';
-    h += '<ul class="emph-ul sig">' + sig.map(x => '<li><b>' + x.v + '절</b> ' + hebwrap(esc(x.he)) + ''
+    rows += '<div class="emph-row"><div class="emph-n">' + (++nBadge) + '</div><div class="emph-b"><div class="emph-t">사인 — ‘에고 에이미’(ἐγώ εἰμι) · ‘아멘 아멘 레고 휘민’(ἀμὴν ἀμὴν λέγω ὑμῖν)</div>';
+    rows += '<div class="emph-note">이 장에서 하나님이 자기 이름으로 사인하신 자리 <b>' + sig.length + '곳</b></div>';
+    rows += '<ul class="emph-ul sig">' + sig.map(x => '<li><b>' + x.v + '절</b> ' + hebwrap(esc(x.he)) + ''
       + ' <span class="tag">' + esc(x.tag) + '</span>'
       + '<div class="emph-q">' + esc(x.kr || '') + '</div>'
       + (x.before ? '<div class="emph-seal">사인이 인치는 문장 — “' + esc(x.before) + '”</div>' : '')
       + '</li>').join('') + '</ul>';
-  } else {
-    h += '<p>이 장에는 별도의 사인 표지가 없습니다. 사도들은 같은 어구의 반복과 논증의 전개로 말씀의 권위를 세웁니다. 이 책의 표지 수는 '
-      + ((e.sigbook||0)) + '번입니다.</p>';
+    rows += '</div></div>';
   }
-  h += '</div></div>';
-
   // ③ 주동사
-  h += '<div class="emph-row"><div class="emph-n">③</div><div class="emph-b"><div class="emph-t">주동사 — 직설법 선언과 명령법 선포</div>';
-  let rows = [];
+  let vrows = [];
   const ind = (vb.ind||[]).slice(0,3), imp = (vb.imp||[]).slice(0,3);
   const nPair = Math.max(ind.length, imp.length);
   for (let i = 0; i < nPair; i++) {
-    if (i < ind.length) rows.push(['선언(직설법)', ind[i], kr[ind[i]]]);
-    if (i < imp.length) rows.push(['명령(명령법)', imp[i], kr[imp[i]]]);
+    if (i < ind.length) vrows.push(['선언(직설법)', ind[i], kr[ind[i]]]);
+    if (i < imp.length) vrows.push(['명령(명령법)', imp[i], kr[imp[i]]]);
   }
-  (vb.prom||[]).slice(0,2).forEach(v => { if((vb.ind||[]).indexOf(v) < 0) rows.push(['약속', v, kr[v]]); });
-  (vb.ful||[]).slice(0,2).forEach(v => rows.push(['성취', v, kr[v]]));
-  if(rows.length){
-    h += '<table class="emph-tb">' + rows.map(r => '<tr><th>' + esc(r[0]) + '</th><td><b>' + r[1] + '절</b> ' + esc(r[2] || '') + '</td></tr>').join('') + '</table>';
-    h += '<div class="emph-note">선언과 명령을 짝지어 나란히 놓았습니다. 은혜의 직설법이 먼저 서고, 그 위에 명령법이 놓입니다. 사도들은 먼저 하나님의 행하심을 선언하고, 그 선언에 근거해 권면합니다.</div>';
-  } else {
-    h += '<p>이 장은 명령이 아니라 사건으로 말합니다. 하나님의 말씀과 그 성취가 이 장의 주동사입니다.</p>';
+  (vb.prom||[]).slice(0,2).forEach(v => { if((vb.ind||[]).indexOf(v) < 0) vrows.push(['약속', v, kr[v]]); });
+  (vb.ful||[]).slice(0,2).forEach(v => vrows.push(['성취', v, kr[v]]));
+  if(vrows.length){
+    rows += '<div class="emph-row"><div class="emph-n">' + (++nBadge) + '</div><div class="emph-b"><div class="emph-t">주동사 — 직설법 선언과 명령법 선포</div>';
+    rows += '<table class="emph-tb">' + vrows.map(r => '<tr><th>' + esc(r[0]) + '</th><td><b>' + r[1] + '절</b> ' + esc(r[2] || '') + '</td></tr>').join('') + '</table>';
+    rows += '<div class="emph-note">선언과 명령을 짝지어 나란히 놓았습니다. 은혜의 직설법이 먼저 서고, 그 위에 명령법이 놓입니다. 헬라어에서 ‘에고 에이미’(ἐγώ εἰμι)는 주어를 생략한 채 서는 자기 계시의 문장으로, 존재 자체를 세우는 선언입니다.</div>';
+    rows += '</div></div>';
   }
-  h += '</div></div></div>';
-  return h;
+  if(!rows) return '';
+  const nrow = (rows.match(/class="emph-row"/g) || []).length;
+  const ttl = nrow >= 3 ? '하나님의 세 가지 강조' : (nrow === 2 ? '하나님의 두 가지 강조' : '하나님의 강조');
+  return '<div class="emphwrap">'
+    + '<div class="emph-top">' + ttl + ' <span class="small">— 주어이신 하나님이 본문에서 강조하신 것</span></div>'
+    + rows + '</div>';
 }
 
 /* ================= 13차: 설교문 ================= */
