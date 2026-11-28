@@ -3534,13 +3534,17 @@ function cpToggleAll(b){
   b.textContent = all ? '전체 접기 ▴' : '전체 펼치기 ▾';
   return false;
 }
+function cpKatrLabel(q){
+  if(q==='국문') return '우리말 풀이';
+  return '한글 번역'+(q?' — '+q+' 원문':'');
+}
 function cpDocHTML(dc){
   var h=['<details class="cp-doc"><summary><span class="dno">'+esc(dc.no)+'</span><span class="dtt">'+esc(dc.title)+'</span>'+
     '<span class="dst '+esc(dc.cls)+'">'+esc(dc.status)+'</span><span class="dsum">'+esc(dc.one)+'</span></summary><div class="dbody">'];
   if(dc.meta) h.push('<p class="dmeta">'+esc(dc.meta)+'</p>');
   if(dc.quote){
     h.push('<div class="dq"><span class="dql">'+esc(dc.qlabel||'원문 발췌')+'</span><p'+(dc.gr?' class="gr"':'')+'>'+esc(dc.quote)+'</p>');
-    if(dc.katr) h.push('<div class="dkt"><span class="dkl">한글 번역'+(dc.qlang?' — '+esc(dc.qlang)+' 원문':'')+'</span><p>'+esc(dc.katr)+'</p></div>');
+    if(dc.katr) h.push('<div class="dkt"><span class="dkl">'+cpKatrLabel(dc.qlang)+'</span><p>'+esc(dc.katr)+'</p></div>');
     h.push('<span class="dqs">'+esc(dc.src||'')+'</span></div>');
   }
   if(dc.claims && dc.claims.length){
@@ -3568,7 +3572,7 @@ function cpAnathemaHTML(a){
 function cpCreedHTML(c){
   var h=['<div class="cp-creed"><div class="ah">'+esc(c.title)+'</div><div class="am">'+esc(c.meta)+'</div>'];
   h.push('<p class="agr">'+esc(c.quote)+'</p>');
-  if(c.katr) h.push('<div class="dkt"><span class="dkl">한글 번역'+(c.qlang?' — '+esc(c.qlang)+' 원문':'')+'</span><p>'+esc(c.katr)+'</p></div>');
+  if(c.katr) h.push('<div class="dkt"><span class="dkl">'+cpKatrLabel(c.qlang)+'</span><p>'+esc(c.katr)+'</p></div>');
   if(c.src) h.push('<p class="atail">'+esc(c.src)+'</p>');
   h.push('</div>');
   return h.join('');
@@ -3603,7 +3607,7 @@ function councilPanelHTML(cn){
     h.push('<details class="cp-mini"><summary>'+esc(sy.title)+'</summary><div class="mbody">');
     h.push('<p class="dmeta">'+esc(sy.meta)+'</p>');
     if(sy.quote) h.push('<div class="dq"><span class="dql">'+esc(sy.qlabel||'원문 발췌')+'</span><p>'+esc(sy.quote)+'</p></div>');
-    if(sy.katr) h.push('<div class="dkt"><span class="dkl">한글 번역'+(sy.qlang?' — '+esc(sy.qlang)+' 원문':'')+'</span><p>'+esc(sy.katr)+'</p></div>');
+    if(sy.katr) h.push('<div class="dkt"><span class="dkl">'+cpKatrLabel(sy.qlang)+'</span><p>'+esc(sy.katr)+'</p></div>');
     if(sy.ko) h.push('<p class="cp-txt">'+esc(sy.ko)+'</p>');
     if(sy.items && sy.items.length){
       h.push('<ol class="cp-ol reb">');
