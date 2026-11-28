@@ -3042,9 +3042,9 @@ document.addEventListener('click', function(ev){
 .duo-flag .df-go{cursor:pointer;font:inherit;font-size:.94em;color:#7d1e17;background:#fff;border:1px solid #dfa9a2;
   border-radius:999px;padding:.1em .6em;margin-left:auto}
 .duo-flag .df-go:hover{background:#f8dfdb}
-.cpanel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 14px 8px;
-  box-shadow:0 6px 18px rgba(28,46,130,.07);font-size:.82em;line-height:1.7}
-.cpanel .cp-head{display:flex;gap:9px;align-items:flex-start;padding-bottom:9px;border-bottom:2px solid #b3261e;margin-bottom:2px}
+.cpanel{background:var(--panel);border:1px solid #ccd6ee;border-top:3px solid #b3261e;border-radius:12px;padding:12px 15px 8px;
+  box-shadow:0 8px 22px rgba(28,46,130,.09);font-size:.88em;line-height:1.75}
+.cpanel .cp-head{display:flex;gap:9px;align-items:flex-start;padding-bottom:9px;border-bottom:1px solid var(--line);margin-bottom:2px}
 .cpanel .cp-head .ico{font-size:1.5em;line-height:1.1;flex:none}
 .cpanel .cp-head b{display:block;font-size:1.12em;letter-spacing:-.01em;color:var(--ink);line-height:1.45}
 .cpanel .cp-head span{display:block;margin-top:2px;font-size:.9em;color:var(--muted);line-height:1.5}
@@ -3092,10 +3092,8 @@ html[data-theme="dark"] .cpanel .ft.tr{background:#33201d;color:#eaa093;border-c
 @media (min-width:1300px){
   html.wideview .content{max-width:1100px}
   .duo{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:24px;align-items:start}
-  .duo-side{position:sticky;top:62px;align-self:start;max-height:calc(100vh - 82px);overflow-y:auto;overscroll-behavior:contain;margin:0;padding:0 3px 2px 0}
-  .duo-side::-webkit-scrollbar{width:8px}
-  .duo-side::-webkit-scrollbar-thumb{background:var(--line);border-radius:5px}
-}
+  .duo-side{position:static;align-self:start;margin:0}
+  }
 </style>
 
 <script>
